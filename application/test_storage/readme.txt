@@ -1,0 +1,1 @@
+Folder specified to store tests data
