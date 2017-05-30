@@ -1,0 +1,17 @@
+﻿<?xml version="1.0"?>
+<Test>
+	<Task>
+		<Time>00:30</Time>
+		<AllowTaskReview>false</AllowTaskReview>
+		<AllowToReAnswer>false</AllowToReAnswer>
+		<Question>What is C++?</Question>
+		<Answers Type="One">
+			<Answer IsRight="false">
+				It's a car.
+			</Answer>
+			<Answer IsRight="true">
+				It's a language.
+			</Answer>
+		</Answers>
+	</Task>
+</Test>

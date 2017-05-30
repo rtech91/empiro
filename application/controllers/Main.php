@@ -5,7 +5,9 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
-    $this->load->helper('url');
+		$this->load->helper('url');
+		$this->load->model('storage');
+		$this->storage->check_folder();
 		$this->load->view('front');
 	}
 }
