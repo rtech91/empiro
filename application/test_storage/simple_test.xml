@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0"?>
 <test>
+	<name>C++</name>
+	<category>Languages</category>
 	<task>
 		<time>00:30</time>
 		<allowtaskreviews>false</allowtaskreviews>
