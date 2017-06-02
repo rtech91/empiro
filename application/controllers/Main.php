@@ -7,7 +7,7 @@ class Main extends CI_Controller {
 	{
 		$this->load->helper('url');
 		$this->load->model('storage');
-		$this->storage->check_folder();
-		$this->load->view('front');
+		$tests = $this->storage->check_folder();
+		$this->load->view('front', array('tests' => $tests));
 	}
 }

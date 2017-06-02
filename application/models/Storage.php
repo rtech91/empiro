@@ -29,7 +29,7 @@ class Storage extends CI_Model {
           array_push($approved_files_uris, $filepath);
         }
       }
-      $this->collect_parsed_tests($approved_files_uris);
+      return $this->collect_parsed_tests($approved_files_uris);
     }else {
       show_error('Cannot read tests storage folder!', 500);
     }
@@ -43,6 +43,7 @@ class Storage extends CI_Model {
   private function collect_parsed_tests($file_uris) {
     foreach($file_uris as $uri) {
       $parsed = simplexml_load_file($uri);
+      $all_tests = array();
       $test = new stdClass;
       $test->name = (string)$parsed->name;
       $test->category = (string)$parsed->category;
@@ -65,8 +66,9 @@ class Storage extends CI_Model {
         }
         array_push($test->questions, $new_question);
       }
+      array_push($all_tests, $test);
     }
-    
+    return $all_tests;
   }
 
 }
