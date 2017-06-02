@@ -41,7 +41,32 @@ class Storage extends CI_Model {
     * @param $file_uris array of absolute xml file uris
     */
   private function collect_parsed_tests($file_uris) {
-    //TODO: parse, validate and collect tests
+    foreach($file_uris as $uri) {
+      $parsed = simplexml_load_file($uri);
+      $test = new stdClass;
+      $test->name = (string)$parsed->name;
+      $test->category = (string)$parsed->category;
+      $test->time = (string)$parsed->time;
+      $test->allowtaskreviews = (bool)$parsed->allowtaskreviews;
+      $test->allowtoreanswer = (bool)$parsed->allowtoreanswer;
+      $test->questions = array();
+      foreach($parsed->questions->question as $question) {
+        $new_question = new stdClass;
+        $question_attr = current($question->answers->attributes());
+        $new_question->title = (string)$question->title;
+        $new_question->type = (bool)$question_attr['type'];
+        $new_question->answers = array();
+        foreach($question->answers->answer as $answer) {
+          $answer_attr = current($answer->attributes());
+          $new_answer = new stdClass;
+          $new_answer->is_right = (bool)$answer_attr['is_right'];
+          $new_answer->title = (string)$answer;
+          array_push($new_question->answers, $new_answer);
+        }
+        array_push($test->questions, $new_question);
+      }
+    }
+    
   }
 
 }
