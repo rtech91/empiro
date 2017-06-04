@@ -4,13 +4,14 @@
 	<meta charset="utf-8"/>
 	<title>Empiro-index</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Ubuntu:400,700&amp;subset=cyrillic" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&amp;subset=cyrillic" rel="stylesheet"> 
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url(); ?>style/style.css" />
 </head>
 <body>
+	<div id="wrap">
 	<header>
 		<div class="header">
-			<div class="logo"><a href="index.html">Empiro</a></div>
+			<div class="logo"><a href="index.html"><img src="<?php echo base_url(); ?>image/logo.png" alt="logo" /></a></div>
 		</div>
 	</header>
 	<nav>
@@ -47,6 +48,7 @@
 			</div>
 		</div>
 	</main>
+	</div>
 	<footer>
 		<div class="footer">
 			<div class="copyright">
