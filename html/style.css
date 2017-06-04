@@ -15,8 +15,8 @@ html{
 }
 body {
     width:100%;
-    height: auto;
-    min-height:100%;
+    height: 100vh;
+    min-height: 100%;
     margin:0;
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
 	font-size: 14px;
@@ -42,7 +42,10 @@ a {
 ul, ol {
 	list-style: none;
 }
-
+#wrap {
+	min-height: 100%;
+	margin: 0;
+}
 header {
 	width: 100%;
     height: auto;
@@ -62,15 +65,15 @@ header {
 	padding-bottom: 0.5%;
 }
 .logo {
-	font-family: 'Crimson Text', serif;
-	font-size: 40px;
-	font-weight: bold;
 	display: inline-block;
 	position: relative;
 	padding: 2% 0 1% 1.5%;
+	
 }
-.logo a {
-	color: #277e99;
+.logo img {
+	display: block;
+	max-width: 100%;
+	height: auto;
 }
 nav {
 	width: 100%;
@@ -137,6 +140,14 @@ main:after {
 	padding: 1% 0;	
 	text-align: center;
 	position: relative;
+}
+.home:before,
+.home:after {
+	content: '';
+	display: table;
+}
+.home:after {
+	clear: both;
 }
 .home h1 {
 	font-size: 30px;
@@ -207,7 +218,7 @@ footer {
 	display: block;
 	margin: 0 auto;
 	border-top: 2px solid #7b8396;
-	margin-top: -60px;
+	margin-top: -90px;
 }
 
 .footer {
@@ -321,6 +332,7 @@ footer {
 	padding: 1.5%;
 	margin: 0 auto;	
 }
+
 .btn-pasw {
 	width: 60%;
 	height: auto;
@@ -362,8 +374,35 @@ footer {
 .form-style input[type="submit"]:hover {
     background: #f7af27;
 }
+.test-wrap {
+	position: relative;
+	width: 90%;
+	height: auto;
+	background: #fff;
+	display: block;
+	color: #1d2538;
+	font-size: 15px;
+	margin: 0 auto;
+	text-align: left;
+	padding: 1.5%;
+}
+.test-info {
+	font-size: 14px;
+	color: #f7af27;
+}
+.test-info,
+.question,
+.test-block {
+	display: block;
+	padding: 1%;
+	border-bottom: 1px solid #7b8396;
+}
+.question h3 {
+	font-size: 18px;
+	line-height: 25px;
+	font-weight: boldl;
+}
 
-	
 @media screen and (max-width: 870px) {
 	.table {
 		margin: 0 auto;
