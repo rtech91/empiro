@@ -37,30 +37,57 @@ class Model_Storage extends Model {
       $parsed = simplexml_load_file($uri);
       $all_tests = array();
       $test = new stdClass;
+      if(!isset($parsed->name) || empty($parsed->name)){
+        throw new WrongTestParametersException();
+      }
       $test->name = (string)$parsed->name;
+      if(!isset($parsed->category) || empty($parsed->category)){
+        throw new WrongTestParametersException();
+      }
       $test->category = (string)$parsed->category;
+      if(!isset($parsed->time) || empty($parsed->time) || !preg_match("/^[0-9]{2}:[0-9]{2}$/", $parsed->time)){
+        throw new WrongTestParametersException();
+      }
       $test->time = (string)$parsed->time;
+      if(!isset($parsed->allowtaskreviews) || empty($parsed->allowtaskreviews)){
+        throw new WrongTestParametersException();
+      }
       $test->allowtaskreviews = (bool)$parsed->allowtaskreviews;
+      if(!isset($parsed->allowtoreanswer) || empty($parsed->allowtoreanswer)){
+        throw new WrongTestParametersException();
+      }
       $test->allowtoreanswer = (bool)$parsed->allowtoreanswer;
       $test->questions = array();
       foreach($parsed->questions->question as $question) {
         $new_question = new stdClass;
         $question_attr = current($question->answers->attributes());
+        if(!isset($question->title) || empty($question->title)){
+          throw new WrongQuestionParametersException();
+        }
         $new_question->title = (string)$question->title;
+        if(!isset($question_attr['type']) || empty($question_attr['type'])){
+          throw new WrongQuestionParametersException();
+        }
         $new_question->type = (bool)$question_attr['type'];
         $new_question->answers = array();
         foreach($question->answers->answer as $answer) {
           $answer_attr = current($answer->attributes());
           $new_answer = new stdClass;
+          if(!isset($answer_attr['is_right']) || empty($answer_attr['is_right'])){
+            throw new WrongQuestionParametersException();
+          }
           $new_answer->is_right = (bool)$answer_attr['is_right'];
-          $new_answer->title = (string)$answer;
-          array_push($new_question->answers, $new_answer);
+          if(!isset($answer) || empty($answer)){
+            throw new WrongQuestionParametersException();
+          }
+            $new_answer->title = (string)$answer;
+            array_push($new_question->answers, $new_answer);
+          }
+          array_push($test->questions, $new_question);
         }
-        array_push($test->questions, $new_question);
-      }
-      array_push($all_tests, $test);
-    }
+        array_push($all_tests, $test);
+      }               
     return $all_tests;
   }
-	
+
 } // End Storage
