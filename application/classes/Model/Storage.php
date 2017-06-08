@@ -53,6 +53,7 @@ class Model_Storage extends Model {
     $this->file_uris = null;
     $this->innaccessible_files = null;
     $this->broken_files = null;
+    $this->parsed_tests = null;
   }
   
   /**
