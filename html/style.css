@@ -120,7 +120,7 @@ main{
 	display: block;
 	position: relative;
     margin: 0 auto;
-    padding: 1% 0;
+    padding: 0;
 	color: #1d2538;
 	background: #fff;
 	margin-top: 1.5%;
@@ -137,7 +137,7 @@ main:after {
 .home {
 	width: 100%;
 	height: auto;
-	padding: 1% 0;	
+	padding: 2% 0;	
 	text-align: center;
 	position: relative;
 }
@@ -149,6 +149,43 @@ main:after {
 .home:after {
 	clear: both;
 }
+.alert-wrap {
+	width: 100%;
+	height: auto;
+	padding: 0 2% 1.5% 2%;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	background: #fff;
+}
+.alert-wrap span {
+	font-size: 13px;
+	line-height: 23px;
+	display: inline;
+	padding: 0;
+}
+.alert-success,
+.alert-info,
+.alert-danger {
+	display: block;
+	position: relative;
+	width: 94%;
+	margin: 0 auto;
+	padding: 0.5% 0;
+	border-left: 3px solid transparent;
+	border-bottom: 1px dashed transparent;
+	margin-bottom: 1%;
+}
+.alert-success {
+	border-color: #4ab550;
+}
+.alert-info {
+	border-color: #f7c327;
+}
+.alert-danger {
+	border-color: #f91c1c;
+}
+
 .home h1 {
 	font-size: 30px;
 	line-height: 25px;
@@ -166,7 +203,7 @@ main:after {
 	min-height: 370px;
 	height: auto;
 	margin: 0 auto;
-	padding-top: 7%;
+	padding-top: 6%;
 }
 .table {
 	display: block;

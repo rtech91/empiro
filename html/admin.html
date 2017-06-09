@@ -4,13 +4,14 @@
 	<meta charset="utf-8"/>
 	<title>Empiro-admin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Ubuntu:400,700&amp;subset=cyrillic" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&amp;subset=cyrillic" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 <body>
+<div id="wrap">
 	<header>
 		<div class="header">
-			<div class="logo"><a href="index.html">Empiro</a></div>
+			<div class="logo"><a href="index.html"><img src="image/logo.png" alt="logo" /></a></div>
 		</div>
 	</header>
 	<nav>
@@ -22,13 +23,16 @@
 	</nav>
 	<main>
 		<div class="home">
+			<div class="alert-wrap">
+				<div class="alert-info"><span>У тест HTML/CSS внесена зміна</span></div>
+			</div>
 			<div class="container">
 				<div class="form-password-wrap">
 					<div class="form-style">
 					<form>
 						<input type="password" placeholder="Введіть пароль"></input>
 						<div class="btn-pasw">
-						<input type="submit" value="Надіслати"></input>
+						<input id="admin-submit" type="submit" value="Надіслати"></input>
 						</div>
 					</form>
 					</div>
@@ -36,6 +40,7 @@
 			</div>
 		</div>
 	</main>
+</div>	
 	<footer>
 		<div class="footer">
 			<div class="copyright">
