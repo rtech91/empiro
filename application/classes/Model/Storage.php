@@ -3,33 +3,33 @@
 class Model_Storage extends Model {
   
   /**
-   * Used to hold all addresses to test xml files in file system.
+   * All addresses to test xml files in the file system.
    * @var array $file_uris
    */
   public $file_uris;
   
   /**
-   * Used to hold all parsed and ready to use tests.
+   * All parsed and ready to use tests.
    * @var array $parsed_tests
    */
   private $parsed_tests;
   
   /**
-   * Used to hold only one instance of object
+   * Only one instance of storage object
    * according to Singleton pattern.
    * @var Storage $instance
    */
   private static $instance = null;
   
   /**
-   * Used when was broken common data in test file.
+   * Use: when main data of the test file is broken.
    * Format: List of physical absolute addresses to broken file.
    * @var array $innaccessible_files 
    */
   private $innaccessible_files;
   
   /**
-   * Used when was broken additional data in test file
+   * Use: when additional data of test file is broken,
    * such as question or nested answer information.
    * Format: List of arrays with two params - test name and physical absolute address to broken file
    * @var array $broken_files
@@ -37,7 +37,7 @@ class Model_Storage extends Model {
   private $broken_files;
   
   /**
-   * Used for constant physical address to test files storage
+   * Constant physical address to test files storage
    * @var const STORAGE_FOLDER
    */
   const STORAGE_FOLDER = APPPATH.'test_storage'.DIRECTORY_SEPARATOR;
@@ -68,7 +68,7 @@ class Model_Storage extends Model {
   }
   
   /**
-    * Checks storage folder and it contents for accessibility
+    * Check storage folder and it contents for accessibility
     * @return bool true or false according to validation result
     */
   private function checkStorageFolderAccessibility() {
@@ -104,7 +104,7 @@ class Model_Storage extends Model {
   
   /**
    * Validate collected files with tests
-   * for special rules that every tests must match
+   * for special rules that every test must match
    * @throws WrontTestParametersException
    * @throws WrongQuestionParametersException
    */
