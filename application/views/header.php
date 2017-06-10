@@ -17,6 +17,6 @@
 	<nav>
 		<ul class="nav">
 			<li><a href="admin.html">Для адміністратора</a></li>
-			<li><a href="contact.html">Про нас</a></li>
+			<li><a href="<?php echo Route::get('contact_page')->url('contact_page'); ?>">Про нас</a></li>
 		</ul>
 	</nav>
