@@ -16,6 +16,9 @@
 	</header>
 	<nav>
 		<ul class="nav">
+			<?php if(Request::current()->action() !== 'index'): ?>
+				<li><a href="<?php echo URL::base(); ?>">Головна</a></li>
+			<?php endif; ?>
 			<li><a href="admin.html">Для адміністратора</a></li>
 			<li><a href="<?php echo Route::get('contact_page')->url('contact_page'); ?>">Про нас</a></li>
 		</ul>
