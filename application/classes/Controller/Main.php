@@ -7,8 +7,11 @@ class Controller_Main extends Controller {
 		$tests = array();
 		$storage = Model_Storage::getInstance();
 		$tests = $storage->getTests();
-		$view = new View('front');
-		$view->tests = $tests;
+		$view = new View('layout');
+		$view->header = new View('header');
+		$view->content = new View('front');
+		$view->content->tests = $tests;
+		$view->footer = new View('footer');
 		$this->response->body($view->render());
 	}
 
