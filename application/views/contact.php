@@ -13,15 +13,15 @@
 			</div>
 			<div class="form-wrap">
 				<div class="form-style">
-				<form>
-					<input type="text" placeholder="Ваше ім'я"></input>
-					<input type="text" placeholder="Ваш email"></input>
-					<select id="category">
-						<option value="Оберіть тематику...">Оберіть тематику...</option>
-						<option value="Запитання до команди">Запитання до команди</option>
-						<option value="Пропозиції">Пропозиції</option>
+				<form action="" method="post">
+					<input type="text" name="contact_name" placeholder="Ваше ім'я"></input>
+					<input type="email" name="contact_email" placeholder="Ваш email"></input>
+					<select id="category" name="contact_category">
+						<option value="OPT_NONE">Оберіть тематику...</option>
+						<option value="OPT_QUESTIONS">Запитання до команди</option>
+						<option value="OPT_PROPOSALS">Пропозиції</option>
 					</select>
-					<textarea placeholder="Введіть текст повідомлення" rows="5"></textarea>
+					<textarea name="contact_message" placeholder="Введіть текст повідомлення" rows="5"></textarea>
 					<input id="contact-submit" type="submit" value="Надіслати"></input>
 				</form>
 				</div>
