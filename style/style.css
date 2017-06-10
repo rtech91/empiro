@@ -299,17 +299,17 @@ footer {
 	float: left;
 }
 .contact-info .users-icon {
-	background: url(image/users.png);
+	background: url(/image/users.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 .contact-info .placeholder-icon {
-	background: url(image/placeholder.png);
+	background: url(/image/placeholder.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 .contact-info .home-icon {
-	background: url(image/home.png);
+	background: url(/image/home.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
@@ -338,8 +338,7 @@ footer {
 	height: auto;
 	margin: 0 auto;
 }
-.form-style input[type="text"],
-.form-style input[type="password"],
+.form-style input,
 .form-style textarea,
 .form-style select  {
 	outline: none;
@@ -352,8 +351,7 @@ footer {
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 16px;
 }
-.form-style input[type="text"]:focus,
-.form-style input[type="password"]:focus,
+.form-style input:focus,
 .form-style textarea:focus,
 .form-style select:focus {
 	box-shadow: 0 0 5px #4ab550;
