@@ -14,5 +14,14 @@ class Controller_Main extends Controller {
 		$view->footer = new View('footer');
 		$this->response->body($view->render());
 	}
+	
+	public function action_contacts()
+	{
+		$view = new View('layout');
+		$view->header = new View('header');
+		$view->content = new View('contact');
+		$view->footer = new View('footer');
+		$this->response->body($view->render());
+	}
 
 } // End Main
