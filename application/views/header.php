@@ -11,7 +11,7 @@
 	<div id="wrap">
 	<header>
 		<div class="header">
-			<div class="logo"><a href="index.html"><img src="<?php echo URL::base(); ?>image/logo.png" alt="logo" /></a></div>
+			<div class="logo"><a href="<?php echo URL::site('', true); ?>"><img src="<?php echo URL::base(); ?>image/logo.png" alt="logo" /></a></div>
 		</div>
 	</header>
 	<nav>
