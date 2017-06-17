@@ -2,8 +2,11 @@
 
 class WrongTestParametersException extends Kohana_Exception {
 
-  public function __construct() {
+	protected $message;
+
+    public function __construct($message) {
 		parent::__construct();
+		$this->message = $message;
 	}
 
 } // End WrongTestParametersException
