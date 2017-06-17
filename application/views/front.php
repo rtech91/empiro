@@ -1,5 +1,22 @@
 	<main>
 		<div class="home">
+			<div class="alert-wrap">
+				<?php foreach($messages as $message): ?>
+					<?php if($message->bits & MessageHandler::ACCESS_USER): ?>
+						<?php if($message->bits & MessageHandler::MH_FAILURE): ?>
+							<div class="alert-failure">
+						<?php elseif($message->bits & MessageHandler::MH_ERROR): ?>
+							<div class="alert-error">
+						<?php elseif($message->bits & MessageHandler::MH_MESSAGE): ?>
+							<div class="alert-message">
+						<?php endif; ?>
+							<span>
+								<?php echo $message->message; ?>
+							</span>
+						</div>
+					<?php endif; ?>
+				<?php endforeach; ?>
+			</div>
 			<h1>Тестування знань</h1>
 			<p>Ви знаходитесь на головній сторінці тестування знань. Тут ви можете обрати предмет, за яким хочете скласти іспит.</p>
 			<div class="table">
