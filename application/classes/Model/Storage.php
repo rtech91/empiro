@@ -3,33 +3,33 @@
 class Model_Storage extends Model {
   
   /**
-   * All addresses to test xml files in the file system.
+   * Used to hold all addresses to test xml files in file system.
    * @var array $file_uris
    */
   public $file_uris;
   
   /**
-   * All parsed and ready to use tests.
+   * Used to hold all parsed and ready to use tests.
    * @var array $parsed_tests
    */
   private $parsed_tests;
   
   /**
-   * Only one instance of storage object
+   * Used to hold only one instance of object
    * according to Singleton pattern.
    * @var Storage $instance
    */
   private static $instance = null;
   
   /**
-   * Use: when main data of the test file is broken.
+   * Used when was broken common data in test file.
    * Format: List of physical absolute addresses to broken file.
    * @var array $innaccessible_files 
    */
   private $innaccessible_files;
   
   /**
-   * Use: when additional data of test file is broken,
+   * Used when was broken additional data in test file
    * such as question or nested answer information.
    * Format: List of arrays with two params - test name and physical absolute address to broken file
    * @var array $broken_files
@@ -37,7 +37,7 @@ class Model_Storage extends Model {
   private $broken_files;
   
   /**
-   * Constant physical address to test files storage
+   * Used for constant physical address to test files storage
    * @var const STORAGE_FOLDER
    */
   const STORAGE_FOLDER = APPPATH.'test_storage'.DIRECTORY_SEPARATOR;
@@ -68,7 +68,7 @@ class Model_Storage extends Model {
   }
   
   /**
-    * Check storage folder and it contents for accessibility
+    * Checks storage folder and it contents for accessibility
     * @return bool true or false according to validation result
     */
   private function checkStorageFolderAccessibility() {
@@ -77,9 +77,9 @@ class Model_Storage extends Model {
         return true;
       }else {
         throw new StorageAccessException('Cannot read tests storage folder', 500);
-      }
+      } 
     }catch(StorageAccessException $e) {
-      //TODO: add error message handling.
+      MessageHandler::getInstance()->registerMessage($e->getMessage(), (MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER));
     }
   }
   
@@ -104,7 +104,7 @@ class Model_Storage extends Model {
   
   /**
    * Validate collected files with tests
-   * for special rules that every test must match
+   * for special rules that every tests must match
    * @throws WrontTestParametersException
    * @throws WrongQuestionParametersException
    */
