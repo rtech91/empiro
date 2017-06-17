@@ -1,16 +1,21 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_Main extends Controller {
+  
+  private $tests;
 
 	public function before() 
 	{
 		$storage = Model_Storage::getInstance();
-		$tests = $storage->getTests();
+		$this->tests = $storage->getTests();
 	}
 
 	public function action_index()
 	{
-		$tests = array();
+    $tests = array();
+    if(null !== $this->tests && count($this->tests) > 0) {
+      $tests = $this->tests;
+    }
 		$messages = MessageHandler::getInstance()->getMessages();
 		$view = new View('layout');
 		$view->header = new View('header');
