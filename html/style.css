@@ -164,9 +164,9 @@ main:after {
 	display: inline;
 	padding: 0;
 }
-.alert-success,
-.alert-info,
-.alert-danger {
+.alert-message,
+.alert-error,
+.alert-failure {
 	display: block;
 	position: relative;
 	width: 94%;
@@ -176,13 +176,13 @@ main:after {
 	border-bottom: 1px dashed transparent;
 	margin-bottom: 1%;
 }
-.alert-success {
+.alert-message {
 	border-color: #4ab550;
 }
-.alert-info {
+.alert-error {
 	border-color: #f7c327;
 }
-.alert-danger {
+.alert-failure {
 	border-color: #f91c1c;
 }
 

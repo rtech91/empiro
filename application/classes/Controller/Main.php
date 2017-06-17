@@ -2,14 +2,20 @@
 
 class Controller_Main extends Controller {
 
+	public function before() 
+	{
+		$storage = Model_Storage::getInstance();
+		$tests = $storage->getTests();
+	}
+
 	public function action_index()
 	{
 		$tests = array();
-		$storage = Model_Storage::getInstance();
-		$tests = $storage->getTests();
+		$messages = MessageHandler::getInstance()->getMessages();
 		$view = new View('layout');
 		$view->header = new View('header');
 		$view->content = new View('front');
+		$view->content->messages = $messages;
 		$view->content->tests = $tests;
 		$view->footer = new View('footer');
 		$this->response->body($view->render());

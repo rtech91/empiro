@@ -149,6 +149,42 @@ main:after {
 .home:after {
 	clear: both;
 }
+.alert-wrap {
+	width: 100%;
+	height: auto;
+	padding: 0 2% 1.5% 2%;
+	margin: 0 auto;
+	position: relative;
+	display: block;
+	background: #fff;
+}
+.alert-wrap span {
+	font-size: 13px;
+	line-height: 23px;
+	display: inline;
+	padding: 0;
+}
+.alert-message,
+.alert-error,
+.alert-failure {
+	display: block;
+	position: relative;
+	width: 94%;
+	margin: 0 auto;
+	padding: 0.5% 0;
+	border-left: 3px solid transparent;
+	border-bottom: 1px dashed transparent;
+	margin-bottom: 1%;
+}
+.alert-message {
+	border-color: #4ab550;
+}
+.alert-error {
+	border-color: #f7c327;
+}
+.alert-failure {
+	border-color: #f91c1c;
+}
 .home h1 {
 	font-size: 30px;
 	line-height: 25px;
