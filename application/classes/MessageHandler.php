@@ -37,7 +37,7 @@ class MessageHandler {
 
     /**
     * Used to store stack of objects with messages
-    * and bits in them
+    * and access bits for them
     * @var array $errorstack
     */
     private $errorstack;
@@ -67,6 +67,8 @@ class MessageHandler {
     /**
     * Collects messages and bits, then writes the data to an object
     * and puts it into the array for future using
+    * @param string $message Message text for raisen error
+    * @param binary $bits Binary representation of access level and message importance
     */
     public function registerMessage($message, $bits) {
         $new_message = new stdClass;
@@ -78,6 +80,7 @@ class MessageHandler {
     }
 
     /**
+    * Get all earlier collected messages
     * @return array list of objects with messages and bits or empty array()
     */
     public function getMessages() {
