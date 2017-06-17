@@ -19,9 +19,16 @@ class Model_Mail extends Model {
     
     $headers = "Content-type: text/html; charset=UTF-8\r\n";
     
-    //TODO: add checking for email successfull sending
-    // and messaging user about it
-    mail(self::EMAIL_TO, self::EMAIL_CATEGORY[$data->contact_category], $message, $headers);
+    try
+    {
+      if(!mail(self::EMAIL_TO, self::EMAIL_CATEGORY[$data->contact_category], $message, $headers))
+      {
+        throw new ErrorMailSendingException('Неможливо відправити повідомлення. Будь-ласка, зв\'яжіться з адміністратором.', 500);
+      }
+      MessageHandler::getInstance()->registerMessage('Повідомлення успішно відправлено!', MessageHandler::MH_MESSAGE | MessageHandler::ACCESS_USER);
+    }catch(ErrorMailSendingException $e) {
+      MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER);
+    }
   }
   
 } // End Model_Mail

@@ -37,9 +37,11 @@ class Controller_Main extends Controller {
 			Model_Mail::sendContactMail($data);
 		}
 		
+    $messages = MessageHandler::getInstance()->getMessages();
 		$view = new View('layout');
 		$view->header = new View('header');
 		$view->content = new View('contact');
+    $view->content->messages = $messages;
 		$view->footer = new View('footer');
 		$this->response->body($view->render());
 	}
