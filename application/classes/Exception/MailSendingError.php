@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class WrongQuestionParametersException extends Kohana_Exception {
+class Exception_MailSendingError extends Kohana_Exception {
 	
 	protected $message;
 
@@ -9,4 +9,4 @@ class WrongQuestionParametersException extends Kohana_Exception {
 		$this->message = $message;
 	}
 	
-} // End WrongQuestionParametersException
+} // End ErrorMailSendingException
