@@ -547,6 +547,12 @@ label:last-child {
 	font-size: 16px;
 	cursor: pointer;
 }
+.btn-disabled {
+	background: #f0eded;
+}
+.btn-active {
+	background: #4ab550;
+}
 .btn-active:hover {
 	 background: #f7af27;
 	 color: #fff;

@@ -6,6 +6,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&amp;subset=cyrillic" rel="stylesheet">
 	<link type="text/css" rel="stylesheet" href="style.css" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var checkSelectionInterval = setInterval(function(){
+				$('input[type="radio"').each(function(){
+					if($(this).is(':checked')) {
+						$('#next-page').removeAttr('disabled');
+						$('#next-page').removeClass('btn-disabled');
+						$('#next-page').addClass('btn-active');
+						clearInterval(checkSelectionInterval);
+					}else {
+						console.log('no');
+						$('#next-page').attr('disabled');
+					}
+				});
+			}, 1000);
+		});
+	</script>
 </head>
 <body>
 <div id="wrap">
@@ -42,7 +61,7 @@
 						<span class="radio-custom"></span>
 						<div class="label">&lt;ol&gt;</div>
 					</label>
-					<label>					
+					<label>
 						<input class="radio" type="radio" name="question" value="var2">
 						<span class="radio-custom"></span>
 						<div class="label">&lt;tr&gt;</div>
@@ -62,7 +81,7 @@
 				</div>
 				<div class="result-block">
 					<button class="btn-test" id="prev-page" type="button"  disabled>Попереднє</button>
-					<button class="btn-test btn-active" id="next-page" type="submit">Далі</button>
+					<button class="btn-test btn-disabled" id="next-page" type="submit" disabled>Далі</button>
 				</div>
 			</div>
 		</div>
@@ -77,6 +96,6 @@
 				<p>Рівненський міський Палац дітей та молоді <br /> Адреса <br /> вул. Кн. Володимира, 10, Рівне</p>
 			</div>
 		</div>
-	</footer>	
+	</footer>
 </body>
 </html>
