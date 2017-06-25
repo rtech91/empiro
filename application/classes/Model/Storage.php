@@ -76,9 +76,9 @@ class Model_Storage extends Model {
       if(is_dir(self::STORAGE_FOLDER)) {
         return true;
       }else {
-        throw new StorageAccessException('Cannot read tests storage folder', 500);
+        throw new Exception_StorageAccessError('Cannot read tests storage folder', 500);
       } 
-    }catch(StorageAccessException $e) {
+    }catch(Exception_StorageAccessError $e) {
       MessageHandler::getInstance()->registerMessage($e->getMessage(), (MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER));
     }
   }
@@ -105,8 +105,8 @@ class Model_Storage extends Model {
   /**
    * Validate collected files with tests
    * for special rules that every tests must match
-   * @throws WrontTestParametersException
-   * @throws WrongQuestionParametersException
+   * @throws Exception_WrongTestParameters
+   * @throws Exception_WrongQuestionParameters
    */
   private function validateCollectedTests() {
     if(isset($this->file_uris) && !empty($this->file_uris) && is_array($this->file_uris)) {
@@ -120,11 +120,11 @@ class Model_Storage extends Model {
             if(self::checkQuestion($question)) {
               foreach($question->answers->answer as $answer) {
                 if(!self::checkAnswer($answer)) {
-                  throw new WrongQuestionParametersException();
+                  throw new Error_WrongQuestionParameters("Error checking answer in $uri.");
                 }
               }
             }else {
-              throw new WrongQuestionParametersException();
+              throw new Exception_WrongQuestionParameters("Error checking question in $uri.");
             }
           }
         }catch(WrongTestParametersException $e) {
@@ -134,7 +134,8 @@ class Model_Storage extends Model {
           // also is not available
           array_push($this->innaccessible_files, $uri);
           unset($this->file_uris[$key]);
-        }catch(WrongQuestionParametersException $e) {
+          MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN);
+        }catch(Exception_WrongQuestionParameters $e) {
           // if we catch this exception
           // it means that common test data is fine
           // but additional information as questions or answers
@@ -145,6 +146,7 @@ class Model_Storage extends Model {
           array_push($this->broken_files, $broken_file_info);
           unset($broken_file_info);
           unset($this->file_uris[$key]);
+          MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN);
         }
       }
     }

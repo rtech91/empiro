@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class StorageAccessException extends Kohana_Exception {
+class Exception_StorageAccessError extends Kohana_Exception {
 	
 	protected $message;
 
