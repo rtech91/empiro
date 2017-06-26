@@ -71,9 +71,9 @@ class Model_Storage extends Model {
     * Checks storage folder and it contents for accessibility
     * @return bool true or false according to validation result
     */
-  private function checkStorageFolderAccessibility() {
+  public function checkStorageFolderAccessibility() {
     try {
-      if(is_dir(self::STORAGE_FOLDER)) {
+      if(is_dir(self::STORAGE_FOLDER) && is_writable(self::STORAGE_FOLDER)) {
         return true;
       }else {
         throw new Exception_StorageAccessError('Cannot read tests storage folder', 500);
