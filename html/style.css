@@ -27,7 +27,8 @@ nav,
 main,
 footer,
 header,
-section { 
+section,
+div { 
 	display: block; 
 }
 img{
@@ -58,7 +59,6 @@ header {
 	width: 100%;
     max-width: 1130px;
 	height: auto;
-	display: block;
     margin: 0 auto;
 	color: #1d2538;
 	text-align: left;
@@ -67,8 +67,7 @@ header {
 .logo {
 	display: inline-block;
 	position: relative;
-	padding: 2% 0 1% 1.5%;
-	
+	padding: 2% 0 1% 1.5%;	
 }
 .logo img {
 	display: block;
@@ -79,7 +78,6 @@ header {
 nav {
 	width: 100%;
 	height: 45px;
-	display: block;
 	position: relative;
 	background: #fff;
 	font-size: 18px;
@@ -119,7 +117,6 @@ main{
     max-width: 1130px;
     height: auto;
 	min-height: 100%;
-	display: block;
 	position: relative;
     margin: 0 auto;
     padding: 0;
@@ -170,7 +167,6 @@ main:after {
 	padding: 0 2% 1.5% 2%;
 	margin: 0 auto;
 	position: relative;
-	display: block;
 	background: #fff;
 }
 .alert-wrap span {
@@ -182,7 +178,6 @@ main:after {
 .alert-message,
 .alert-error,
 .alert-failure {
-	display: block;
 	position: relative;
 	width: 94%;
 	margin: 0 auto;
@@ -201,15 +196,7 @@ main:after {
 	border-color: #f91c1c;
 }
 /* table property */
-.container {
-	width: 100%;
-	min-height: 370px;
-	height: auto;
-	margin: 0 auto;
-	padding-top: 6%;
-}
 .table {
-	display: block;
 	position: relative;
 	max-width: 90%;
 	height: auto;
@@ -256,17 +243,15 @@ footer {
 	position: relative;
 	line-height: normal;
 	background: #252f47;
-	display: block;
 	margin: 0 auto;
 	border-top: 2px solid #7b8396;
 	margin-top: -90px;
 }
-
 .footer {
 	width: 100%;
 	max-width: 1130px;
 	height: auto;
-	display: block;
+	position: relative;
     margin: 0 auto;
 	font-size: 13px;
 	line-height: 20px;
@@ -285,7 +270,6 @@ footer {
 	float: left;
 	width: 50%;
 	height: auto;
-	display: block;
 	position: relative;
 	text-align: left;
 	padding: 1.5%;
@@ -295,7 +279,6 @@ footer {
 	float: right;
 	width: 50%;
 	height: auto;
-	display: block;
 	position: relative;
 	text-align: right;
 	padding: 1.5%;
@@ -305,6 +288,7 @@ footer {
 .contact {
 	padding-bottom: 0;
 }
+/*contact page*/
 .contact-info  {
 	padding: 0 3% 1.5% 3%;
 	font-size: 16px;
@@ -332,7 +316,6 @@ footer {
 .contact-info .home-icon {
 	display: inline-block;
 	position: relative;
-	left: 0;
 	width: 32px;
 	height: 32px;
 	margin-right: 15px;
@@ -353,12 +336,19 @@ footer {
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
+/* container for admin page*/
+.container {
+	width: 100%;
+	min-height: 370px;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 6%;
+}
 /* form property, contact form */
 .form-wrap {
 	float: right;
 	width: 50%;
 	height: auto;
-	display: block;
 	position: relative;
 	text-align: right;
 	padding: 1.5%;
@@ -369,14 +359,13 @@ footer {
     max-width: 90%;
 	height: auto;
     margin: 0 auto;
-    padding: 16px;
+    padding: 2%;
     background: #f0eded;
 }
-.form-style input[type="text"],
-.form-style input[type="password"],
+.form-style input,
 .form-style textarea,
 .form-style select  {
-	outline: none;
+	outline: 0;
 	width: 100%;
     background: #fff;
     margin-bottom: 4%;
@@ -386,6 +375,7 @@ footer {
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 16px;
 	cursor: pointer;
+	display: block;
 }
 .form-style input[type="text"]:focus,
 .form-style input[type="password"]:focus,
@@ -397,15 +387,11 @@ footer {
 } 
 .form-style input[type="submit"] {
     width: 100%;
-    padding: 3%;
     background: #4ab550;
 	border: 0;
-	outline: none;
     color: #fff;
-	font-family: 'Ubuntu', sans-serif;
 	border-radius: 5px;
-	font-size: 16px;
-	cursor: pointer;
+	margin-bottom: 0;
 }
 .form-style input[type="submit"]:hover {
     background: #f7af27;
@@ -415,22 +401,22 @@ footer {
 	width: 70%;
 	float: none;
 }
-.btn-pasw {
+.btn{
 	width: 60%;
 	height: auto;
 	margin: 0 auto;
 }
-/* stage1 form */
+/* pass test stage1 form */
 .stage1-wrap {
 	width: 100%;
+	float: none;
 }
-/* stage2 form */
+/* pass test stage2 form */
 .test-wrap {
-	width: 90%;
+	max-width: 90%;
 	height: auto;
 	text-align: left;
 	background: #fff;
-	display: block;
 	position: relative;
 	padding: 1.5%;
 	margin: 0 auto;	
@@ -453,11 +439,13 @@ footer {
 .test-block,
 .result-block {
 	display: block;
+	width: 100%;
+	height: auto;
 	padding: 1%;
 	border-bottom: 1px solid #7b8396;
 	position: relative;
+	margin: 0 auto;
 }
-
 .question-number,
 .test-time {
 	display: inline-block;
@@ -477,29 +465,27 @@ footer {
 	line-height: 25px;
 	font-weight: bold;
 }
-.test-block {
-	width: 100%;
-	height: auto;
-	position: relative;
-	margin: 0 auto;
-	display: block;
-}	
+/* style for radio & checkbox*/	
 label {
 	margin-bottom: 15px;
 	position: relative;
 	display: block;
-	padding: 5px;
+	padding: 2%;
 	border-bottom: 1px dotted #7b8396;
 }
 label:last-child {
 	margin-bottom: 0;
 }
 .radio,
-.checkbox {
+.checkbox,
+.right-answer .radio,
+.right-answer .checkbox {
 	display: none;
 }
 .checkbox-custom,
-.radio-custom {
+.radio-custom,
+.right-answer .checkbox-custom,
+.right-answer .radio-custom {
     width: 20px;
     height: 20px;
     border: 2px solid #4ab550;
@@ -508,12 +494,17 @@ label:last-child {
 }
 .checkbox-custom,
 .radio-custom,
-.label {
+.label,
+.right-answer .checkbox-custom,
+.right-answer .radio-custom,
+.right-answer.label {
     display: inline-block;
     vertical-align: middle;
 }
 .checkbox:checked + .checkbox-custom::before,
-.radio:checked + .radio-custom::before {
+.radio:checked + .radio-custom::before,
+.right-answer .checkbox:checked + .checkbox-custom::before,
+.right-answer .radio:checked + .radio-custom::before {
     content: "";
     display: block;
     position: absolute;
@@ -526,14 +517,25 @@ label:last-child {
 	
 }
 .radio-custom,
-.radio:checked + .radio-custom::before {
+.radio:checked + .radio-custom::before,
+.right-answer .radio-custom,
+.right-answer .radio:checked + .radio-custom::before {
     border-radius: 50%;
 }
 .label {
 	padding-left: 10px;
 }
+/* result block*/
 .result-block {
 	border-bottom: 0;
+}
+.result-block:before,
+.result-block:after {
+	content: '';
+	display: table;
+}
+.result-block:after {
+	clear: both;
 }
 .btn-test {
 	width: 20%;
@@ -541,11 +543,12 @@ label:last-child {
     padding: 2%;
     background: #f0eded;
 	border: 0;
-	outline: none;
+	outline: 0;
     color: #1d2538;
 	border-radius: 5px;
 	font-size: 16px;
 	cursor: pointer;
+	position: relative;
 }
 .btn-disabled {
 	background: #f0eded;
@@ -562,14 +565,15 @@ label:last-child {
 }
 #next-page {
 	float: right;
-}	
+	margin-left: 2%;
+}
+/*result page*/	
 .result-wrap {
 	max-width: 90%;
 	height: auto;
     margin: 0 auto;
     padding: 16px;
     background: #f0eded;
-	display: block;
 	position: relative;
 	color: #1d2538;
 	text-align: left;
@@ -607,6 +611,101 @@ label:last-child {
 }
 .no-pass {
 	color: #f91c1c;
+}
+
+/*create test stage1*/
+.create-test-form {
+	text-align: left;
+}
+.create-test-form:before,
+.create-test-form:after {
+	content: '';
+	display: table;
+}
+.create-test-form:after {
+	clear: both;
+}
+.create-test-form input,
+.create-test-form textarea {
+	padding: 2%;
+	margin-bottom: 0;
+}
+.create-test-form input[type="text"]:focus,
+.create-test-form textarea:focus {
+	padding: 2%;
+}
+.create-test-form li {
+	display: block;
+	margin-bottom: 3%;
+}
+.create-test-form li:nth-child(3),
+.create-test-form li:nth-child(5) {
+	margin-bottom: 1%;
+}
+.create-test-form li:nth-child(4),
+.create-test-form li:nth-child(6) {
+	margin-bottom: 1%;
+}
+.create-test-form li:last-child {
+	margin-bottom: 0;
+}
+.comment {
+	display: block;
+	position: relative;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: left;
+	padding-left: 2%;
+}
+.comment:before,
+.comment:after {
+	content: '';
+	display: table;
+}
+.comment:after {
+	clear: both;
+}
+/*create test stage2*/
+.right-answer,
+.answer,
+.add-answer {
+	float: left;
+	position: relative;
+	padding: 1.5% 1% 1.5% 2%;
+	vertical-align: middle;
+}
+.right-answer {
+	width: 5%;
+}
+.right-answer label {
+	border-bottom: 0;
+}
+.answer {
+	width: 80%;
+	margin: 0 1% 0 1%;
+	padding: 0;
+}
+.add-answer{
+	width: 12%;
+}
+.minus-answer,
+.plus-answer {
+	width: 25px;
+	height: 25px;
+	display: block;
+	position: relative;
+	cursor: pointer;
+	float: left;
+	font-size: 23px;
+	line-height: 25px;
+	vertical-align: middle;
+	margin-right: 10%;
+}
+.save-test-wrap {
+	padding: 1% 2%;
+	position: relative;
+	margin: 0 auto;
+	max-width: 90%;
 }
 @media screen and (max-width: 870px) {
 	.table {
