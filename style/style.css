@@ -19,7 +19,6 @@ body {
     min-height: 100%;
     margin:0;
     font-family: 'Ubuntu', Helvetica, Arial, sans-serif;
-	font-size: 14px;
     font-weight: normal;
     position: relative;
 }
@@ -28,7 +27,8 @@ nav,
 main,
 footer,
 header,
-section { 
+section,
+div { 
 	display: block; 
 }
 img{
@@ -46,6 +46,7 @@ ul, ol {
 	min-height: 100%;
 	margin: 0;
 }
+/* header */
 header {
 	width: 100%;
     height: auto;
@@ -58,7 +59,6 @@ header {
 	width: 100%;
     max-width: 1130px;
 	height: auto;
-	display: block;
     margin: 0 auto;
 	color: #1d2538;
 	text-align: left;
@@ -67,18 +67,17 @@ header {
 .logo {
 	display: inline-block;
 	position: relative;
-	padding: 2% 0 1% 1.5%;
-	
+	padding: 2% 0 1% 1.5%;	
 }
 .logo img {
 	display: block;
 	max-width: 100%;
 	height: auto;
 }
+/* menu */
 nav {
 	width: 100%;
 	height: 45px;
-	display: block;
 	position: relative;
 	background: #fff;
 	font-size: 18px;
@@ -112,15 +111,15 @@ nav {
 .nav li a:hover, .nav li:hover a{
     color: #277e99;
 }
+/* main block */
 main{
     width: 100%;
     max-width: 1130px;
     height: auto;
 	min-height: 100%;
-	display: block;
 	position: relative;
     margin: 0 auto;
-    padding: 1% 0;
+    padding: 0;
 	color: #1d2538;
 	background: #fff;
 	margin-top: 1.5%;
@@ -137,7 +136,7 @@ main:after {
 .home {
 	width: 100%;
 	height: auto;
-	padding: 1% 0;	
+	padding: 2% 0;	
 	text-align: center;
 	position: relative;
 }
@@ -149,13 +148,25 @@ main:after {
 .home:after {
 	clear: both;
 }
+.home h1 {
+	font-size: 30px;
+	line-height: 25px;
+	color: #4ab550;
+	font-weight: normal;
+	margin-bottom: 2%	
+}
+.home p {
+	font-size: 14px;
+	line-height: 23px;
+	padding-bottom: 2%;
+}
+/* alert property */
 .alert-wrap {
 	width: 100%;
 	height: auto;
 	padding: 0 2% 1.5% 2%;
 	margin: 0 auto;
 	position: relative;
-	display: block;
 	background: #fff;
 }
 .alert-wrap span {
@@ -167,7 +178,6 @@ main:after {
 .alert-message,
 .alert-error,
 .alert-failure {
-	display: block;
 	position: relative;
 	width: 94%;
 	margin: 0 auto;
@@ -185,27 +195,8 @@ main:after {
 .alert-failure {
 	border-color: #f91c1c;
 }
-.home h1 {
-	font-size: 30px;
-	line-height: 25px;
-	color: #4ab550;
-	font-weight: normal;
-	margin-bottom: 2%	
-}
-.home p {
-	font-size: 14px;
-	line-height: 23px;
-	padding-bottom: 2%;
-}
-.container {
-	width: 100%;
-	min-height: 370px;
-	height: auto;
-	margin: 0 auto;
-	padding-top: 7%;
-}
+/* table property */
 .table {
-	display: block;
 	position: relative;
 	max-width: 90%;
 	height: auto;
@@ -245,23 +236,22 @@ tr:hover {
 .table td a:hover {
 	background: #f7af27;
 }
+/* footer */
 footer {
 	width: 100%;
     height: 90px;
 	position: relative;
 	line-height: normal;
 	background: #252f47;
-	display: block;
 	margin: 0 auto;
 	border-top: 2px solid #7b8396;
 	margin-top: -90px;
 }
-
 .footer {
 	width: 100%;
 	max-width: 1130px;
 	height: auto;
-	display: block;
+	position: relative;
     margin: 0 auto;
 	font-size: 13px;
 	line-height: 20px;
@@ -280,18 +270,15 @@ footer {
 	float: left;
 	width: 50%;
 	height: auto;
-	display: block;
 	position: relative;
 	text-align: left;
 	padding: 1.5%;
 	margin: 0 auto;
 }
-.contact,
-.form-wrap {
+.contact {
 	float: right;
 	width: 50%;
 	height: auto;
-	display: block;
 	position: relative;
 	text-align: right;
 	padding: 1.5%;
@@ -301,6 +288,7 @@ footer {
 .contact {
 	padding-bottom: 0;
 }
+/*contact page*/
 .contact-info  {
 	padding: 0 3% 1.5% 3%;
 	font-size: 16px;
@@ -328,56 +316,56 @@ footer {
 .contact-info .home-icon {
 	display: inline-block;
 	position: relative;
-	left: 0;
 	width: 32px;
 	height: 32px;
 	margin-right: 15px;
 	float: left;
 }
 .contact-info .users-icon {
-	background: url(/image/users.png);
+	background: url(image/users.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 .contact-info .placeholder-icon {
-	background: url(/image/placeholder.png);
+	background: url(image/placeholder.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
 .contact-info .home-icon {
-	background: url(/image/home.png);
+	background: url(image/home.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 }
+/* container for admin page*/
+.container {
+	width: 100%;
+	min-height: 370px;
+	height: auto;
+	margin: 0 auto;
+	padding-top: 6%;
+}
+/* form property, contact form */
 .form-wrap {
-	padding-top: 0;
-}
-.form-style{
-    max-width: 90%;
+	float: right;
+	width: 50%;
 	height: auto;
-    margin: 0 auto;
-    padding: 16px;
-    background: #f0eded;
-}
-.form-password-wrap {	
-	width: 70%;
-	height: auto;
-	display: block;
 	position: relative;
 	text-align: right;
 	padding: 1.5%;
 	margin: 0 auto;	
-}
-
-.btn-pasw {
-	width: 60%;
+	padding-top: 0;
+}	
+.form-style{
+    max-width: 90%;
 	height: auto;
-	margin: 0 auto;
+    margin: 0 auto;
+    padding: 2%;
+    background: #f0eded;
 }
 .form-style input,
 .form-style textarea,
 .form-style select  {
-	outline: none;
+	outline: 0;
 	width: 100%;
     background: #fff;
     margin-bottom: 4%;
@@ -386,8 +374,11 @@ footer {
     color: #1d2538;
 	font-family: 'Ubuntu', sans-serif;
 	font-size: 16px;
+	cursor: pointer;
+	display: block;
 }
-.form-style input:focus,
+.form-style input[type="text"]:focus,
+.form-style input[type="password"]:focus,
 .form-style textarea:focus,
 .form-style select:focus {
 	box-shadow: 0 0 5px #4ab550;
@@ -396,47 +387,326 @@ footer {
 } 
 .form-style input[type="submit"] {
     width: 100%;
-    padding: 3%;
     background: #4ab550;
 	border: 0;
-	outline: none;
     color: #fff;
-	font-family: 'Ubuntu', sans-serif;
 	border-radius: 5px;
-	font-size: 16px;
+	margin-bottom: 0;
 }
 .form-style input[type="submit"]:hover {
     background: #f7af27;
 }
-.test-wrap {
-	position: relative;
-	width: 90%;
+/* admin form */
+.password-wrap {	
+	width: 70%;
+	float: none;
+}
+.btn{
+	width: 60%;
 	height: auto;
-	background: #fff;
-	display: block;
-	color: #1d2538;
-	font-size: 15px;
 	margin: 0 auto;
+}
+/* pass test stage1 form */
+.stage1-wrap {
+	width: 100%;
+	float: none;
+}
+/* pass test stage2 form */
+.test-wrap {
+	max-width: 90%;
+	height: auto;
 	text-align: left;
+	background: #fff;
+	position: relative;
 	padding: 1.5%;
+	margin: 0 auto;	
 }
 .test-info {
 	font-size: 14px;
+	line-height: 23px;
 	color: #f7af27;
+}
+.test-info:before,
+.test-info:after {
+	content: '';
+	display: table;
+}
+.test-info:after {
+	clear: both;
 }
 .test-info,
 .question,
-.test-block {
+.test-block,
+.result-block {
 	display: block;
+	width: 100%;
+	height: auto;
 	padding: 1%;
 	border-bottom: 1px solid #7b8396;
+	position: relative;
+	margin: 0 auto;
+}
+.question-number,
+.test-time {
+	display: inline-block;
+}
+.test-time {
+	float: right;
+}
+.question-number {
+	margin-right: 2%;
+	float: left;
+}
+.question {
+	clear: both;
 }
 .question h3 {
 	font-size: 18px;
 	line-height: 25px;
-	font-weight: boldl;
+	font-weight: bold;
+}
+/* style for radio & checkbox*/	
+label {
+	margin-bottom: 15px;
+	position: relative;
+	display: block;
+	padding: 2%;
+	border-bottom: 1px dotted #7b8396;
+}
+label:last-child {
+	margin-bottom: 0;
+}
+.radio,
+.checkbox,
+.right-answer .radio,
+.right-answer .checkbox {
+	display: none;
+}
+.checkbox-custom,
+.radio-custom,
+.right-answer .checkbox-custom,
+.right-answer .radio-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #4ab550;
+    border-radius: 3px;
+    position: relative;
+}
+.checkbox-custom,
+.radio-custom,
+.label,
+.right-answer .checkbox-custom,
+.right-answer .radio-custom,
+.right-answer.label {
+    display: inline-block;
+    vertical-align: middle;
+}
+.checkbox:checked + .checkbox-custom::before,
+.radio:checked + .radio-custom::before,
+.right-answer .checkbox:checked + .checkbox-custom::before,
+.right-answer .radio:checked + .radio-custom::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+    left: 2px;
+    background: #1d2538;
+    border-radius: 2px;
+	
+}
+.radio-custom,
+.radio:checked + .radio-custom::before,
+.right-answer .radio-custom,
+.right-answer .radio:checked + .radio-custom::before {
+    border-radius: 50%;
+}
+.label {
+	padding-left: 10px;
+}
+/* result block*/
+.result-block {
+	border-bottom: 0;
+}
+.result-block:before,
+.result-block:after {
+	content: '';
+	display: table;
+}
+.result-block:after {
+	clear: both;
+}
+.btn-test {
+	width: 20%;
+	display: inline-block;
+    padding: 2%;
+    background: #f0eded;
+	border: 0;
+	outline: 0;
+    color: #1d2538;
+	border-radius: 5px;
+	font-size: 16px;
+	cursor: pointer;
+	position: relative;
+}
+.btn-disabled {
+	background: #f0eded;
+}
+.btn-active {
+	background: #4ab550;
+}
+.btn-active:hover {
+	 background: #f7af27;
+	 color: #fff;
+}
+#prev-page {
+	float: left;
+}
+#next-page {
+	float: right;
+	margin-left: 2%;
+}
+/*result page*/	
+.result-wrap {
+	max-width: 90%;
+	height: auto;
+    margin: 0 auto;
+    padding: 16px;
+    background: #f0eded;
+	position: relative;
+	color: #1d2538;
+	text-align: left;
+}
+.result-wrap p {
+	font-size: 16px;
+	line-height: 23px;
+	padding-bottom: 0;
+}
+.result-row {
+	padding-bottom: 2%;
+}
+.result-row:last-child {
+	padding-bottom: 0;
+}
+.result-info,
+.result-wrap p  {
+	display: inline-block;
+}
+.result-info {
+	margin-right: 1%;
+	font-size: 18px;
+	line-height: 25px;
+	font-weight: bold;
+}
+.result-icon {
+	display: inline-block;
+	width: 31px;
+	height: 31px;
+	vertical-align: middle;
+	margin-right: 1%;
+}
+.passed {
+	color: #4ab550;
+}
+.no-pass {
+	color: #f91c1c;
 }
 
+/*create test stage1*/
+.create-test-form {
+	text-align: left;
+}
+.create-test-form:before,
+.create-test-form:after {
+	content: '';
+	display: table;
+}
+.create-test-form:after {
+	clear: both;
+}
+.create-test-form input,
+.create-test-form textarea {
+	padding: 2%;
+	margin-bottom: 0;
+}
+.create-test-form input[type="text"]:focus,
+.create-test-form textarea:focus {
+	padding: 2%;
+}
+.create-test-form li {
+	display: block;
+	margin-bottom: 3%;
+}
+.create-test-form li:nth-child(3),
+.create-test-form li:nth-child(5) {
+	margin-bottom: 1%;
+}
+.create-test-form li:nth-child(4),
+.create-test-form li:nth-child(6) {
+	margin-bottom: 1%;
+}
+.create-test-form li:last-child {
+	margin-bottom: 0;
+}
+.comment {
+	display: block;
+	position: relative;
+	font-size: 12px;
+	line-height: 12px;
+	text-align: left;
+	padding-left: 2%;
+}
+.comment:before,
+.comment:after {
+	content: '';
+	display: table;
+}
+.comment:after {
+	clear: both;
+}
+/*create test stage2*/
+.right-answer,
+.answer,
+.add-answer {
+	float: left;
+	position: relative;
+	padding: 1.5% 1% 1.5% 2%;
+	vertical-align: middle;
+}
+.right-answer {
+	width: 5%;
+}
+.right-answer label {
+	border-bottom: 0;
+}
+.answer {
+	width: 80%;
+	margin: 0 1% 0 1%;
+	padding: 0;
+}
+.add-answer{
+	width: 12%;
+}
+.minus-answer,
+.plus-answer {
+	width: 25px;
+	height: 25px;
+	display: block;
+	position: relative;
+	cursor: pointer;
+	float: left;
+	font-size: 23px;
+	line-height: 25px;
+	vertical-align: middle;
+	margin-right: 10%;
+}
+.save-test-wrap {
+	padding: 1% 2%;
+	position: relative;
+	margin: 0 auto;
+	max-width: 90%;
+}
 @media screen and (max-width: 870px) {
 	.table {
 		margin: 0 auto;
