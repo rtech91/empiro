@@ -145,15 +145,15 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
-Route::set('create_test', 'create_test')
+Route::set('create_test', 'test/create')
 	->defaults(array(
-		'controller' => 'main',
-		'action' => 'create_test'
+		'controller' => 'test',
+		'action' => 'create'
 	));
-Route::set('configure_test', 'configure_test')
+Route::set('configure_test', 'test/configure')
 	->defaults(array(
-		'controller' => 'main',
-		'action' => 'configure_test'
+		'controller' => 'test',
+		'action' => 'configure'
 	));
 Route::set('contact_page', 'contacts')
 	->defaults(array(
