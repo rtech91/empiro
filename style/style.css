@@ -701,6 +701,12 @@ label:last-child {
 	vertical-align: middle;
 	margin-right: 10%;
 }
+.plus-answer:before {
+  content: "\002B";
+}
+.minus-answer:before {
+  content: "\002D";
+}
 .save-test-wrap {
 	padding: 1% 2%;
 	position: relative;

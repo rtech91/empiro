@@ -20,7 +20,7 @@
 									</div>
 									<div class="answer"><input type="text" name="answer" value="" placeholder="Введіть відповідь"></div>
 									<div class="add-answer">									
-										<div class="plus-answer">&#x2b;</div>
+										<div class="plus-answer"></div>
 									</div>
 								</li>
 							</form>
