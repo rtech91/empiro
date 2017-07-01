@@ -12,7 +12,7 @@
 						<li><input type="text" name="name" value="" placeholder="Назва тесту"></li>
 						<li><input type="text" name="category" value="" placeholder="Категорія / Дисципліна"></li>
 						<li><input  type="text" name="total_time" value="" placeholder="Загальний час проходження тесту"></li>
-						<li><div class="comment">Приклад: 30</div></li>
+						<li><div class="comment">Приклад: 30 (у хвилинах)</div></li>
 						<li><input type="text" name="min_right_answers" value="" placeholder="Мінімальна кількість вірних відповідей"></li>
 						<li><div class="comment">Приклад: 15</div></li>
 						<li><div class="btn">
