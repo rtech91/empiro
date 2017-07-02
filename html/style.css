@@ -627,12 +627,14 @@ label:last-child {
 	clear: both;
 }
 .create-test-form input,
-.create-test-form textarea {
+.create-test-form textarea,
+.create-test-form select {
 	padding: 2%;
 	margin-bottom: 0;
 }
 .create-test-form input[type="text"]:focus,
-.create-test-form textarea:focus {
+.create-test-form textarea:focus,
+.create-test-form select:focus {
 	padding: 2%;
 }
 .create-test-form li {
@@ -649,6 +651,9 @@ label:last-child {
 }
 .create-test-form li:last-child {
 	margin-bottom: 0;
+}
+.create-test-form .answer-type{
+	margin-bottom: 3%;
 }
 .comment {
 	display: block;
