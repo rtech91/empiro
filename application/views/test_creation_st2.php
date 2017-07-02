@@ -45,9 +45,9 @@
 										<span class="checkbox-custom"></span>
 									</label>	
 									</div>
-									<div class="answer"><input type="text" name="answers[]" value="" placeholder="Введіть відповідь"></div>
-									<div class="add-answer">
-										<div class="plus-answer" onclick="addAnswer(this);"></div>
+									<div class="answer"><input type="text" name="answer" value="" placeholder="Введіть відповідь"></div>
+									<div class="add-answer">									
+										<div class="plus-answer">&#x2b;</div>
 									</div>
 								</li>
 								</div>
