@@ -667,8 +667,7 @@ label:last-child {
 }
 /*create test stage2*/
 .right-answer,
-.answer,
-.add-answer {
+.answer {
 	float: left;
 	position: relative;
 	padding: 1.5% 1% 1.5% 2%;
@@ -684,22 +683,6 @@ label:last-child {
 	width: 80%;
 	margin: 0 1% 0 1%;
 	padding: 0;
-}
-.add-answer{
-	width: 12%;
-}
-.minus-answer,
-.plus-answer {
-	width: 25px;
-	height: 25px;
-	display: block;
-	position: relative;
-	cursor: pointer;
-	float: left;
-	font-size: 23px;
-	line-height: 25px;
-	vertical-align: middle;
-	margin-right: 10%;
 }
 .save-test-wrap {
 	padding: 1% 2%;

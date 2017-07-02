@@ -1,29 +1,3 @@
-<script type="text/javascript">
-    function addAnswer(elem) {
-     var answers = $('#answers_list');
-     var prevAnswer = $(elem).closest('li');
-     var newAnswer = $(elem).closest('li').clone();
-     $(prevAnswer).find('.plus-answer').removeClass('plus-answer').addClass('minus-answer');
-     $(prevAnswer).find('.minus-answer').attr('onclick', 'removeAnswer(this)');
-     $(newAnswer).find('.answer input').val('');
-     $(newAnswer).appendTo(answers);
-     numerateAnswerRadioboxes();
-    }
-    
-    function removeAnswer(elem) {
-      $(elem).closest('li').remove();
-      numerateAnswerRadioboxes();
-    }
-    
-    function numerateAnswerRadioboxes() {
-      var answers = $('#answers_list');
-      var i = 1;
-      $(answers).find('li').each(function(){
-        $(this).find('.checkbox').val(i);
-        i += 1;
-      });
-    }
-</script>
 <main>
 		<div class="home">
 			<div class="alert-wrap">
@@ -46,9 +20,6 @@
 									</label>	
 									</div>
 									<div class="answer"><input type="text" name="answer" value="" placeholder="Введіть відповідь"></div>
-									<div class="add-answer">									
-										<div class="plus-answer">&#x2b;</div>
-									</div>
 								</li>
 								</div>
 							</form>
