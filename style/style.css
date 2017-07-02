@@ -153,7 +153,9 @@ main:after {
 	line-height: 25px;
 	color: #4ab550;
 	font-weight: normal;
-	margin-bottom: 2%	
+	margin-bottom: 2%;	
+	display: inline-block;
+	position: relative;
 }
 .home p {
 	font-size: 14px;
@@ -339,7 +341,6 @@ footer {
 /* container for admin page*/
 .container {
 	width: 100%;
-	min-height: 370px;
 	height: auto;
 	margin: 0 auto;
 	padding-top: 6%;
@@ -680,8 +681,8 @@ label:last-child {
 	border-bottom: 0;
 }
 .answer {
-	width: 80%;
-	margin: 0 1% 0 1%;
+	width: 94%;
+	margin-left: 1%;
 	padding: 0;
 }
 .save-test-wrap {
@@ -689,6 +690,34 @@ label:last-child {
 	position: relative;
 	margin: 0 auto;
 	max-width: 90%;
+}
+/* admin main page*/
+.button-wrap {
+	max-width: 90%;
+	height: auto;
+	position: relative;
+	margin: 0 auto;	
+}
+.btn-create {
+	color: #fff;
+	width: 15%;
+	height: auto;
+	display: block;
+	padding: 1.3%;
+	background: #4ab550;
+	border-radius: 5px;
+	font-size: 16px;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.btn-create:hover {
+	background: #f7c327;
+}
+@media screen and (max-width: 955px) {
+	.btn-create {
+		width: 20%;
+	}
 }
 @media screen and (max-width: 870px) {
 	.table {
@@ -699,5 +728,9 @@ label:last-child {
 	}
 	th, .table td a  {
 		font-size: 15px;
+	}
+	.btn-create {
+		font-size: 15px;
+		width: 18%;
 	}
 }
