@@ -155,6 +155,11 @@ Route::set('configure_test', 'test/configure')
 		'controller' => 'test',
 		'action' => 'configure'
 	));
+Route::set('admin_password', 'admin/entrance')
+  ->defaults(array(
+    'controller' => 'admin',
+    'action' => 'entrance'
+  ));
 Route::set('contact_page', 'contacts')
 	->defaults(array(
 		'controller' => 'main',
