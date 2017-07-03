@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Komodo Project File - DO NOT EDIT -->
+<project id="885966ef-662b-4121-b247-45eb60425b0d" kpf_version="5" name="empiro.komodoproject">
+<preference-set idref="885966ef-662b-4121-b247-45eb60425b0d" id="project" preftype="project">
+  <string relative="path" id="import_dirname"></string>
+  <string id="last_local_directory">None</string>
+  <string id="last_remote_directory">None</string>
+  <string relative="path" id="phpExtraPaths">application;E:/Work/OpenServer/domains/empiro/modules;E:/Work/OpenServer/domains/empiro/system</string>
+  <long id="prefs_version">1</long>
+</preference-set>
+</project>
