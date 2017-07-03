@@ -155,6 +155,11 @@ Route::set('configure_test', 'test/configure')
 		'controller' => 'test',
 		'action' => 'configure'
 	));
+Route::set('admin_main', 'admin/main')
+  ->defaults(array(
+    'controller' => 'admin',
+    'action' => 'main'
+  ));
 Route::set('admin_entrance', 'admin/entrance')
   ->defaults(array(
     'controller' => 'admin',
