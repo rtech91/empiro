@@ -324,17 +324,17 @@ footer {
   float: left;
 }
 .contact-info .users-icon {
-  background: url(image/users.png);
+  background: url(/image/users.png);
   background-position: 0 0;
   background-repeat: no-repeat;
 }
 .contact-info .placeholder-icon {
-  background: url(image/placeholder.png);
+  background: url(/image/placeholder.png);
   background-position: 0 0;
   background-repeat: no-repeat;
 }
 .contact-info .home-icon {
-  background: url(image/home.png);
+  background: url(/image/home.png);
   background-position: 0 0;
   background-repeat: no-repeat;
 }
