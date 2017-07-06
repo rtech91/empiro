@@ -1,4 +1,4 @@
 <?php
-	echo $header;
-	echo $content;
-	echo $footer;
+  echo $header;
+  echo $content;
+  echo $footer;

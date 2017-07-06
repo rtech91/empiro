@@ -35,6 +35,13 @@
 								<li><input type="text" placeholder="Введіть назву запитання"></li>
 								<li><textarea placeholder="Введіть код або вираз" rows="2"></textarea></li>
 								<li>
+									<select class="answer-type">
+										<option value="Не обрано">Не обрано</option>
+										<option value="Одна вірна відповідь">Одна вірна відповідь</option>
+										<option value="Декілька вірних відповідей">Декілька вірних відповідей</option>
+									</select>
+								</li>
+								<li>
 									<div class="right-answer">
 									<label>
 										<input class="checkbox" type="radio" name="question" value="var1">
@@ -42,9 +49,6 @@
 									</label>	
 									</div>
 									<div class="answer"><input type="text" placeholder="Введіть відповідь"></div>
-									<div class="add-answer">									
-										<div class="plus-answer">&#x2b;</div>
-									</div>
 								</li>
 							</form>
 						</ul>	
