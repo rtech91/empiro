@@ -114,20 +114,20 @@ class Model_Storage extends Model {
         $parsed = simplexml_load_file($uri);
         try{
           if(!self::checkMainTestParams($parsed)){
-            throw new WrongTestParametersException();
+            throw new Exception_WrongTestParameters('Error checking answer in $uri');
           }
           foreach($parsed->questions->question as $question) {
             if(self::checkQuestion($question)) {
               foreach($question->answers->answer as $answer) {
                 if(!self::checkAnswer($answer)) {
-                  throw new Error_WrongQuestionParameters("Error checking answer in $uri.");
+                  throw new Exception_WrongQuestionParameters("Error checking answer in $uri.");
                 }
               }
             }else {
               throw new Exception_WrongQuestionParameters("Error checking question in $uri.");
             }
           }
-        }catch(WrongTestParametersException $e) {
+        }catch(Exception_WrongTestParameters $e) {
           // if we catch this exception
           // it means that common test data is broken
           // so we suspect that the test title
