@@ -6,7 +6,21 @@ class Controller_Test extends Controller {
         $data = null;
         if($this->request->method() === Request::POST) {
             $data = (object)filter_var_array($_POST, FILTER_SANITIZE_STRING);
-            Model_Test::validateInitialData($data);
+            $val_output = Model_Test::validateInitialData($data);
+			if(true === $val_output){
+				$test_template = new DOMDocument;
+				$root = $test_template->createElement('test');
+				$test_template->appendChild($root);
+				$nameNode = $test_template->createElement('name', $data->name);
+				$root->appendChild($nameNode);
+				$categoryNode = $test_template->createElement('category', $data->category);
+				$root->appendChild($categoryNode);
+				$timeNode = $test_template->createElement('time',  date('H:i', mktime(0,$data->total_time)));
+				$root->appendChild($timeNode);
+				$minRightAnswersNode = $test_template->createElement('minrightanswers', $data->min_right_answers);
+				$root->appendChild($minRightAnswersNode);
+				$test_template->save(Model_Storage::STORAGE_FOLDER.strtolower($data->name).'.xml');
+			}
         }
         $messages = MessageHandler::getInstance()->getMessages();
 		$view = new View('layout');
