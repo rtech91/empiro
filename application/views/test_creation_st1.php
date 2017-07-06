@@ -23,11 +23,11 @@
 					<div class="form-style">
 					<ul class="create-test-form">
 					<form action="" method="post">
-						<li><input type="text" name="name" value="<?php echo isset($data, $data->name) ? $data->name : ''; ?>" placeholder="Назва тесту"></li>
+						<li><input type="text" name="name" value="<?php echo isset($data, $data->name) ? $data->name : ''; ?>" placeholder="Назва тесту" ></li>
 						<li><input type="text" name="category" value="<?php echo isset($data, $data->category) ? $data->category : ''; ?>" placeholder="Категорія / Дисципліна"></li>
-						<li><input  type="text" name="total_time" value="<?php echo isset($data, $data->total_time) ? $data->total_time : ''; ?>" placeholder="Загальний час проходження тесту"></li>
+						<li><input  type="number" name="total_time" value="<?php echo isset($data, $data->total_time) ? $data->total_time : ''; ?>" placeholder="Загальний час проходження тесту"></li>
 						<li><div class="comment">Приклад: 30 (у хвилинах)</div></li>
-						<li><input type="text" name="min_right_answers" value="<?php echo isset($data, $data->min_right_answers) ? $data->min_right_answers : ''; ?>" placeholder="Мінімальна кількість вірних відповідей"></li>
+						<li><input type="number" name="min_right_answers" value="<?php echo isset($data, $data->min_right_answers) ? $data->min_right_answers : ''; ?>" placeholder="Мінімальна кількість вірних відповідей"></li>
 						<li><div class="comment">Приклад: 15</div></li>
 						<li><div class="btn">
 						<input type="submit" value="Зберегти">
