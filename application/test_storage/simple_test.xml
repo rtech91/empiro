@@ -3,6 +3,7 @@
 	<name>C++</name>
 	<category>Languages</category>
 	<time>00:30</time>
+	<minrigthanswers>3</minrigthanswers>
 	<allowtaskreviews>false</allowtaskreviews>
 	<allowtoreanswer>false</allowtoreanswer>
 	<questions>
