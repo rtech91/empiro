@@ -38,7 +38,7 @@
 									<td><?php echo count($test->questions); ?></td>
 									<td><?php echo date('H:i:s', strtotime($test->time)); ?></td>
 									<td><?php echo $test->category; ?></td>
-									<td><a href="#">Редагування</a></td>
+									<td><a href="#">Редагувати</a></td>
 								</tr>
 							<?php endforeach; ?>
 						</table>
