@@ -18,7 +18,7 @@
       <?php endforeach; ?>
 			</div>
 			<div class="button-wrap">
-				<span><a class="btn-create" href="http://empiro/test/create">Створити тест</a></span>
+				<span><a class="btn-create" href="<?php echo URL::site(Route::get('create_test')->uri()); ?>">Створити тест</a></span>
 			</div>		
 				<h1>Розділ адміністратора</h1>
 				<p>Вам доступні такі операції, як створення та редагування існуючих тестів.</p>
