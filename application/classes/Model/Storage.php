@@ -114,7 +114,7 @@ class Model_Storage extends Model {
         $parsed = simplexml_load_file($uri);
         try{
           if(!self::checkMainTestParams($parsed)){
-            throw new Exception_WrongTestParameters('Error checking answer in $uri');
+            throw new Exception_WrongTestParameters("Error checking answer in $uri.");
           }
           foreach($parsed->questions->question as $question) {
             if(self::checkQuestion($question)) {
