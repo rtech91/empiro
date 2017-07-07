@@ -15,13 +15,13 @@
           $(newAnswerField).appendTo('#answers_list');
         }
         if('multiple' === type) {
-          $('.right-answer input').each(function(){
+          $('#answers_list .right-answer input').each(function(){
             $(this).attr('type', 'checkbox');
             $(this).attr('name', 'right_answers[]');
             $(this).removeClass('radio').addClass('checkbox');
-          });
-          $('#answers_list .radio-custom').each(function(){
+            $('#answers_list .radio-custom').each(function(){
             $(this).removeClass('radio-custom').addClass('checkbox-custom');
+          });
           });
         }
         $('#answers_list').show();
