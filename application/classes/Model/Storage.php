@@ -111,14 +111,15 @@ class Model_Storage extends Model {
   private function validateCollectedTests() {
     if(isset($this->file_uris) && !empty($this->file_uris) && is_array($this->file_uris)) {
       foreach($this->file_uris as $key => $uri) {
-        $parsed = simplexml_load_file($uri);
+        $document = new DOMDocument();
+        $document->load($uri);
         try{
-          if(!self::checkMainTestParams($parsed)){
+          if(!self::checkMainTestParams($document)){
             throw new Exception_WrongTestParameters("Error checking answer in $uri.");
           }
-          foreach($parsed->questions->question as $question) {
+          foreach($document->getElementsByTagName('question') as $question) {
             if(self::checkQuestion($question)) {
-              foreach($question->answers->answer as $answer) {
+              foreach($question->getElementsByTagName('answer') as $answer) {
                 if(!self::checkAnswer($answer)) {
                   throw new Exception_WrongQuestionParameters("Error checking answer in $uri.");
                 }
@@ -173,21 +174,19 @@ class Model_Storage extends Model {
    * @var $parsed object with parsed xml document
    * return bool true or false value
    */
-  public static function checkMainTestParams(&$parsed) {
+  public static function checkMainTestParams($parsed) {
     return
-      isset(
-        $parsed->name,
-        $parsed->category,
-        $parsed->time,
-        $parsed->allowtaskreviews,
-        $parsed->allowtoreanswer
-      )
-      && !empty((string)$parsed->name)
-      && !empty((string)$parsed->category)
-      && !empty((string)$parsed->time)
-      && preg_match("/^[0-9]{2}:[0-9]{2}$/", $parsed->time)
-      && !empty((string)$parsed->allowtoreanswer)
-      && !empty((string)$parsed->allowtoreanswer);
+      null !== $parsed->getElementsByTagName('title')->item(0)
+      && !empty($parsed->getElementsByTagName('title')->item(0)->nodeValue)
+      && null !== $parsed->getElementsByTagName('category')->item(0)
+      && !empty($parsed->getElementsByTagName('category')->item(0)->nodeValue)
+      && null !== $parsed->getElementsByTagName('time')->item(0)
+      && !empty($parsed->getElementsByTagName('time')->item(0)->nodeValue)
+      && preg_match("/^[0-9]{2}:[0-9]{2}$/", $parsed->getElementsByTagName('time')->item(0)->nodeValue)
+      && null !== $parsed->getElementsByTagName('allowtaskreviews')->item(0)
+      && !empty($parsed->getElementsByTagName('allowtaskreviews')->item(0)->nodeValue)
+      && null !== $parsed->getElementsByTagName('allowtoreanswer')->item(0)
+      && !empty($parsed->getElementsByTagName('allowtoreanswer')->item(0)->nodeValue);
   }
   
   /**
@@ -196,11 +195,10 @@ class Model_Storage extends Model {
    * return bool result of validation
    */
   public static function checkQuestion(&$question) {
-    $question_attr = $question->answers->attributes();
     return
-        isset($question->title)
-        && !empty((string)$question->title)
-        && !empty((string)$question_attr['type']);
+        null !== ($question->getElementsByTagName('title')->item(0))
+        && !empty($question->getElementsByTagName('title')->item(0)->nodeValue)
+        && !empty($question->getElementsByTagName('answers')->item(0)->getAttribute('type'));
   }
   
   /**
@@ -209,8 +207,10 @@ class Model_Storage extends Model {
    * return bool result of validation
    */
   public static function checkAnswer(&$answer) {
-    $answer_attr = current($answer->attributes());
-    return isset($answer_attr['is_right']) && strlen(trim((string)$answer)) && !empty((string)$answer_attr['is_right']);
+    return 
+        null !== $answer->getAttribute('is_right')
+        && !empty($answer->getAttribute('is_right'))
+        && (strlen(trim($answer->nodeValue)) > 0);
   }
 
   /**
@@ -222,29 +222,28 @@ class Model_Storage extends Model {
       return array();
     }
     foreach($this->file_uris as $uri) {
-      $parsed = simplexml_load_file($uri);
+      $document = new DOMDocument();
+      $document->load($uri);
       $all_tests = array();
       $test = new stdClass;
-      $test->name = (string)$parsed->name;
-      $test->category = (string)$parsed->category;
-      $test->time = (string)$parsed->time;
-      $test->allowtaskreviews = (bool)$parsed->allowtaskreviews;
-      $test->allowtoreanswer = (bool)$parsed->allowtoreanswer;
+      $test->name = $document->getElementsByTagName('name')->item(0)->nodeValue;
+      $test->category = $document->getElementsByTagName('category')->item(0)->nodeValue;
+      $test->time = $document->getElementsByTagName('time')->item(0)->nodeValue;
+      $test->allowTaskReviews = (bool)$document->getElementsByTagName('allowtaskreviews')->item(0)->nodeValue;
+      $test->allowToReanswer = (bool)$document->getElementsByTagName('allowtoreanswer')->item(0)->nodeValue;
       $test->questions = array();
-      foreach($parsed->questions->question as $question) {
-        $new_question = new stdClass;
-        $question_attr = current($question->answers->attributes());
-        $new_question->title = (string)$question->title;
-        $new_question->type = (bool)$question_attr['type'];
-        $new_question->answers = array();
-        foreach($question->answers->answer as $answer) {
-          $answer_attr = current($answer->attributes());
-          $new_answer = new stdClass;
-          $new_answer->is_right = (bool)$answer_attr['is_right'];
-          $new_answer->title = (string)$answer;
-          array_push($new_question->answers, $new_answer);
-        }
-        array_push($test->questions, $new_question);
+      foreach($document->getElementsByTagName('question') as $question) {
+          $new_question = new stdClass;
+          $new_question->title = $question->nodeValue;
+          $new_question->type = $question->getElementsByTagName('answers')->item(0)->getAttribute('type');
+          $new_question->answers = array();
+          foreach($question->getElementsByTagName('answer') as $answer) {
+              $new_answer = new stdClass;
+              $new_answer->is_right = (bool)$answer->getAttribute('is_right');
+              $new_answer->is_right = $answer->nodeValue;
+              array_push($new_question->answers, $new_answer);
+          }
+          array_push($test->questions, $new_question);
       }
       array_push($this->parsed_tests, $test);
     }
