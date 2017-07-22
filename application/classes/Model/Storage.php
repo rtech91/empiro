@@ -174,7 +174,7 @@ class Model_Storage extends Model {
    * @var $parsed object with parsed xml document
    * return bool true or false value
    */
-  public static function checkMainTestParams($parsed) {
+  public static function checkMainTestParams(&$parsed) {
     return
       null !== $parsed->getElementsByTagName('title')->item(0)
       && !empty($parsed->getElementsByTagName('title')->item(0)->nodeValue)
