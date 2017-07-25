@@ -9,6 +9,7 @@
 	<questions>
 		<question>
 			<title>What is C++?</title>
+			<example>int example = 0;</example>
 			<answers type="one">
 				<answer is_right="false">
 					It's a car.
