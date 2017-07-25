@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700&amp;subset=cyrillic" rel="stylesheet">
   <link type="text/css" rel="stylesheet" href="<?php echo URL::base(); ?>style/style.css" />
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="<?php echo URL::base(); ?>/scripts/front_api.js"></script>
 </head>
 <body>
   <div id="wrap">
