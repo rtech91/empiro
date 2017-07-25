@@ -33,7 +33,7 @@ function addNewQuestion() {
     newQuestion.answers = new Array();
     $('#answers_list li').each(function(){
         var newAnswer = new Object;
-        newAnswer.right = $(this).find('input[name="right_answer"]').attr('checked') !== undefined;
+        newAnswer.right = Boolean($(this).find('.right-answer input').prop('checked'));
         newAnswer.answer = $(this).find('input[name="answer"]').val();
         newQuestion.answers.push(newAnswer);
     });
