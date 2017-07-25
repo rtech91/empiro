@@ -21,7 +21,7 @@
         <form>
           <li><input type="text" name="question" value=""
             placeholder="Введіть назву запитання"></li>
-          <li><textarea placeholder="Введіть код або вираз" rows="2"></textarea></li>
+          <li><textarea name="example" placeholder="Введіть код або вираз" rows="2"></textarea></li>
           <li><select class="answer-type" id="selector-answer-type">
               <option value="none">Не обрано</option>
               <option value="one">Одна вірна відповідь</option>
@@ -48,7 +48,7 @@
     </div>
     <div class="save-test-wrap">
       <button class="btn-test" id="prev-page" type="button" disabled>Попереднє</button>
-      <button class="btn-test btn-disabled" id="next-page" type="submit"
+      <button class="btn-test btn-disabled" onclick="addNewQuestion();" id="next-page" type="button"
         disabled>Додати запитання</button>
       <button class="btn-test btn-disabled" id="next-page" type="submit"
         disabled>Зберегти тест</button>
