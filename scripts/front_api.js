@@ -25,7 +25,7 @@ function createAnswerRows(type) {
     }
     $('#answers_list').show();
 }
-function addNewQuestion() {
+function parseNewQuestion() {
     var newQuestion = new Object;
     newQuestion.title = $('input[name="question"]').val();
     newQuestion.example = $('textarea[name="example"]').val();
@@ -37,5 +37,23 @@ function addNewQuestion() {
         newAnswer.answer = $(this).find('input[name="answer"]').val();
         newQuestion.answers.push(newAnswer);
     });
-    console.log(newQuestion);
+    addNewQuestion(newQuestion);
+}
+function addNewQuestion(newQuestion){
+    var storage = localStorage !== undefined ? localStorage : null;
+    if(null !== storage) {
+        if(undefined === storage.questionStorage) {
+            storage.questionStorage = JSON.stringify([]);
+        }
+        var questions = JSON.parse(storage.questionStorage);
+        questions.push(newQuestion);
+        storage.questionStorage = JSON.stringify(questions);
+    }
+}
+function tryToActivateButtons() {
+    if($('input[name="question"]').val().length > 0 && $('#selector-answer-type').val() !== 'none'){
+        $('#add-question, #save-test').removeAttr('disabled');
+    }else {
+        $('#add-question, #save-test').attr('disabled', 'disabled');
+    }
 }
