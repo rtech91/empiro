@@ -31,23 +31,27 @@ function parseNewQuestion() {
     newQuestion.example = $('textarea[name="example"]').val();
     newQuestion.answer_type = $('#selector-answer-type').val();
     newQuestion.answers = new Array();
-    $('#answers_list li').each(function(){
+    $('#answers_list li').each(function() {
         var newAnswer = new Object;
         newAnswer.right = Boolean($(this).find('.right-answer input').prop('checked'));
         newAnswer.answer = $(this).find('input[name="answer"]').val();
         newQuestion.answers.push(newAnswer);
     });
-    addNewQuestion(newQuestion);
+    return newQuestion;
 }
-function addNewQuestion(newQuestion){
+function addNewQuestion() {
+    var newQuestion = parseNewQuestion();
     var storage = localStorage !== undefined ? localStorage : null;
     if(null !== storage) {
         if(undefined === storage.questionStorage) {
             storage.questionStorage = JSON.stringify([]);
         }
-        var questions = JSON.parse(storage.questionStorage);
-        questions.push(newQuestion);
-        storage.questionStorage = JSON.stringify(questions);
+        if(newQuestion) {
+            var questions = JSON.parse(storage.questionStorage);
+            questions.push(newQuestion);
+            storage.questionStorage = JSON.stringify(questions);
+            clearFields();
+        }
     }
 }
 function tryToActivateButtons() {
@@ -56,4 +60,9 @@ function tryToActivateButtons() {
     }else {
         $('#add-question, #save-test').attr('disabled', 'disabled');
     }
+}
+function clearFields() {
+    $('input[name="question"]').val('');
+    $('textarea[name="example"]').val('');
+    $('#selector-answer-type').val('none').change();
 }
