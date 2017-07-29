@@ -15,7 +15,7 @@
     </div>
   </div>
   <h1>Створення тесту. Етап 2</h1>
-  <p>Введить інформацію, згідно із довідковими даними у полях.</p>
+  <p>Введіть інформацію, згідно із довідковими даними у полях.</p>
   <div class="form-wrap stage1-wrap">
     <div class="form-style">
       <ul class="create-test-form">
@@ -49,10 +49,8 @@
     </div>
     <div class="save-test-wrap">
       <button class="btn-test" id="prev-question" type="button" disabled>Попереднє</button>
-      <button class="btn-test btn-disabled" onclick="addNewQuestion();" id="add-question" type="button"
-        disabled>Додати запитання</button>
-      <button class="btn-test btn-disabled" id="save-test" type="submit"
-        disabled>Зберегти тест</button>
+      <button class="btn-test btn-disabled" onclick="addNewQuestion();" id="add-question" type="button" disabled>Додати запитання</button>
+      <button class="btn-test btn-disabled" id="save-test" type="submit" disabled>Зберегти тест</button>
     </div>
   </div>
 </div>
