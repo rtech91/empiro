@@ -15,12 +15,12 @@ function createAnswerRows(type) {
     }
     if('multiple' === type) {
         $('#answers_list .right-answer input').each(function(){
-        $(this).attr('type', 'checkbox');
-        $(this).attr('name', 'right_answers[]');
-        $(this).removeClass('radio').addClass('checkbox');
-        $('#answers_list .radio-custom').each(function(){
-        $(this).removeClass('radio-custom').addClass('checkbox-custom');
-        });
+	        $(this).attr('type', 'checkbox');
+	        $(this).attr('name', 'right_answers[]');
+	        $(this).removeClass('radio').addClass('checkbox');
+	        $('#answers_list .radio-custom').each(function(){
+	        	$(this).removeClass('radio-custom').addClass('checkbox-custom');
+	        });
         });
     }
     $('#answers_list').show();
@@ -56,9 +56,9 @@ function addNewQuestion() {
 }
 function tryToActivateButtons() {
     if($('input[name="question"]').val().length > 0 && $('#selector-answer-type').val() !== 'none'){
-        $('#add-question, #save-test').removeAttr('disabled');
+        $('#add-question, #save-test').removeAttr('disabled').removeClass('btn-disabled').addClass('btn-active');
     }else {
-        $('#add-question, #save-test').attr('disabled', 'disabled');
+        $('#add-question, #save-test').attr('disabled', 'disabled').removeClass('btn-active').addClass('btn-disabled');
     }
 }
 function clearFields() {

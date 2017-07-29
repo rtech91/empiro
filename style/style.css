@@ -561,10 +561,10 @@ label:last-child {
    background: #f7af27;
    color: #fff;
 }
-#prev-page {
+#prev-question {
   float: left;
 }
-#next-page {
+#add-question {
   float: right;
   margin-left: 2%;
 }
