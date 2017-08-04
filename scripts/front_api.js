@@ -78,6 +78,11 @@ function tryToActivateButtons() {
     }else {
         $('#prev-question').attr('disabled', 'disabled').removeClass('btn-active').addClass('btn-disabled');
     }
+	if(localStorage.currentQuestion < localStorage.lastQuestion) {
+		$('#save-test').hide();
+	}else {
+		$('#save-test').show();
+	}
 }
 function clearFields() {
     $('input[name="question"]').val('');
