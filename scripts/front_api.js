@@ -86,12 +86,11 @@ function clearFields() {
 }
 function fillAnswerFields(answers) {
     var answerFields = $('#answers_list li');
-    var currentField = answerFields[0];
-    answers.forEach(function(currentAnswer) {
-        $(currentField).find('.right-answer input').prop('checked', currentAnswer.right);
-        $(currentField).find('input[name="answer"]').val(currentAnswer.answer);
-        currentField = $(answerFields).next();
-    });
+    for(var i=0; i<answers.length; i++) {
+        var currentAnswer = answers[i];
+        $(answerFields[i]).find('.right-answer input').prop('checked', currentAnswer.right);
+        $(answerFields[i]).find('input[name="answer"]').val(currentAnswer.answer);
+    }
 }
 /**
  * Initializes the array for questions and assigns the default 
