@@ -110,10 +110,17 @@ function initQuestionStorage() {
     storage.lastQuestion = 1;
 }
 function nextQuestion() {
-    localStorage.currentQuestion += 1;
+    localStorage.currentQuestion = parseInt(localStorage.currentQuestion) + 1;
+	var question = getQuestion();
+    clearFields();
+    $('input[name="question"]').val(question.title);
+    $('textarea[name="example"]').val(question.example);
+    $('#selector-answer-type').val(question.answer_type);
+    createAnswerRows(question.answer_type);
+    fillAnswerFields(question.answers);
 }
 function previousQuestion() {
-    localStorage.currentQuestion -= 1;
+    localStorage.currentQuestion = parseInt(localStorage.currentQuestion) - 1;
     var question = getQuestion();
     clearFields();
     $('input[name="question"]').val(question.title);
@@ -121,4 +128,9 @@ function previousQuestion() {
     $('#selector-answer-type').val(question.answer_type);
     createAnswerRows(question.answer_type);
     fillAnswerFields(question.answers);
+	
+	// remake Add New Question button to Next Question button
+	$('#add-question').html('Наступне запитання');
+	$('#add-question').attr('onclick', 'nextQuestion();');
+	$('#add-question').removeClass('btn-disabled').removeAttr('disabled').addClass('btn-active');
 }
