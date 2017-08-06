@@ -61,7 +61,7 @@ function getQuestion() {
     var storedQuestions = JSON.parse(localStorage.questionStorage);
     var question = null;
     storedQuestions.forEach(function(currentQuestion, index, array) {
-        if(currentQuestion.id === localStorage.currentQuestion){
+        if(currentQuestion.id == localStorage.currentQuestion){
             question = currentQuestion;
         }
     });
@@ -81,7 +81,7 @@ function tryToActivateButtons() {
 	if(localStorage.currentQuestion < localStorage.lastQuestion) {
 		$('#save-test').hide();
 	}else {
-		$('#save-test').show();
+        $('#save-test').show();
 	}
 }
 function clearFields() {
@@ -113,21 +113,30 @@ function nextQuestion() {
     localStorage.currentQuestion = parseInt(localStorage.currentQuestion) + 1;
 	var question = getQuestion();
     clearFields();
-    $('input[name="question"]').val(question.title);
-    $('textarea[name="example"]').val(question.example);
-    $('#selector-answer-type').val(question.answer_type);
-    createAnswerRows(question.answer_type);
-    fillAnswerFields(question.answers);
+    if(null !== question) {
+        $('input[name="question"]').val(question.title);
+        $('textarea[name="example"]').val(question.example);
+        $('#selector-answer-type').val(question.answer_type);
+        createAnswerRows(question.answer_type);
+        fillAnswerFields(question.answers);
+    }
+    if(localStorage.currentQuestion == localStorage.lastQuestion) {
+        $('#add-question').html('Додати запитання');
+        $('#add-question').attr('onclick', 'addNewQuestion();');
+        $('#add-question').removeClass('btn-disabled').removeAttr('disabled').addClass('btn-active');
+    }
 }
 function previousQuestion() {
     localStorage.currentQuestion = parseInt(localStorage.currentQuestion) - 1;
     var question = getQuestion();
     clearFields();
-    $('input[name="question"]').val(question.title);
-    $('textarea[name="example"]').val(question.example);
-    $('#selector-answer-type').val(question.answer_type);
-    createAnswerRows(question.answer_type);
-    fillAnswerFields(question.answers);
+    if(null !== question) {
+        $('input[name="question"]').val(question.title);
+        $('textarea[name="example"]').val(question.example);
+        $('#selector-answer-type').val(question.answer_type);
+        createAnswerRows(question.answer_type);
+        fillAnswerFields(question.answers);
+    }
 	
 	// remake Add New Question button to Next Question button
 	$('#add-question').html('Наступне запитання');
