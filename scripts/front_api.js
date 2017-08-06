@@ -57,6 +57,18 @@ function addNewQuestion() {
         }
     }
 }
+function updateQuestion(parsedQuestion) {
+    if(confirm('Ви дійсно бажаєте зберегти зміни?')){
+        var storedQuestions = JSON.parse(localStorage.questionStorage);
+        var question = null;
+        storedQuestions.forEach(function(currentQuestion, index, array) {
+            if(currentQuestion.id == localStorage.currentQuestion){
+                array[index] = parsedQuestion;
+                localStorage.questionStorage = JSON.stringify(array);
+            }
+        });
+    }
+}
 function getQuestion() {
     var storedQuestions = JSON.parse(localStorage.questionStorage);
     var question = null;
@@ -79,7 +91,7 @@ function tryToActivateButtons() {
         $('#prev-question').attr('disabled', 'disabled').removeClass('btn-active').addClass('btn-disabled');
     }
 	if(localStorage.currentQuestion < localStorage.lastQuestion) {
-		$('#save-test').hide();
+        $('#save-test').hide();
 	}else {
         $('#save-test').show();
 	}
@@ -110,8 +122,15 @@ function initQuestionStorage() {
     storage.lastQuestion = 1;
 }
 function nextQuestion() {
+    if(localStorage.currentQuestion < localStorage.lastQuestion) {
+        var parsedQuestion = parseNewQuestion();
+        var storedQuestion = getQuestion(); 
+        if(JSON.stringify(storedQuestion) !== JSON.stringify(parsedQuestion)) {
+            updateQuestion(parsedQuestion);
+        }
+    }
     localStorage.currentQuestion = parseInt(localStorage.currentQuestion) + 1;
-	var question = getQuestion();
+    var question = getQuestion();
     clearFields();
     if(null !== question) {
         $('input[name="question"]').val(question.title);
