@@ -150,7 +150,7 @@ Route::set('create_test', 'test/create')
 		'controller' => 'test',
 		'action' => 'create'
 	));
-Route::set('configure_test', 'test/configure')
+Route::set('configure_test', 'test/configure/<filename>')
 	->defaults(array(
 		'controller' => 'test',
 		'action' => 'configure'

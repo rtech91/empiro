@@ -8,6 +8,7 @@ class Controller_Test extends Controller {
             $data = (object)filter_var_array($_POST, FILTER_SANITIZE_STRING);
             $val_output = Model_Test::validateInitialData($data);
 			if(true === $val_output){
+				$filename = uniqid();
 				$test_template = new DOMDocument;
 				$root = $test_template->createElement('test');
 				$test_template->appendChild($root);
@@ -19,7 +20,8 @@ class Controller_Test extends Controller {
 				$root->appendChild($timeNode);
 				$minRightAnswersNode = $test_template->createElement('minrightanswers', $data->min_right_answers);
 				$root->appendChild($minRightAnswersNode);
-				$test_template->save(Model_Storage::STORAGE_FOLDER.strtolower($data->name).'.xml');
+				$test_template->save(Model_Storage::STORAGE_FOLDER.$filename.'.xml');
+				$this->redirect(Route::get('configure_test')->uri(array('filename' => $filename)));
 			}
         }
         $messages = MessageHandler::getInstance()->getMessages();
@@ -36,9 +38,11 @@ class Controller_Test extends Controller {
 
 	public function action_configure()
 	{
+		$filename = $this->request->param('filename');
 		$view = new View('layout');
 		$view->header = new View('header');
 		$view->content = new View('test_creation_st2');
+		$view->content->filename = $filename;
 		$view->footer = new View('footer');
 		$this->response->body($view->render());
 	}

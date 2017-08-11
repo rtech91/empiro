@@ -48,6 +48,7 @@
       </div>
     </li>
     </div>
+    <input type="hidden" id="test_filename" name="filename" value="<?php echo $filename; ?>">
     <div class="save-test-wrap">
       <button class="btn-test" id="prev-question" onclick="previousQuestion()" type="button" disabled>Попереднє</button>
       <button class="btn-test btn-disabled" onclick="addNewQuestion();" id="add-question" type="button" disabled>Додати запитання</button>
