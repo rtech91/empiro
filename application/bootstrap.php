@@ -155,6 +155,11 @@ Route::set('configure_test', 'test/configure/<filename>')
 		'controller' => 'test',
 		'action' => 'configure'
 	));
+Route::set('save_test', 'test/save')
+	->defaults(array(
+		'controller' => 'test',
+		'action' => 'save'
+	));
 Route::set('admin_main', 'admin/main')
   ->defaults(array(
     'controller' => 'admin',

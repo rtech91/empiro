@@ -46,4 +46,9 @@ class Controller_Test extends Controller {
 		$view->footer = new View('footer');
 		$this->response->body($view->render());
 	}
+	
+	public function action_save()
+	{
+		//TODO: implement test saving
+	}
 } // End Test

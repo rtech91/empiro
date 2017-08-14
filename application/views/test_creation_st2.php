@@ -20,19 +20,17 @@
   <div class="form-wrap stage1-wrap">
     <div class="form-style">
       <ul class="create-test-form">
-        <form>
-          <li><input type="text" name="question" value=""
-            placeholder="Введіть назву запитання"></li>
-          <li><textarea name="example" placeholder="Введіть код або вираз" rows="2"></textarea></li>
-          <li><select class="answer-type" id="selector-answer-type">
-              <option value="none" id="none-answer-value">Не обрано</option>
-              <option value="one">Одна вірна відповідь</option>
-              <option value="multiple">Декілька вірних
-                відповідей</option>
-          </select></li>
-          <div id="answers_list">
-          </div>
-        </form>
+        <li><input type="text" name="question" value=""
+          placeholder="Введіть назву запитання"></li>
+        <li><textarea name="example" placeholder="Введіть код або вираз" rows="2"></textarea></li>
+        <li><select class="answer-type" id="selector-answer-type">
+            <option value="none" id="none-answer-value">Не обрано</option>
+            <option value="one">Одна вірна відповідь</option>
+            <option value="multiple">Декілька вірних
+              відповідей</option>
+        </select></li>
+        <div id="answers_list">
+        </div>
       </ul>
     </div>
     <div id="field_template">
@@ -48,11 +46,17 @@
       </div>
     </li>
     </div>
+    <div id="save_form">
+    <form action="<?php echo URL::site(Route::get('save_test')->uri(), true); ?>" method="post">
     <input type="hidden" id="test_filename" name="filename" value="<?php echo $filename; ?>">
+    <input type="hidden" id="questions_list" name="questions" value="">
+    <input type="submit" id="save_form_button" value="">
+    </form>
+    </div>
     <div class="save-test-wrap">
       <button class="btn-test" id="prev-question" onclick="previousQuestion()" type="button" disabled>Попереднє</button>
       <button class="btn-test btn-disabled" onclick="addNewQuestion();" id="add-question" type="button" disabled>Додати запитання</button>
-      <button class="btn-test btn-disabled" onclick="gatherInfo();" id="save-test" type="submit" disabled>Зберегти тест</button>
+      <button class="btn-test btn-disabled" onclick="saveTestData();" id="save-test" type="submit" disabled>Зберегти тест</button>
     </div>
   </div>
 </div>

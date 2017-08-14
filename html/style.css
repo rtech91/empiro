@@ -719,6 +719,9 @@ label:last-child {
 .btn-create:hover {
 	background: #f7c327;
 }
+#save_form {
+	display: none;
+}
 @media screen and (max-width: 955px) {
 	.btn-create {
 		width: 20%;

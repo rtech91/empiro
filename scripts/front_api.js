@@ -162,9 +162,8 @@ function previousQuestion() {
 	$('#add-question').attr('onclick', 'nextQuestion();');
 	$('#add-question').removeClass('btn-disabled').removeAttr('disabled').addClass('btn-active');
 }
-function gatherInfo() {
-    var question_package = new Object();
-    question_package.testName = $('#test_filename').val();
-    question_package.questionsList = localStorage.questionStorage;
-    console.log(question_package);
+function saveTestData() {
+    addNewQuestion();
+    $('#questions_list').val(localStorage.questionStorage);
+    $('#save_form_button').trigger('click');
 }
