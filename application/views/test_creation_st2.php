@@ -52,7 +52,7 @@
     <div class="save-test-wrap">
       <button class="btn-test" id="prev-question" onclick="previousQuestion()" type="button" disabled>Попереднє</button>
       <button class="btn-test btn-disabled" onclick="addNewQuestion();" id="add-question" type="button" disabled>Додати запитання</button>
-      <button class="btn-test btn-disabled" id="save-test" type="submit" disabled>Зберегти тест</button>
+      <button class="btn-test btn-disabled" onclick="gatherInfo();" id="save-test" type="submit" disabled>Зберегти тест</button>
     </div>
   </div>
 </div>
