@@ -163,8 +163,8 @@ function previousQuestion() {
 	$('#add-question').removeClass('btn-disabled').removeAttr('disabled').addClass('btn-active');
 }
 function gatherInfo() {
-    var question_package = new Array();
-    question_package.push($('#test_filename').val());
-    question_package.push(JSON.parse(localStorage.questionStorage));
+    var question_package = new Object();
+    question_package.testName = $('#test_filename').val();
+    question_package.questionsList = localStorage.questionStorage;
     console.log(question_package);
 }
