@@ -82,6 +82,18 @@ class Model_Storage extends Model {
       MessageHandler::getInstance()->registerMessage($e->getMessage(), (MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER));
     }
   }
+
+  /**
+   * Check if specified path describes concrete file,
+   * that have read|write rights and .xml extension
+   */
+  public function checkFileAccessibility($filepath) {
+    return 
+      is_file($filepath) && 
+      is_readable($filepath) && 
+      is_writable($filepath) && 
+      'xml' === pathinfo($filepath, PATHINFO_EXTENSION);
+  }
   
   /**
    * Read all test files with .xml extenstion and collect them
@@ -96,7 +108,7 @@ class Model_Storage extends Model {
         continue;
       }
       $filepath = self::STORAGE_FOLDER.$file;
-      if(is_file($filepath) && is_readable($filepath) && is_writable($filepath) && 'xml' === pathinfo($filepath, PATHINFO_EXTENSION)) {
+      if($this->checkFileAccessibility($filepath)) {
         array_push($this->file_uris, $filepath);
       }
     }
