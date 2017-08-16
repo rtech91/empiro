@@ -54,4 +54,13 @@ class Model_Test extends Model {
         }
         return $is_correct;
     }
+
+    public static function parsePartialTest($test_filename) {
+        $storage = Model_Storage::getInstance();
+        $have_access = $storage->checkStorageFolderAccessibility();
+        $test_uri = Model_Storage::STORAGE_FOLDER.$test_filename.'.xml';
+        if($have_access && $storage->checkFileAccessibility($test_uri)) {
+            
+        }
+    }
 }

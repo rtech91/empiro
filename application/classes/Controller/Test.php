@@ -52,6 +52,10 @@ class Controller_Test extends Controller {
   
   public function action_save()
   {
+    if($this->request->method() === Request::POST) {
+      $data = (object)$this->request->post();
+      Model_Test::parsePartialTest($data->filename);
+    }
     //TODO: implement test saving
   }
 } // End Test
