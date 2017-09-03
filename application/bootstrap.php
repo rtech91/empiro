@@ -139,7 +139,7 @@ Kohana::modules(array(
  * If you have not defined a cookie salt in your Cookie class then
  * uncomment the line below and define a preferrably long salt.
  */
-// Cookie::$salt = NULL;
+ Cookie::$salt = '7fddc3c405988ea9e37adf19e36eb22b';
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
@@ -150,7 +150,7 @@ Route::set('create_test', 'test/create')
 		'controller' => 'test',
 		'action' => 'create'
 	));
-Route::set('configure_test', 'test/configure/<filename>')
+Route::set('configure_test', 'test/configure')
 	->defaults(array(
 		'controller' => 'test',
 		'action' => 'configure'
