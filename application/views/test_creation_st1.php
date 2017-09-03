@@ -27,7 +27,7 @@
 				<li><input type="text" name="category" value="<?php echo isset($data, $data->category) ? $data->category : ''; ?>" placeholder="Категорія / Дисципліна"></li>
 				<li><input  type="number" name="total_time" value="<?php echo isset($data, $data->total_time) ? $data->total_time : ''; ?>" min="1" placeholder="Загальний час проходження тесту у хвилинах"></li>
 				<li><div class="comment">Приклад: 30 (у хвилинах)</div></li>
-				<li><input type="number" name="min_right_answers" value="<?php echo isset($data, $data->min_right_answers) ? $data->min_right_answers : ''; ?>" placeholder="Мінімальна кількість вірних відповідей"></li>
+				<li><input type="number" name="min_right_answers" value="<?php echo isset($data, $data->min_right_answers) ? $data->min_right_answers : ''; ?>" placeholder="Мінімальна кількість вірних відповідей для проходження тесту"></li>
 				<li><div class="comment">Приклад: 15</div></li>
 				<li><div class="btn">
 				<input type="submit" value="Зберегти">
