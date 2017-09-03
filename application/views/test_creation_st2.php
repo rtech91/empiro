@@ -65,7 +65,7 @@
             <input type="hidden" id="test_filename" name="filename"
               value="<?php echo $filename; ?>"> <input type="hidden"
               id="questions_list" name="questions" value=""> <input
-              type="submit" id="save_form_button" value="">
+              type="submit" id="save_form_button" value="" style="display: none;">
           </form>
         </div>
         <div class="save-test-wrap">
