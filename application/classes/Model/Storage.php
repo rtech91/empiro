@@ -127,7 +127,7 @@ class Model_Storage extends Model {
         $document->load($uri);
         try{
           if(!self::checkMainTestParams($document)){
-            throw new Exception_WrongTestParameters("Error checking answer in $uri.");
+            throw new Exception_WrongTestParameters("Error checking main test params in $uri.");
           }
           foreach($document->getElementsByTagName('question') as $question) {
             if(self::checkQuestion($question)) {
@@ -154,7 +154,7 @@ class Model_Storage extends Model {
           // but additional information as questions or answers
           // are broken and cannot be read
           $broken_file_info = new stdClass;
-          $broken_file_info->name = $parsed->name;
+          $broken_file_info->name = '';
           $broken_file_info->filepath = $uri;
           array_push($this->broken_files, $broken_file_info);
           unset($broken_file_info);
@@ -219,10 +219,7 @@ class Model_Storage extends Model {
    * return bool result of validation
    */
   public static function checkAnswer(&$answer) {
-    return 
-        null !== $answer->getAttribute('is_right')
-        && !empty($answer->getAttribute('is_right'))
-        && (strlen(trim($answer->nodeValue)) > 0);
+    return !empty($answer->nodeValue);
   }
 
   /**
@@ -238,7 +235,7 @@ class Model_Storage extends Model {
       $document->load($uri);
       $all_tests = array();
       $test = new stdClass;
-      $test->name = $document->getElementsByTagName('name')->item(0)->nodeValue;
+      $test->name = $document->getElementsByTagName('title')->item(0)->nodeValue;
       $test->category = $document->getElementsByTagName('category')->item(0)->nodeValue;
       $test->time = $document->getElementsByTagName('time')->item(0)->nodeValue;
       $test->allowTaskReviews = (bool)$document->getElementsByTagName('allowtaskreviews')->item(0)->nodeValue;

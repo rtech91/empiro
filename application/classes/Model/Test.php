@@ -55,12 +55,35 @@ class Model_Test extends Model {
         return $is_correct;
     }
 
-    public static function parsePartialTest($test_filename) {
+    public static function parsePartialTest($data) {
         $storage = Model_Storage::getInstance();
         $have_access = $storage->checkStorageFolderAccessibility();
-        $test_uri = Model_Storage::STORAGE_FOLDER.$test_filename.'.xml';
+        $test_uri = Model_Storage::STORAGE_FOLDER.$data->filename.'.xml';
         if($have_access && $storage->checkFileAccessibility($test_uri)) {
-            
+            $document = new DOMDocument();
+            $document->load($test_uri);
+            $collected_questions = json_decode($data->questions);
+            $root = $document->getElementsByTagName('test')->item(0);
+            $questionsNode = $document->createElement('questions');
+            foreach($collected_questions as $question) {
+                $questionNode = $document->createElement('question');
+                $titleNode = $document->createElement('title', $question->title);
+                $questionNode->appendChild($titleNode);
+                $exampleNode = $document->createElement('example', $question->example);
+                $questionNode->appendChild($exampleNode);
+                $answersNode = $document->createElement('answers', $question->example);
+                $answerTypeAttr = $questionNode->appendChild($answersNode);
+                $answerTypeAttr->setAttribute('type', $question->answer_type);
+                foreach($question->answers as $answer) {
+                    $answerNode = $document->createElement('answer', $answer->answer);
+                    $answerNodeAttr = $answersNode->appendChild($answerNode);
+                    $is_right = (empty($answer->is_right)) ? 0 : 1;
+                    $answerNodeAttr->setAttribute('is_right', $is_right);
+                }
+                $questionsNode->appendChild($questionNode);
+            }
+            $root->appendChild($questionsNode);
+            $document->save($test_uri);
         }
     }
 }

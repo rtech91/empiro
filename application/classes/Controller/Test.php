@@ -12,7 +12,7 @@ class Controller_Test extends Controller {
         $test_template = new DOMDocument;
         $root = $test_template->createElement('test');
         $test_template->appendChild($root);
-        $nameNode = $test_template->createElement('name', $data->name);
+        $nameNode = $test_template->createElement('title', $data->name);
         $root->appendChild($nameNode);
         $categoryNode = $test_template->createElement('category', $data->category);
         $root->appendChild($categoryNode);
@@ -20,6 +20,10 @@ class Controller_Test extends Controller {
         $root->appendChild($timeNode);
         $minRightAnswersNode = $test_template->createElement('minrightanswers', $data->min_right_answers);
         $root->appendChild($minRightAnswersNode);
+        $allowToReanswerNode = $test_template->createElement('allowtoreanswer', 'false');
+        $root->appendChild($allowToReanswerNode);
+        $allowToReanswerNode = $test_template->createElement('allowtaskreviews', 'false');
+        $root->appendChild($allowToReanswerNode);
         $test_template->save(Model_Storage::STORAGE_FOLDER.$filename.'.xml');
         $session = Session::instance();
         $session->set('filename', $filename);
@@ -62,8 +66,8 @@ class Controller_Test extends Controller {
   {
     if($this->request->method() === Request::POST) {
       $data = (object)$this->request->post();
-      Model_Test::parsePartialTest($data->filename);
+      Model_Test::parsePartialTest($data);
+      $this->redirect(URL::base());
     }
-    //TODO: implement test saving
   }
 } // End Test
