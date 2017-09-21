@@ -188,8 +188,8 @@ class Model_Storage extends Model {
    */
   public static function checkMainTestParams(&$parsed) {
     return
-      null !== $parsed->getElementsByTagName('title')->item(0)
-      && !empty($parsed->getElementsByTagName('title')->item(0)->nodeValue)
+      null !== $parsed->getElementsByTagName('name')->item(0)
+      && !empty($parsed->getElementsByTagName('name')->item(0)->nodeValue)
       && null !== $parsed->getElementsByTagName('category')->item(0)
       && !empty($parsed->getElementsByTagName('category')->item(0)->nodeValue)
       && null !== $parsed->getElementsByTagName('time')->item(0)
@@ -235,7 +235,7 @@ class Model_Storage extends Model {
       $document->load($uri);
       $all_tests = array();
       $test = new stdClass;
-      $test->name = $document->getElementsByTagName('title')->item(0)->nodeValue;
+      $test->name = $document->getElementsByTagName('name')->item(0)->nodeValue;
       $test->category = $document->getElementsByTagName('category')->item(0)->nodeValue;
       $test->time = $document->getElementsByTagName('time')->item(0)->nodeValue;
       $test->allowTaskReviews = (bool)$document->getElementsByTagName('allowtaskreviews')->item(0)->nodeValue;

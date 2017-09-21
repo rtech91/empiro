@@ -12,7 +12,7 @@ class Controller_Test extends Controller {
         $test_template = new DOMDocument;
         $root = $test_template->createElement('test');
         $test_template->appendChild($root);
-        $nameNode = $test_template->createElement('title', $data->name);
+        $nameNode = $test_template->createElement('name', $data->name);
         $root->appendChild($nameNode);
         $categoryNode = $test_template->createElement('category', $data->category);
         $root->appendChild($categoryNode);
