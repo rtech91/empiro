@@ -6,6 +6,9 @@
       var value = $('#selector-answer-type').val();
       createAnswerRows(value);
     });
+    var currentQuestionInterval = setInterval(function(){
+      $('#current_question').html(parseInt(localStorage.currentQuestion));
+    }, 100);
   });
 </script>
 <main>
@@ -27,7 +30,7 @@
              <?php endif; ?>
       <?php endforeach; ?>
     </div>
-      <h1>Створення тесту. Етап 2</h1>
+      <h1>Створення тесту. Етап 2. Запитання <span id="current_question">1</h1>
       <p>Введіть інформацію, згідно із довідковими даними у полях.</p>
       <div class="form-wrap stage1-wrap">
         <div class="form-style">
