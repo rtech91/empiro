@@ -153,11 +153,7 @@ class Model_Storage extends Model {
           // it means that common test data is fine
           // but additional information as questions or answers
           // are broken and cannot be read
-          $broken_file_info = new stdClass;
-          $broken_file_info->name = '';
-          $broken_file_info->filepath = $uri;
-          array_push($this->broken_files, $broken_file_info);
-          unset($broken_file_info);
+          array_push($this->broken_files, $uri);
           unset($this->file_uris[$key]);
           MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN);
         }
