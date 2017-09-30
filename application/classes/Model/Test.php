@@ -12,7 +12,7 @@ class Model_Test extends Model {
             $mh->registerMessage('Max name length is 32 symbols!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
-        if(empty($data->name)){
+        if(!empty($data->name) && preg_match('[^a-zA-Z0-9-&-\s]', $data->name)){
             $mh->registerMessage('Not allowed to use anything but letters, numbers and underscores in name!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
