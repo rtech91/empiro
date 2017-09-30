@@ -66,7 +66,7 @@ class Controller_Test extends Controller {
   {
     if($this->request->method() === Request::POST) {
       $data = (object)$this->request->post();
-      Model_Test::parsePartialTest($data);
+      Model_Test::saveFullTest($data);
       $this->redirect(URL::base());
     }
   }
