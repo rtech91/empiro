@@ -77,7 +77,7 @@ class Model_Test extends Model {
                 foreach($question->answers as $answer) {
                     $answerNode = $document->createElement('answer', $answer->answer);
                     $answerNodeAttr = $answersNode->appendChild($answerNode);
-                    $is_right = (empty($answer->is_right)) ? 0 : 1;
+                    $is_right = (empty($answer->is_right)) ? 'true' : 'false';
                     $answerNodeAttr->setAttribute('is_right', $is_right);
                 }
                 $questionsNode->appendChild($questionNode);
