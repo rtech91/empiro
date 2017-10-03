@@ -244,9 +244,10 @@ class Model_Storage extends Model {
       $test->allowTaskReviews = (bool)$document->getElementsByTagName('allowtaskreviews')->item(0)->nodeValue;
       $test->allowToReanswer = (bool)$document->getElementsByTagName('allowtoreanswer')->item(0)->nodeValue;
       $test->questions = array();
-      foreach($document->getElementsByTagName('question') as $question) {
+      $found_questions = $document->getElementsByTagName('question');
+      foreach($found_questions as $question) {
           $new_question = new stdClass;
-          $new_question->title = $question->nodeValue;
+          $new_question->title = $question->getElementsByTagName('title')->item(0)->nodeValue;
           $new_question->type = $question->getElementsByTagName('answers')->item(0)->getAttribute('type');
           $new_question->answers = array();
           foreach($question->getElementsByTagName('answer') as $answer) {
@@ -256,7 +257,7 @@ class Model_Storage extends Model {
               array_push($new_question->answers, $new_answer);
           }
           array_push($test->questions, $new_question);
-      }
+      };
       array_push($this->parsed_tests, $test);
     }
   }
