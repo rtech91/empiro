@@ -62,6 +62,16 @@ class Controller_Test extends Controller {
     $this->response->body($view->render());
   }
   
+  public function action_register()
+  {
+
+  }
+
+  public function action_questions()
+  {
+    
+  }
+
   public function action_save()
   {
     if($this->request->method() === Request::POST) {

@@ -155,6 +155,16 @@ Route::set('configure_test', 'test/configure')
 		'controller' => 'test',
 		'action' => 'configure'
 	));
+Route::set('pass_test_st1', 'test/pass/register')
+	->defaults(array(
+		'controller' => 'test',
+		'action' => 'register'
+	));
+Route::set('pass_test_st2', 'test/pass/questions')
+	->defaults(array(
+		'controller' => 'test',
+		'action' => 'questions'
+	));
 Route::set('save_test', 'test/save')
 	->defaults(array(
 		'controller' => 'test',
