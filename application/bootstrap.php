@@ -7,13 +7,13 @@ require SYSPATH.'classes/Kohana/Core'.EXT;
 
 if (is_file(APPPATH.'classes/Kohana'.EXT))
 {
-	// Application extends the core
-	require APPPATH.'classes/Kohana'.EXT;
+  // Application extends the core
+  require APPPATH.'classes/Kohana'.EXT;
 }
 else
 {
-	// Load empty core extension
-	require SYSPATH.'classes/Kohana'.EXT;
+  // Load empty core extension
+  require SYSPATH.'classes/Kohana'.EXT;
 }
 
 /**
@@ -72,8 +72,8 @@ I18n::lang('en-us');
 
 if (isset($_SERVER['SERVER_PROTOCOL']))
 {
-	// Replace the default protocol.
-	HTTP::$protocol = $_SERVER['SERVER_PROTOCOL'];
+  // Replace the default protocol.
+  HTTP::$protocol = $_SERVER['SERVER_PROTOCOL'];
 }
 
 /**
@@ -84,7 +84,7 @@ if (isset($_SERVER['SERVER_PROTOCOL']))
  */
 if (isset($_SERVER['KOHANA_ENV']))
 {
-	Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
+  Kohana::$environment = constant('Kohana::'.strtoupper($_SERVER['KOHANA_ENV']));
 }
 
 /**
@@ -103,8 +103,8 @@ if (isset($_SERVER['KOHANA_ENV']))
  * - boolean  expose      set the X-Powered-By header                        FALSE
  */
 Kohana::init(array(
-	'base_url'   => 'http://empiro/',
-	'index_file' => false
+  'base_url'   => 'http://empiro/',
+  'index_file' => false
 ));
 
 /**
@@ -121,16 +121,16 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	 'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'minion'     => MODPATH.'minion',     // CLI Tasks
-	 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-	));
+  // 'auth'       => MODPATH.'auth',       // Basic authentication
+  // 'cache'      => MODPATH.'cache',      // Caching with multiple backends
+  // 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
+   'database'   => MODPATH.'database',   // Database access
+  // 'image'      => MODPATH.'image',      // Image manipulation
+  // 'minion'     => MODPATH.'minion',     // CLI Tasks
+   'orm'        => MODPATH.'orm',        // Object Relationship Mapping
+  // 'unittest'   => MODPATH.'unittest',   // Unit testing
+   'userguide'  => MODPATH.'userguide',  // User guide and API documentation
+  ));
 
 /**
  * Cookie Salt
@@ -140,16 +140,17 @@ Kohana::modules(array(
  * uncomment the line below and define a preferrably long salt.
  */
  Cookie::$salt = '7fddc3c405988ea9e37adf19e36eb22b';
+ Session::$default = 'native';
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
 Route::set('create_test', 'test/create')
-	->defaults(array(
-		'controller' => 'test',
-		'action' => 'create'
-	));
+  ->defaults(array(
+    'controller' => 'test',
+    'action' => 'create'
+  ));
 Route::set('configure_test', 'test/configure')
 	->defaults(array(
 		'controller' => 'test',
@@ -166,27 +167,32 @@ Route::set('pass_test_st2', 'test/pass/questions')
 		'action' => 'questions'
 	));
 Route::set('save_test', 'test/save')
-	->defaults(array(
-		'controller' => 'test',
-		'action' => 'save'
-	));
+  ->defaults(array(
+    'controller' => 'test',
+    'action' => 'save'
+  ));
 Route::set('admin_main', 'admin/main')
   ->defaults(array(
     'controller' => 'admin',
     'action' => 'main'
   ));
+Route::set('admin_logout', 'admin/logout')
+  ->defaults(array(
+        'controller' => 'admin',
+        'action' => 'logout'
+      ));
 Route::set('admin_entrance', 'admin/entrance')
   ->defaults(array(
     'controller' => 'admin',
     'action' => 'entrance'
   ));
 Route::set('contact_page', 'contacts')
-	->defaults(array(
-		'controller' => 'main',
-		'action' => 'contacts'
-	));
+  ->defaults(array(
+    'controller' => 'main',
+    'action' => 'contacts'
+  ));
 Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'main',
-		'action'     => 'index',
-	));
+  ->defaults(array(
+    'controller' => 'main',
+    'action'     => 'index',
+  ));
