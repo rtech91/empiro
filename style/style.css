@@ -111,6 +111,9 @@ nav {
 .nav li a:hover, .nav li:hover a{
     color: #277e99;
 }
+.nav li:hover {
+  cursor: pointer;
+}
 /* main block */
 main{
     width: 100%;

@@ -1,6 +1,6 @@
-	<main>
-		<div class="home">
-			<div class="alert-wrap">
+  <main>
+    <div class="home">
+      <div class="alert-wrap">
       <?php foreach($messages as $message): ?>
         <?php if($message->bits & MessageHandler::ACCESS_ADMIN): ?>
           <?php if($message->bits & MessageHandler::MH_FAILURE): ?>
@@ -16,18 +16,18 @@
           </div>
         <?php endif; ?>
       <?php endforeach; ?>
-			</div>
-			<div class="container">
-				<div class="form-wrap password-wrap">
-					<div class="form-style">
-					<form method="post">
-						<input type="password" name="password" placeholder="Введіть пароль">
-						<div class="btn">
-						<input id="admin-submit" type="submit" value="Надіслати">
-						</div>
-					</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
+      </div>
+      <div class="container">
+        <div class="form-wrap password-wrap">
+          <div class="form-style">
+          <form method="post">
+            <input type="password" name="password" placeholder="Введіть пароль">
+            <div class="btn">
+            <input id="admin-submit" type="submit" value="Надіслати">
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

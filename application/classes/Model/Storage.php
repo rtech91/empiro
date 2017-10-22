@@ -127,7 +127,7 @@ class Model_Storage extends Model {
         $document->load($uri);
         try{
           if(!self::checkMainTestParams($document)){
-            throw new Exception_WrongTestParameters("Error checking answer in $uri.");
+            throw new Exception_WrongTestParameters("Error checking main test params in $uri.");
           }
           foreach($document->getElementsByTagName('question') as $question) {
             if(self::checkQuestion($question)) {
@@ -153,11 +153,7 @@ class Model_Storage extends Model {
           // it means that common test data is fine
           // but additional information as questions or answers
           // are broken and cannot be read
-          $broken_file_info = new stdClass;
-          $broken_file_info->name = $parsed->name;
-          $broken_file_info->filepath = $uri;
-          array_push($this->broken_files, $broken_file_info);
-          unset($broken_file_info);
+          array_push($this->broken_files, $uri);
           unset($this->file_uris[$key]);
           MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN);
         }
@@ -188,8 +184,8 @@ class Model_Storage extends Model {
    */
   public static function checkMainTestParams(&$parsed) {
     return
-      null !== $parsed->getElementsByTagName('title')->item(0)
-      && !empty($parsed->getElementsByTagName('title')->item(0)->nodeValue)
+      null !== $parsed->getElementsByTagName('name')->item(0)
+      && !empty($parsed->getElementsByTagName('name')->item(0)->nodeValue)
       && null !== $parsed->getElementsByTagName('category')->item(0)
       && !empty($parsed->getElementsByTagName('category')->item(0)->nodeValue)
       && null !== $parsed->getElementsByTagName('time')->item(0)
@@ -219,10 +215,14 @@ class Model_Storage extends Model {
    * return bool result of validation
    */
   public static function checkAnswer(&$answer) {
-    return 
-        null !== $answer->getAttribute('is_right')
-        && !empty($answer->getAttribute('is_right'))
-        && (strlen(trim($answer->nodeValue)) > 0);
+    $valid = false;
+    if(!empty($answer->nodeValue)
+    && Valid::max_length($answer->nodeValue, 280)
+    //&& preg_match("[a-zA-Z0-9-&\s.+]", $answer->nodeValue)
+    && !empty($answer->getAttribute('is_right'))){
+      $valid = true;
+    }
+    return $valid;
   }
 
   /**
@@ -244,9 +244,10 @@ class Model_Storage extends Model {
       $test->allowTaskReviews = (bool)$document->getElementsByTagName('allowtaskreviews')->item(0)->nodeValue;
       $test->allowToReanswer = (bool)$document->getElementsByTagName('allowtoreanswer')->item(0)->nodeValue;
       $test->questions = array();
-      foreach($document->getElementsByTagName('question') as $question) {
+      $found_questions = $document->getElementsByTagName('question');
+      foreach($found_questions as $question) {
           $new_question = new stdClass;
-          $new_question->title = $question->nodeValue;
+          $new_question->title = $question->getElementsByTagName('title')->item(0)->nodeValue;
           $new_question->type = $question->getElementsByTagName('answers')->item(0)->getAttribute('type');
           $new_question->answers = array();
           foreach($question->getElementsByTagName('answer') as $answer) {
@@ -256,7 +257,7 @@ class Model_Storage extends Model {
               array_push($new_question->answers, $new_answer);
           }
           array_push($test->questions, $new_question);
-      }
+      };
       array_push($this->parsed_tests, $test);
     }
   }

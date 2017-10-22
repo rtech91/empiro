@@ -20,6 +20,10 @@ class Controller_Test extends Controller {
         $root->appendChild($timeNode);
         $minRightAnswersNode = $test_template->createElement('minrightanswers', $data->min_right_answers);
         $root->appendChild($minRightAnswersNode);
+        $allowToReanswerNode = $test_template->createElement('allowtoreanswer', 'false');
+        $root->appendChild($allowToReanswerNode);
+        $allowToReanswerNode = $test_template->createElement('allowtaskreviews', 'false');
+        $root->appendChild($allowToReanswerNode);
         $test_template->save(Model_Storage::STORAGE_FOLDER.$filename.'.xml');
         $session = Session::instance();
         $session->set('filename', $filename);
@@ -58,12 +62,22 @@ class Controller_Test extends Controller {
     $this->response->body($view->render());
   }
   
+  public function action_register()
+  {
+
+  }
+
+  public function action_questions()
+  {
+    
+  }
+
   public function action_save()
   {
     if($this->request->method() === Request::POST) {
       $data = (object)$this->request->post();
-      Model_Test::parsePartialTest($data->filename);
+      Model_Test::saveFullTest($data);
+      $this->redirect(URL::base());
     }
-    //TODO: implement test saving
   }
 } // End Test
