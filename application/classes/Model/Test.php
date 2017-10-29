@@ -1,6 +1,11 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Model_Test extends Model {
+
+    /**
+     * Validate initial test data
+     * @param stdClass $data
+     */
     public static function validateInitialData($data){
         $mh = MessageHandler::getInstance();
         $is_correct = true;
@@ -55,6 +60,10 @@ class Model_Test extends Model {
         return $is_correct;
     }
 
+    /**
+     * Save test with full data complectation
+     * @param stdClass $data Data collection for test
+     */
     public static function saveFullTest($data) {
         $storage = Model_Storage::getInstance();
         $have_access = $storage->checkStorageFolderAccessibility();

@@ -86,6 +86,8 @@ class Model_Storage extends Model {
   /**
    * Check if specified path describes concrete file,
    * that have read|write rights and .xml extension
+   * @param string $filepath Full file path
+   * @return bool result of file acccessibility checking
    */
   public function checkFileAccessibility($filepath) {
     return 
@@ -179,8 +181,8 @@ class Model_Storage extends Model {
   
   /**
    * Check main parameters of test for accessibility
-   * @var $parsed object with parsed xml document
-   * return bool true or false value
+   * @param $parsed object with parsed xml document
+   * @return bool true or false value
    */
   public static function checkMainTestParams(&$parsed) {
     return
@@ -200,7 +202,7 @@ class Model_Storage extends Model {
   /**
    * Check question for non-emptiness and additional attributes.
    * @param reference $question Link to question object
-   * return bool result of validation
+   * @return bool result of validation
    */
   public static function checkQuestion(&$question) {
     return
@@ -212,7 +214,7 @@ class Model_Storage extends Model {
   /**
    * Check answer for non-emptiness and additional attributes.
    * @param reference $answer Link to answer object
-   * return bool result of validation
+   * @return bool result of validation
    */
   public static function checkAnswer(&$answer) {
     $valid = false;

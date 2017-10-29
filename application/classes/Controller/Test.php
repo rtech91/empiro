@@ -1,6 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_Test extends Controller {
+
+  /**
+   * Create basic template of test
+   */
   public function action_create()
   {
     $data = null;
@@ -43,6 +47,9 @@ class Controller_Test extends Controller {
     $this->response->body($view->render());
   }
 
+  /**
+   * Configure created test with filling necessary params
+   */
   public function action_configure()
   {
     $session = Session::instance();
@@ -78,6 +85,9 @@ class Controller_Test extends Controller {
     
   }
 
+  /**
+   * Save full test into test storage
+   */
   public function action_save()
   {
     if($this->request->method() === Request::POST) {

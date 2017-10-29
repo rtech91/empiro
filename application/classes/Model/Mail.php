@@ -12,6 +12,10 @@ class Model_Mail extends Model {
     'OPT_PROPOSALS' => 'Пропозиції'
   );
   
+  /**
+   * Send contact email
+   * @param stdClass $data
+   */
   public static function sendContactMail($data) {
     $message  = $data->contact_name.'<br>';
     $message .= $data->contact_email.'<br><br>';
