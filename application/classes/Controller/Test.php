@@ -64,7 +64,13 @@ class Controller_Test extends Controller {
   
   public function action_register()
   {
-
+    $groups = Model_Group::getAll();
+    $view = new View('layout');
+    $view->header = new View('header');
+    $view->content = new View('test_pass_st1');
+    $view->content->groups = $groups;
+    $view->footer = new View('footer');
+    $this->response->body($view->render());
   }
 
   public function action_questions()
