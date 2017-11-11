@@ -25,6 +25,16 @@ function createAnswerRows(type) {
     }
     $('#answers_list').show();
 }
+
+function setMinRightAnswers() {
+    var mr_answers = $('#mr_answers').val();
+    if(mr_answers == '') {
+        mr_answers = 0;
+    }
+    localStorage.mr_answers = mr_answers;
+    $('#st1_form').submit();
+}
+
 function parseNewQuestion() {
     var newQuestion = new Object;
     newQuestion.id = localStorage.currentQuestion;

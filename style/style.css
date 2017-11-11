@@ -389,7 +389,7 @@ footer {
     padding: 3%;
     border: 1px solid #4ab550;
 }
-.form-style input[type="submit"] {
+.form-style input[type="submit"], .form-style input[type="button"] {
     width: 100%;
     background: #4ab550;
   border: 0;
@@ -397,7 +397,7 @@ footer {
   border-radius: 5px;
   margin-bottom: 0;
 }
-.form-style input[type="submit"]:hover {
+.form-style input[type="submit"]:hover, .form-style input[type="button"]:hover {
     background: #f7af27;
 }
 /* admin form */
