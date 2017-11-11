@@ -173,7 +173,14 @@ function previousQuestion() {
 	$('#add-question').removeClass('btn-disabled').removeAttr('disabled').addClass('btn-active');
 }
 function saveTestData() {
-    addNewQuestion();
-    $('#questions_list').val(localStorage.questionStorage);
-    $('#save_form_button').trigger('click');
+    if(localStorage.lastQuestion >= localStorage.mr_answers) {
+        addNewQuestion();
+        $('#questions_list').val(localStorage.questionStorage);
+        $('#save_form_button').trigger('click');
+    }
+    else
+    {
+        alert("Кількість створених запитань повинна бути більшою, ніж мінімальна кількість вірних!");
+        addNewQuestion();
+    }
 }
