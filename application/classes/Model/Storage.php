@@ -220,7 +220,7 @@ class Model_Storage extends Model {
     $valid = false;
     if(!empty($answer->nodeValue)
     && Valid::max_length($answer->nodeValue, 280)
-    //&& preg_match("[a-zA-Z0-9-&\s.+]", $answer->nodeValue)
+    && preg_match("/[a-zA-Z0-9-&\s.+]+/", $answer->nodeValue)
     && !empty($answer->getAttribute('is_right'))){
       $valid = true;
     }
