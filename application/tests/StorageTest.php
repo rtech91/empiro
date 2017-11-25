@@ -24,4 +24,34 @@ class StorageTest extends Unittest_TestCase {
         
         $this->assertEquals(true, Model_Storage::checkAnswer($answer));
     }
+
+    public function testCheckQuestionEmptyTitle() {
+        $document = new DOMDocument();
+        $question = $document->createElement('question');
+        $question_title = $document->createElement('title', '');
+        $question->appendChild($question_title);
+        $answers = $document->createElement('answers');
+        $answers_type = $document->createAttribute('type');
+        $answers_type->value = 'one';
+        $answers->appendChild($answers_type);
+        $question->appendChild($answers);
+        $document->appendChild($question);
+
+        $this->assertEquals(false, Model_Storage::checkQuestion($question));
+    }
+
+    public function testCheckWholeQuestion() {
+        $document = new DOMDocument();
+        $question = $document->createElement('question');
+        $question_title = $document->createElement('title', 'What is C++?');
+        $question->appendChild($question_title);
+        $answers = $document->createElement('answers');
+        $answers_type = $document->createAttribute('type');
+        $answers_type->value = 'one';
+        $answers->appendChild($answers_type);
+        $question->appendChild($answers);
+        $document->appendChild($question);
+
+        $this->assertEquals(true, Model_Storage::checkQuestion($question));
+    }
 }
