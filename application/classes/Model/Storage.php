@@ -240,6 +240,7 @@ class Model_Storage extends Model {
       $document->load($uri);
       $all_tests = array();
       $test = new stdClass;
+      $test->filename = pathinfo($uri, PATHINFO_FILENAME);
       $test->name = $document->getElementsByTagName('name')->item(0)->nodeValue;
       $test->category = $document->getElementsByTagName('category')->item(0)->nodeValue;
       $test->time = $document->getElementsByTagName('time')->item(0)->nodeValue;

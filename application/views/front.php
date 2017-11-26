@@ -35,7 +35,7 @@
             <td><?php echo count($test->questions); ?></td>
             <td><?php echo date('H:i:s', strtotime($test->time)); ?></td>
             <td><?php echo $test->category; ?></td>
-            <td><a href="#">Розпочати</a></td>
+            <td><a href="<?php echo URL::site(Route::get('pass_test_st1')->uri(array('test_id' => $test->filename)), true); ?>">Розпочати</a></td>
           </tr>
           <?php endforeach; ?>
         </table>

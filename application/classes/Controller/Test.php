@@ -71,10 +71,34 @@ class Controller_Test extends Controller {
   
   public function action_register()
   {
+    $test_id = $this->request->param('test_id');
+    if(!empty($test_id) && is_numeric($test_id)) {
+      $session = Session::instance();
+      $session->set('test_id', $test_id);
+    }
+    else {
+      $this->redirect(URL::base());
+    }
+    $data = null;
+    if($this->request->method() === Request::POST) {
+      if(isset($_POST["op"]) && $_POST["op"] === "pass_st1_form") {
+        $data = (object)$this->request->post();
+        $val_output = Model_Test::validateRegisterData($data);
+        if(true === $val_output) {
+          $session = Session::instance();
+          $session->set('surname', $data->surname);
+          $session->set('name', $data->name);
+          $session->set('midname', $data->midname);
+          $this->redirect(URL::site(Route::get('pass_test_st2')->uri(), true));
+        }
+      }
+    }
+    $messages = MessageHandler::getInstance()->getMessages();
     $groups = Model_Group::getAll();
     $view = new View('layout');
     $view->header = new View('header');
     $view->content = new View('test_pass_st1');
+    $view->content->messages = $messages;
     $view->content->groups = $groups;
     $view->footer = new View('footer');
     $this->response->body($view->render());

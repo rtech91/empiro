@@ -156,7 +156,7 @@ Route::set('configure_test', 'test/configure')
 		'controller' => 'test',
 		'action' => 'configure'
 	));
-Route::set('pass_test_st1', 'test/pass/register')
+Route::set('pass_test_st1', 'test/pass/register(/<test_id>)', array('test_id' => '\d+'))
 	->defaults(array(
 		'controller' => 'test',
 		'action' => 'register'
