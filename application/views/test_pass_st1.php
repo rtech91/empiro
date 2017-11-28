@@ -22,17 +22,17 @@
       <div class="form-wrap stage1-wrap">
         <div class="form-style">
           <form action="" method="post" id="pass_st1_form">
-            <input type="text" name="surname" placeholder="Прізвище"> <input
-              type="text" name="name" placeholder="Ім'я"> <input
-              type="text" name="midname" placeholder="По-батькові"> <input
-              type="hidden" name="op" value="pass_st1_form"> <select
-              id="group" name="group">
+            <input type="text" name="surname" placeholder="Прізвище"> 
+            <input type="text" name="name" placeholder="Ім'я"> 
+            <input type="text" name="patronymic" placeholder="По-батькові"> 
+            <input type="hidden" name="op" value="pass_st1_form"> 
+            <select id="group" name="group">
                 <?php foreach($groups as $group): ?>
                 <option value="<?php echo $group->id; ?>">
-                	<?php echo $group->name; ?>
+                  <?php echo $group->name; ?>
                 </option>
                 <?php endforeach; ?>
-                </select>
+            </select>
             <div class="btn">
               <input type="submit" value="Продовжити">
             </div>

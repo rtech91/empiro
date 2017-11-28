@@ -88,7 +88,7 @@ class Controller_Test extends Controller {
           $session = Session::instance();
           $session->set('surname', $data->surname);
           $session->set('name', $data->name);
-          $session->set('midname', $data->midname);
+          $session->set('patronymic', $data->midname);
           $this->redirect(URL::site(Route::get('pass_test_st2')->uri(), true));
         }
       }
