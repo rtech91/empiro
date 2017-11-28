@@ -72,7 +72,7 @@ class Controller_Test extends Controller {
   public function action_register()
   {
     $test_id = $this->request->param('test_id');
-    if(!empty($test_id) && is_numeric($test_id)) {
+    if(!empty($test_id) && !empty($test_id)) {
       $session = Session::instance();
       $session->set('test_id', $test_id);
     }
