@@ -68,16 +68,18 @@ class Controller_Test extends Controller {
     $view->footer = new View('footer');
     $this->response->body($view->render());
   }
-  
+
   public function action_register()
   {
     $test_id = $this->request->param('test_id');
-    if(!empty($test_id) && !empty($test_id)) {
+    $filepath = Model_Storage::STORAGE_FOLDER.$test_id.'.xml';
+    if(!empty($test_id) && !empty($test_id) && Model_Storage::getInstance()->checkFileAccessibility($filepath)) {
       $session = Session::instance();
       $session->set('test_id', $test_id);
     }
     else {
       $this->redirect(URL::base());
+      exit(0);
     }
     $data = null;
     if($this->request->method() === Request::POST) {
@@ -106,7 +108,7 @@ class Controller_Test extends Controller {
 
   public function action_questions()
   {
-    
+
   }
 
   /**
