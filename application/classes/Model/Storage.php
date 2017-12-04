@@ -1,33 +1,33 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Model_Storage extends Model {
-  
+
   /**
    * Used to hold all addresses to test xml files in file system.
    * @var array $file_uris
    */
   public $file_uris;
-  
+
   /**
    * Used to hold all parsed and ready to use tests.
    * @var array $parsed_tests
    */
   private $parsed_tests;
-  
+
   /**
    * Used to hold only one instance of object
    * according to Singleton pattern.
    * @var Storage $instance
    */
   private static $instance = null;
-  
+
   /**
    * Used when was broken common data in test file.
    * Format: List of physical absolute addresses to broken file.
-   * @var array $innaccessible_files 
+   * @var array $innaccessible_files
    */
   private $innaccessible_files;
-  
+
   /**
    * Used when was broken additional data in test file
    * such as question or nested answer information.
@@ -35,38 +35,44 @@ class Model_Storage extends Model {
    * @var array $broken_files
    */
   private $broken_files;
-  
+
   /**
    * Used for constant physical address to test files storage
    * @var const STORAGE_FOLDER
    */
   const STORAGE_FOLDER = APPPATH.'test_storage'.DIRECTORY_SEPARATOR;
-  
+
+  /**
+   * Used for constant test file extension in test's storage
+   * @var const FILE_EXT
+   */
+  const FILE_EXT = '.xml';
+
   private function __construct() {
     $this->file_uris = array();
     $this->innaccessible_files = array();
     $this->broken_files = array();
     $this->parsed_tests = array();
   }
-  
+
   public function __destruct() {
     $this->file_uris = null;
     $this->innaccessible_files = null;
     $this->broken_files = null;
     $this->parsed_tests = null;
   }
-  
+
   /**
    * Get singleton instance of Storage object.
    * @return Storage instance
    */
   public static function getInstance() {
     if(self::$instance === null){
-        self::$instance = new self; 
+        self::$instance = new self;
     }
     return self::$instance;
   }
-  
+
   /**
     * Checks storage folder and it contents for accessibility
     * @return bool true or false according to validation result
@@ -77,7 +83,7 @@ class Model_Storage extends Model {
         return true;
       }else {
         throw new Exception_StorageAccessError('Cannot read tests storage folder', 500);
-      } 
+      }
     }catch(Exception_StorageAccessError $e) {
       MessageHandler::getInstance()->registerMessage($e->getMessage(), (MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER));
     }
@@ -90,13 +96,13 @@ class Model_Storage extends Model {
    * @return bool result of file acccessibility checking
    */
   public function checkFileAccessibility($filepath) {
-    return 
-      is_file($filepath) && 
-      is_readable($filepath) && 
-      is_writable($filepath) && 
+    return
+      is_file($filepath) &&
+      is_readable($filepath) &&
+      is_writable($filepath) &&
       'xml' === pathinfo($filepath, PATHINFO_EXTENSION);
   }
-  
+
   /**
    * Read all test files with .xml extenstion and collect them
    * for future processing
@@ -115,7 +121,7 @@ class Model_Storage extends Model {
       }
     }
   }
-  
+
   /**
    * Validate collected files with tests
    * for special rules that every tests must match
@@ -162,7 +168,7 @@ class Model_Storage extends Model {
       }
     }
   }
-  
+
   /**
    * Parse and return all accessible tests for future using.
    * @return array List of parsed tests or empty array()
@@ -178,7 +184,7 @@ class Model_Storage extends Model {
       return array();
     }
   }
-  
+
   /**
    * Check main parameters of test for accessibility
    * @param $parsed object with parsed xml document
@@ -198,7 +204,7 @@ class Model_Storage extends Model {
       && null !== $parsed->getElementsByTagName('allowtoreanswer')->item(0)
       && !empty($parsed->getElementsByTagName('allowtoreanswer')->item(0)->nodeValue);
   }
-  
+
   /**
    * Check question for non-emptiness and additional attributes.
    * @param reference $question Link to question object
@@ -210,7 +216,7 @@ class Model_Storage extends Model {
         && !empty($question->getElementsByTagName('title')->item(0)->nodeValue)
         && !empty($question->getElementsByTagName('answers')->item(0)->getAttribute('type'));
   }
-  
+
   /**
    * Check answer for non-emptiness and additional attributes.
    * @param reference $answer Link to answer object
