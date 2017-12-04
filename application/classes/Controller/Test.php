@@ -28,7 +28,7 @@ class Controller_Test extends Controller {
         $root->appendChild($allowToReanswerNode);
         $allowToReanswerNode = $test_template->createElement('allowtaskreviews', 'false');
         $root->appendChild($allowToReanswerNode);
-        $test_template->save(Model_Storage::STORAGE_FOLDER.$filename.'.xml');
+        $test_template->save(Model_Storage::STORAGE_FOLDER.$filename.Model_Storage::FILE_EXT);
         $session = Session::instance();
         $session->set('filename', $filename);
         $session->set('test_name', $data->name);
@@ -72,7 +72,7 @@ class Controller_Test extends Controller {
   public function action_register()
   {
     $test_id = $this->request->param('test_id');
-    $filepath = Model_Storage::STORAGE_FOLDER.$test_id.'.xml';
+    $filepath = Model_Storage::STORAGE_FOLDER.$test_id.Model_Storage::FILE_EXT;
     if(!empty($test_id) && !empty($test_id) && Model_Storage::getInstance()->checkFileAccessibility($filepath)) {
       $session = Session::instance();
       $session->set('test_id', $test_id);
