@@ -1,13 +1,13 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_Main extends Controller {
-  
+
   private $tests;
 
-  public function before() 
+  public function before()
   {
     $storage = Model_Storage::getInstance();
-    $this->tests = $storage->getTests();
+    $this->tests = $storage->getAllAvailableTests();
   }
 
   public function action_index()
@@ -25,7 +25,7 @@ class Controller_Main extends Controller {
     $view->footer = new View('footer');
     $this->response->body($view->render());
   }
-  
+
   public function action_contacts()
   {
     if($this->request->method() === Request::POST) {
@@ -36,7 +36,7 @@ class Controller_Main extends Controller {
       // such as empty input text or wrong message category
       Model_Mail::sendContactMail($data);
     }
-    
+
     $messages = MessageHandler::getInstance()->getMessages();
     $view = new View('layout');
     $view->header = new View('header');
