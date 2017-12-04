@@ -61,13 +61,42 @@ class Model_Test extends Model {
     }
 
     /**
+     * Retrieve fully parsed test for test passing process.
+     * @param string $filename Name of test file in storage
+     * @param bool $as_json Convert stdClass result into JSON representation. Default value is 'false'
+     */
+    public static function getFullTest($filename, $as_json = false) {
+        $storage = Model_Storage::getInstance();
+        $have_access = $storage->checkStorageFolderAccessibility();
+        $test_uri = Model_Storage::STORAGE_FOLDER.$filename.Model_Storage::FILE_EXT;
+        try {
+            if($have_access && $storage->checkFileAccessibility($test_uri)) {
+                $storage->addFileURIToParse($test_uri);
+                $tests = $storage->getParsedTests();
+                if(count($tests) == 1 && $tests[0] instanceof stdClass) {
+                    $test_to_return = $tests[0];
+                    return $as_json ? json_encode($test_to_return) : $test_to_return;
+                }else {
+                    throw new Exception_ParsingTestFileFailure('Critical error was occured while parsing test file', 500);
+                }
+            }else {
+                throw new Exception_StorageAccessError('Cannot read tests storage folder', 500);
+            }
+        }catch(Exception_StorageAccessError $e) {
+          MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER);
+        }catch(Exception_ParsingTestFileFailure $e) {
+          MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER);
+        }
+    }
+
+    /**
      * Save test with full data complectation
      * @param stdClass $data Data collection for test
      */
     public static function saveFullTest($data) {
         $storage = Model_Storage::getInstance();
         $have_access = $storage->checkStorageFolderAccessibility();
-        $test_uri = Model_Storage::STORAGE_FOLDER.$data->filename.'.xml';
+        $test_uri = Model_Storage::STORAGE_FOLDER.$data->filename.Model_Storage::FILE_EXT;
         if($have_access && $storage->checkFileAccessibility($test_uri)) {
             $document = new DOMDocument();
             $document->load($test_uri);

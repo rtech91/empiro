@@ -76,12 +76,13 @@ class Controller_Test extends Controller {
     if(!empty($test_id) && !empty($test_id) && Model_Storage::getInstance()->checkFileAccessibility($filepath)) {
       $session = Session::instance();
       $session->set('test_id', $test_id);
+      $test = Model_Test::getFullTest($test_id, true);
+      $session->set('test_data', $test);
     }
     else {
-      $this->redirect(URL::base());
-      exit(0);
+      MessageHandler::getInstance()->registerMessage('Test file was not found! Please ask administrator for assistance.', MessageHandler::MH_FAILURE|MessageHandler::ACCESS_USER);
     }
-    $data = null;
+
     if($this->request->method() === Request::POST) {
       if(isset($_POST["op"]) && $_POST["op"] === "pass_st1_form") {
         $data = (object)$this->request->post();

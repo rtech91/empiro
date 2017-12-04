@@ -170,19 +170,27 @@ class Model_Storage extends Model {
   }
 
   /**
-   * Parse and return all accessible tests for future using.
+   * Parse and return all available tests for future using.
    * @return array List of parsed tests or empty array()
    */
-  public function getTests() {
+  public function getAllAvailableTests() {
     if($this->checkStorageFolderAccessibility()) {
       $this->collectTestsInStorage();
       $this->validateCollectedTests();
-      $this->parseCollectedTests();
-      if(!empty($this->parsed_tests) && count($this->parsed_tests) > 0) {
-        return $this->parsed_tests;
-      }
-      return array();
+      return $this->getParsedTests();
     }
+  }
+
+  /**
+   * Get recently parsed tests.
+   * @return array() or list of stdClass objects with parsed tests.
+   */
+  public function getParsedTests() {
+    $this->parseCollectedTests();
+    if(!empty($this->parsed_tests) && count($this->parsed_tests) > 0) {
+      return $this->parsed_tests;
+    }
+    return array();
   }
 
   /**
@@ -234,10 +242,19 @@ class Model_Storage extends Model {
   }
 
   /**
+   * Add full test file URI to the internal list of test files,
+   * prepared for parsing.
+   * @param string $file_uri Full absolute file URI address in the tests storage
+   */
+  public function addFileURIToParse($file_uri) {
+    array_push($this->file_uris, $file_uri);
+  }
+
+  /**
     * Method specified to collect parsed and validated tests data
     * into common public list
     */
-  private function parseCollectedTests() {
+  public function parseCollectedTests() {
     if(!isset($this->file_uris) || empty($this->file_uris) || !is_array($this->file_uris)) {
       return array();
     }
@@ -262,7 +279,7 @@ class Model_Storage extends Model {
           foreach($question->getElementsByTagName('answer') as $answer) {
               $new_answer = new stdClass;
               $new_answer->is_right = (bool)$answer->getAttribute('is_right');
-              $new_answer->is_right = $answer->nodeValue;
+              $new_answer->text = $answer->nodeValue;
               array_push($new_question->answers, $new_answer);
           }
           array_push($test->questions, $new_question);
