@@ -18,14 +18,14 @@
     <?php endforeach; ?>
     </div>
     <?php if(count($messages) == 0): ?>
-      <h1>Проходження тесту. Етап I</h1>
-      <p>До початку проходження тесту, заповніть дані.</p>
+      <h1>Test passage. Stage I</h1>
+      <p>Before beginning the test passing, fill in the data.</p>
       <div class="form-wrap stage1-wrap">
         <div class="form-style">
           <form action="" method="post" id="pass_st1_form">
-            <input type="text" name="surname" placeholder="Прізвище">
-            <input type="text" name="name" placeholder="Ім'я">
-            <input type="text" name="patronymic" placeholder="По-батькові">
+            <input type="text" name="surname" placeholder="Surname">
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="patronymic" placeholder="Patronymic">
             <input type="hidden" name="op" value="pass_st1_form">
             <select id="group" name="group">
                 <?php foreach($groups as $group): ?>
@@ -35,7 +35,7 @@
                 <?php endforeach; ?>
             </select>
             <div class="btn">
-              <input type="submit" value="Продовжити">
+              <input type="submit" value="Continue">
             </div>
           </form>
         </div>

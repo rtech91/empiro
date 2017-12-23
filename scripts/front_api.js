@@ -68,7 +68,7 @@ function addNewQuestion() {
     }
 }
 function updateQuestion(parsedQuestion) {
-    if(confirm('Ви дійсно бажаєте зберегти зміни?')){
+    if(confirm('Do you want to save the changes?')){
         var storedQuestions = JSON.parse(localStorage.questionStorage);
         var question = null;
         storedQuestions.forEach(function(currentQuestion, index, array) {
@@ -180,7 +180,10 @@ function saveTestData() {
     }
     else
     {
-        alert("Кількість створених запитань повинна бути більшою, ніж мінімальна кількість вірних!");
+        alert("Number of created questions must be bigger than minimum number of right questions!");
         addNewQuestion();
     }
+}
+function saveTempAnswers() {
+    
 }

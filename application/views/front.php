@@ -17,17 +17,17 @@
           <?php endif; ?>
         <?php endforeach; ?>
       </div>
-      <h1>Тестування знань</h1>
-      <p>Ви знаходитесь на головній сторінці тестування знань. Тут ви можете обрати предмет, за яким хочете скласти іспит.</p>
+      <h1>Knowledge testing</h1>
+      <p>You are at main knowledge testing page. Here you can choose the subject, you want to take the exam at.</p>
       <div class="table">
       <?php if(!empty($tests) && is_array($tests) && count($tests) > 0): ?>
         <table>
           <tr>
-            <th>Назва тесту</th>
-            <th>Кількість запитань</th>
-            <th>Час проходження</th>
-            <th>Категорія / Дисципліна</th>
-            <th>Пройти тест</th>
+            <th>Test name</th>
+            <th>Number of questions</th>
+            <th>Passage time</th>
+            <th>Category / Discipline</th>
+            <th>Take a test</th>
           </tr>
           <?php foreach($tests as $test): ?>
           <tr>
@@ -35,7 +35,7 @@
             <td><?php echo count($test->questions); ?></td>
             <td><?php echo date('H:i:s', strtotime($test->time)); ?></td>
             <td><?php echo $test->category; ?></td>
-            <td><a href="<?php echo URL::site(Route::get('pass_test_st1')->uri(array('test_id' => $test->filename)), true); ?>">Розпочати</a></td>
+            <td><a href="<?php echo URL::site(Route::get('pass_test_st1')->uri(array('test_id' => $test->filename)), true); ?>">Start</a></td>
           </tr>
           <?php endforeach; ?>
         </table>

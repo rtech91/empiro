@@ -20,11 +20,11 @@
   <nav>
     <ul class="nav">
       <?php if(Request::current()->action() !== 'index'): ?>
-        <li><a href="<?php echo URL::base(); ?>">Головна</a></li>
+        <li><a href="<?php echo URL::base(); ?>">Main</a></li>
       <?php endif; ?>
       <?php if(!(('admin_main' == $current_route) || ('admin_entrance' == $current_route))): ?>
-      <li><a href="<?php echo URL::site(Route::get('admin_entrance')->uri()); ?>">Для адміністратора</a></li>
+      <li><a href="<?php echo URL::site(Route::get('admin_entrance')->uri()); ?>">For admin</a></li>
       <?php endif; ?>
-      <li><a href="<?php echo URL::site(Route::get('contact_page')->uri()); ?>">Про нас</a></li>
+      <li><a href="<?php echo URL::site(Route::get('contact_page')->uri()); ?>">About us</a></li>
     </ul>
   </nav>

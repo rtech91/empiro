@@ -2,10 +2,10 @@
   <footer>
     <div class="footer">
       <div class="copyright">
-        <p>&#9400; Copyright 2017 <br /> Школа інформатики ПДМ. Усі права збережені</p>
+        <p>&#9400; Copyright 2017 <br />IT School PDM. All rights reserved</p>
       </div>
       <div class="contact">
-        <p>Рівненський міський Палац дітей та молоді <br /> Адреса <br /> вул. Кн. Володимира, 10, Рівне</p>
+        <p>Palace of Children and Youth of Rivne city <br /> Address <br /> st. Kn. Volodymyra, 10, Rivne</p>
       </div>
     </div>
   </footer>

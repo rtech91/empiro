@@ -29,7 +29,7 @@ class Model_Mail extends Model {
       {
         throw new Exception_MailSendingError('Cannot send email. Please, contact administrator.', 500);
       }
-      MessageHandler::getInstance()->registerMessage('Email was successfully been sent.', MessageHandler::MH_MESSAGE | MessageHandler::ACCESS_USER);
+      MessageHandler::getInstance()->registerMessage('Email was successfully sent.', MessageHandler::MH_MESSAGE | MessageHandler::ACCESS_USER);
     }catch(Exception_MailSendingError $e) {
       MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER);
     }
