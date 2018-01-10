@@ -58,7 +58,7 @@ class Controller_Test extends Controller {
     if(null === $filename || null === $test_name){
         $this->redirect(URL::site(Route::get('create_test')->uri(), true));
     }
-    MessageHandler::getInstance()->registerMessage("New test created - $test_name", MessageHandler::ACCESS_ADMIN|MessageHandler::MH_MESSAGE);
+    MessageHandler::getInstance()->registerMessage(__('New test created - :test', array(':test' => $test_name)), MessageHandler::ACCESS_ADMIN|MessageHandler::MH_MESSAGE);
     $messages = MessageHandler::getInstance()->getMessages();
     $view = new View('layout');
     $view->header = new View('header');
@@ -80,7 +80,7 @@ class Controller_Test extends Controller {
       $session->set('test_data', $test);
     }
     else {
-      MessageHandler::getInstance()->registerMessage('Test file was not found! Please ask administrator for assistance.', MessageHandler::MH_FAILURE|MessageHandler::ACCESS_USER);
+      MessageHandler::getInstance()->registerMessage(__('Test file was not found! Please ask administrator for assistance.'), MessageHandler::MH_FAILURE|MessageHandler::ACCESS_USER);
     }
 
     if($this->request->method() === Request::POST) {

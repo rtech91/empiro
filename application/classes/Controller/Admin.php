@@ -13,7 +13,7 @@ class Controller_Admin extends Controller {
         Session::instance()->set('logged_in', 'logged');
         $this->redirect(URL::site(Route::get('admin_main')->uri()));
       }else {
-        MessageHandler::getInstance()->registerMessage('Wrong password!', MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN);
+        MessageHandler::getInstance()->registerMessage(__('Wrong password!'), MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN);
       }
     }
     if(Session::instance()->get('logged_in') == true) {

@@ -17,29 +17,29 @@
           <?php endif; ?>
         <?php endforeach; ?>
       </div>
-      <h1>Contact information</h1>
+      <h1><?php __('Contact information'); ?></h1>
       <div class="contact-info">
         <div class="text-block">
-          <p>Site created by Cyber laboratory "Swarm" of IT School PDM</p>
-          <span class="users-icon"></span><a href="https://www.facebook.com/groups/InformaticsPDM/?fref=ts">School at Facebook</a>
+          <p><?php __('Site created by Cyber laboratory "Swarm" of IT School PDM'); ?></p>
+          <span class="users-icon"></span><a href="https://www.facebook.com/groups/InformaticsPDM/?fref=ts"><?php __('School at Facebook'); ?></a>
         </div>
         <div class="text-block">
-          <span class="placeholder-icon"></span><p>Palace of Children and Youth of Rivne city<br />st. Kn. Volodymyra, 10, Rivne</p>
-          <span class="home-icon"></span><a href="https://pdm.org.ua">PDM website</a>
+          <span class="placeholder-icon"></span><p><?php __('Palace of Children and Youth of Rivne city<br />st. Kn. Volodymyra, 10, Rivne'); ?></p>
+          <span class="home-icon"></span><a href="https://pdm.org.ua"><?php __('PDM website'); ?></a>
         </div>
       </div>
       <div class="form-wrap">
         <div class="form-style">
         <form action="" method="post">
-          <input type="text" name="contact_name" placeholder="Your name"></input>
-          <input type="email" name="contact_email" placeholder="Your email"></input>
+          <input type="text" name="contact_name" placeholder="<?php __('Your name'); ?>"></input>
+          <input type="email" name="contact_email" placeholder="<?php __('Your email'); ?>"></input>
           <select id="category" name="contact_category">
-            <option value="OPT_NONE">Choose theme...</option>
-            <option value="OPT_QUESTIONS">Questions to the team</option>
-            <option value="OPT_PROPOSALS">Propositions</option>
+            <option value="OPT_NONE"><?php __('Choose theme...'); ?></option>
+            <option value="OPT_QUESTIONS"><?php __('Questions to the team'); ?></option>
+            <option value="OPT_PROPOSALS"><?php __('Propositions'); ?></option>
           </select>
-          <textarea name="contact_message" placeholder="Input message text" rows="5"></textarea>
-          <input id="contact-submit" type="submit" value="Send"></input>
+          <textarea name="contact_message" placeholder="<?php __('Input message text'); ?>" rows="5"></textarea>
+          <input id="contact-submit" type="submit" value="<?php __('Send'); ?>"></input>
         </form>
         </div>
       </div>

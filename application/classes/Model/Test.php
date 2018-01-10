@@ -10,51 +10,51 @@ class Model_Test extends Model {
         $mh = MessageHandler::getInstance();
         $is_correct = true;
         if(!Valid::not_empty($data->name)){
-            $mh->registerMessage('Name is empty or forbidden symbols detected!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Name is empty or forbidden symbols detected!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!Valid::max_length($data->name, 32)){
-            $mh->registerMessage('Max name length is 32 symbols!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Max name length is 32 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!empty($data->name) && preg_match("[(a-zA-Z0-9-&\s.+)]", $data->name)){
-            $mh->registerMessage('Invalid symbols in name!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Invalid symbols in name!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!Valid::not_empty($data->category)){
-            $mh->registerMessage('Category is empty or forbidden symbols detected!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Category is empty or forbidden symbols detected!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!Valid::max_length($data->category, 16)){
-            $mh->registerMessage('Max category length is 16 symbols!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Max category length is 16 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!empty($data->category) && preg_match("[(a-zA-Z0-9-&\s.+)]", $data->category)){
-            $mh->registerMessage('Invalid symbols in category!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Invalid symbols in category!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!Valid::not_empty($data->total_time)){
-            $mh->registerMessage('Total time is empty or forbidden symbols detected!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Total time is empty or forbidden symbols detected!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!Valid::max_length($data->total_time, 3)){
-            $mh->registerMessage('Max total time length is 3 symbols!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Max total time length is 3 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!empty($data->total_time) && !Valid::digit($data->total_time, true)){
-            $mh->registerMessage('Not allowed to use anything but numbers in total time!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Not allowed to use anything but numbers in total time!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!Valid::not_empty($data->min_right_answers)){
-            $mh->registerMessage('Minimum right answers is empty or forbidden symbols detected!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Minimum right answers is empty or forbidden symbols detected!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!Valid::max_length($data->min_right_answers, 2)){
-            $mh->registerMessage('Max minimum right answers length is 2 symbols!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Max minimum right answers length is 2 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         if(!empty($data->min_right_answers) && !Valid::digit($data->min_right_answers, true)){
-            $mh->registerMessage('Not allowed to use anything but numbers in minimum right answers!', (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
+            $mh->registerMessage(__('Not allowed to use anything but numbers in minimum right answers!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
         return $is_correct;
@@ -77,10 +77,10 @@ class Model_Test extends Model {
                     $test_to_return = $tests[0];
                     return $as_json ? json_encode($test_to_return) : $test_to_return;
                 }else {
-                    throw new Exception_ParsingTestFileFailure('Critical error was occured while parsing test file', 500);
+                    throw new Exception_ParsingTestFileFailure(__('Critical error has occured while parsing test file'), 500);
                 }
             }else {
-                throw new Exception_StorageAccessError('Cannot read tests storage folder', 500);
+                throw new Exception_StorageAccessError(__('Cannot read tests storage folder'), 500);
             }
         }catch(Exception_StorageAccessError $e) {
           MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER);
