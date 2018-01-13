@@ -20,11 +20,11 @@
   <nav>
     <ul class="nav">
       <?php if(Request::current()->action() !== 'index'): ?>
-        <li><a href="<?php echo URL::base(); ?>"><?php __('Main'); ?></a></li>
+        <li><a href="<?php echo URL::base(); ?>"><?php echo I18n::get('Main'); ?></a></li>
       <?php endif; ?>
       <?php if(!(('admin_main' == $current_route) || ('admin_entrance' == $current_route))): ?>
-      <li><a href="<?php echo URL::site(Route::get('admin_entrance')->uri()); ?>"><?php __('For admin'); ?></a></li>
+      <li><a href="<?php echo URL::site(Route::get('admin_entrance')->uri()); ?>"><?php echo I18n::get('For admin'); ?></a></li>
       <?php endif; ?>
-      <li><a href="<?php echo URL::site(Route::get('contact_page')->uri()); ?>"><?php __('About us'); ?></a></li>
+      <li><a href="<?php echo URL::site(Route::get('contact_page')->uri()); ?>"><?php echo I18n::get('About us'); ?></a></li>
     </ul>
   </nav>

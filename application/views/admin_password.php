@@ -21,9 +21,9 @@
         <div class="form-wrap password-wrap">
           <div class="form-style">
           <form method="post">
-            <input type="password" name="password" placeholder="<?php __('Enter the password'); ?>">
+            <input type="password" name="password" placeholder="<?php echo I18n::get('Enter the password'); ?>">
             <div class="btn">
-            <input id="admin-submit" type="submit" value="<?php __('Send'); ?>">
+            <input id="admin-submit" type="submit" value="<?php echo I18n::get('Send'); ?>">
             </div>
           </form>
           </div>
