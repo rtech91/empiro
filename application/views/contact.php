@@ -17,29 +17,29 @@
           <?php endif; ?>
         <?php endforeach; ?>
       </div>
-      <h1>Contact information</h1>
+      <h1><?php echo I18n::get('Contact information'); ?></h1>
       <div class="contact-info">
         <div class="text-block">
-          <p>Site created by Cyber laboratory "Swarm" of IT School PDM</p>
-          <span class="users-icon"></span><a href="https://www.facebook.com/groups/InformaticsPDM/?fref=ts">School at Facebook</a>
+          <p><?php echo I18n::get('Site created by Cyber laboratory "Swarm" of IT School PDM'); ?></p>
+          <span class="users-icon"></span><a href="https://www.facebook.com/groups/InformaticsPDM/?fref=ts"><?php echo I18n::get('School at Facebook'); ?></a>
         </div>
         <div class="text-block">
-          <span class="placeholder-icon"></span><p>Palace of Children and Youth of Rivne city<br />st. Kn. Volodymyra, 10, Rivne</p>
-          <span class="home-icon"></span><a href="https://pdm.org.ua">PDM website</a>
+          <span class="placeholder-icon"></span><p><?php echo I18n::get('Palace of Children and Youth of Rivne city<br />st. Kn. Volodymyra, 10, Rivne'); ?></p>
+          <span class="home-icon"></span><a href="https://pdm.org.ua"><?php echo I18n::get('PDM website'); ?></a>
         </div>
       </div>
       <div class="form-wrap">
         <div class="form-style">
         <form action="" method="post">
-          <input type="text" name="contact_name" placeholder="Your name"></input>
-          <input type="email" name="contact_email" placeholder="Your email"></input>
+          <input type="text" name="contact_name" placeholder="<?php echo I18n::get('Your name'); ?>"></input>
+          <input type="email" name="contact_email" placeholder="<?php echo I18n::get('Your email'); ?>"></input>
           <select id="category" name="contact_category">
-            <option value="OPT_NONE">Choose theme...</option>
-            <option value="OPT_QUESTIONS">Questions to the team</option>
-            <option value="OPT_PROPOSALS">Propositions</option>
+            <option value="OPT_NONE"><?php echo I18n::get('Choose theme...'); ?></option>
+            <option value="OPT_QUESTIONS"><?php echo I18n::get('Questions to the team'); ?></option>
+            <option value="OPT_PROPOSALS"><?php echo I18n::get('Propositions'); ?></option>
           </select>
-          <textarea name="contact_message" placeholder="Input message text" rows="5"></textarea>
-          <input id="contact-submit" type="submit" value="Send"></input>
+          <textarea name="contact_message" placeholder="<?php echo I18n::get('Input message text'); ?>" rows="5"></textarea>
+          <input id="contact-submit" type="submit" value="<?php echo I18n::get('Send'); ?>"></input>
         </form>
         </div>
       </div>

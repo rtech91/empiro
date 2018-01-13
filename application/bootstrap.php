@@ -68,7 +68,7 @@ mb_substitute_character('none');
 /**
  * Set the default language
  */
-I18n::lang('en-us');
+I18n::lang('ua');
 
 if (isset($_SERVER['SERVER_PROTOCOL']))
 {
@@ -135,7 +135,7 @@ Kohana::modules(array(
 /**
  * Cookie Salt
  * @see  http://kohanaframework.org/3.3/guide/kohana/cookies
- * 
+ *
  * If you have not defined a cookie salt in your Cookie class then
  * uncomment the line below and define a preferrably long salt.
  */

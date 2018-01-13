@@ -82,7 +82,7 @@ class Model_Storage extends Model {
       if(is_dir(self::STORAGE_FOLDER) && is_writable(self::STORAGE_FOLDER)) {
         return true;
       }else {
-        throw new Exception_StorageAccessError('Cannot read tests storage folder', 500);
+        throw new Exception_StorageAccessError(__('Cannot read tests storage folder'), 500);
       }
     }catch(Exception_StorageAccessError $e) {
       MessageHandler::getInstance()->registerMessage($e->getMessage(), (MessageHandler::MH_FAILURE | MessageHandler::ACCESS_USER));
@@ -135,17 +135,17 @@ class Model_Storage extends Model {
         $document->load($uri);
         try{
           if(!self::checkMainTestParams($document)){
-            throw new Exception_WrongTestParameters("Error checking main test params in $uri.");
+            throw new Exception_WrongTestParameters(__('Error checking main test params in :uri.', array(':uri' => $uri)));
           }
           foreach($document->getElementsByTagName('question') as $question) {
             if(self::checkQuestion($question)) {
               foreach($question->getElementsByTagName('answer') as $answer) {
                 if(!self::checkAnswer($answer)) {
-                  throw new Exception_WrongQuestionParameters("Error checking answer in $uri.");
+                  throw new Exception_WrongQuestionParameters(__('Error checking answer in :uri.', array(':uri' => $uri)));
                 }
               }
             }else {
-              throw new Exception_WrongQuestionParameters("Error checking question in $uri.");
+              throw new Exception_WrongQuestionParameters(__('Error checking question in :uri.', array(':uri' => $uri)));
             }
           }
         }catch(Exception_WrongTestParameters $e) {

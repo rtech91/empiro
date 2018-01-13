@@ -17,20 +17,20 @@
 			<?php endif; ?>
 		<?php endforeach; ?>
 	</div>
-	<h1>Test creation. Stage I</h1>
-	<p>Fill in main information before creating the test.</p>
+	<h1><?php echo I18n::get('Test creation. Stage I'); ?></h1>
+	<p><?php echo I18n::get('Fill in main information before creating the test.'); ?></p>
 		<div class="form-wrap stage1-wrap">
 			<div class="form-style">
 			<ul class="create-test-form">
 			<form action="" method="post" id="st1_form">
-				<li><input type="text" name="name" required value="<?php echo isset($data, $data->name) ? $data->name : ''; ?>" placeholder="Test name" ></li>
-				<li><input type="text" name="category" required value="<?php echo isset($data, $data->category) ? $data->category : ''; ?>" placeholder="Category / Discipline"></li>
-				<li><input  type="number" name="total_time" required value="<?php echo isset($data, $data->total_time) ? $data->total_time : ''; ?>" min="1" placeholder="Total tets passage time in minutes"></li>
-				<li><div class="comment">Example: 30 (in minutes)</div></li>
-				<li><input type="number" name="min_right_answers" required id="mr_answers" value="<?php echo isset($data, $data->min_right_answers) ? $data->min_right_answers : ''; ?>" placeholder="Minimum number of right answers to pass the test"></li>
-				<li><div class="comment">Example: 15</div></li>
+				<li><input type="text" name="name" required value="<?php echo isset($data, $data->name) ? $data->name : ''; ?>" placeholder="<?php echo I18n::get('Test name'); ?>" ></li>
+				<li><input type="text" name="category" required value="<?php echo isset($data, $data->category) ? $data->category : ''; ?>" placeholder="<?php echo I18n::get('Category / Discipline'); ?>"></li>
+				<li><input  type="number" name="total_time" required value="<?php echo isset($data, $data->total_time) ? $data->total_time : ''; ?>" min="1" placeholder="<?php echo I18n::get('Total test passage time in minutes'); ?>"></li>
+				<li><div class="comment"><?php echo I18n::get('Example: 30 (in minutes)'); ?></div></li>
+				<li><input type="number" name="min_right_answers" required id="mr_answers" value="<?php echo isset($data, $data->min_right_answers) ? $data->min_right_answers : ''; ?>" placeholder="<?php echo I18n::get('Minimum number of right answers to pass the test'); ?>"></li>
+				<li><div class="comment"><?php echo I18n::get('Example: 15'); ?></div></li>
 				<li><div class="btn">
-				<input type="button" onclick="setMinRightAnswers();" value="Save">
+				<input type="button" onclick="setMinRightAnswers();" value="<?php echo I18n::get('Save'); ?>">
 				</div></li>
 			</form>
 			</ul>

@@ -30,19 +30,19 @@
              <?php endif; ?>
       <?php endforeach; ?>
     </div>
-      <h1>Test creation. Stage 2. Question <span id="current_question">1</h1>
-      <p>Fill in the information, according to reference data in the fields.</p>
+      <h1><?php echo I18n::get('Test creation. Stage 2. Question '); ?><span id="current_question">1</h1>
+      <p><?php echo I18n::get('Fill in the information, according to reference data in the fields.'); ?></p>
       <div class="form-wrap stage1-wrap">
         <div class="form-style">
           <ul class="create-test-form">
             <li><input type="text" name="question" value=""
-              placeholder="Enter question name"></li>
+              placeholder="<?php echo I18n::get('Enter question name'); ?>"></li>
             <li><textarea name="example"
-                placeholder="Enter code or expression" rows="2"></textarea></li>
+                placeholder="<?php echo I18n::get('Enter code or expression'); ?>" rows="2"></textarea></li>
             <li><select class="answer-type" id="selector-answer-type">
-                <option value="none" id="none-answer-value">Not chosen</option>
-                <option value="one">One correct answer</option>
-                <option value="multiple">Several correct answers</option>
+                <option value="none" id="none-answer-value"><?php echo I18n::get('Not chosen'); ?></option>
+                <option value="one"><?php echo I18n::get('One correct answer'); ?></option>
+                <option value="multiple"><?php echo I18n::get('Several correct answers'); ?></option>
             </select></li>
             <div id="answers_list"></div>
           </ul>
@@ -57,7 +57,7 @@
             </div>
             <div class="answer">
               <input type="text" name="answer" value=""
-                placeholder="Enter answer">
+                placeholder="<?php echo I18n::get('Enter answer'); ?>">
             </div>
           </li>
         </div>
@@ -73,13 +73,13 @@
         </div>
         <div class="save-test-wrap">
           <button class="btn-test" id="prev-question"
-            onclick="previousQuestion()" type="button" disabled>Previous</button>
+            onclick="previousQuestion()" type="button" disabled><?php echo I18n::get('Previous'); ?></button>
           <button class="btn-test btn-disabled"
             onclick="addNewQuestion();" id="add-question" type="button"
-            disabled>Add question</button>
+            disabled><?php echo I18n::get('Add question'); ?></button>
           <button class="btn-test btn-disabled"
             onclick="saveTestData();" id="save-test" type="submit"
-            disabled>Save test</button>
+            disabled><?php echo I18n::get('Save test'); ?></button>
         </div>
       </div>
     </div>
