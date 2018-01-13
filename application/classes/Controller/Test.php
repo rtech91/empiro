@@ -28,7 +28,7 @@ class Controller_Test extends Controller {
         $root->appendChild($allowToReanswerNode);
         $allowToReanswerNode = $test_template->createElement('allowtaskreviews', 'false');
         $root->appendChild($allowToReanswerNode);
-        $test_template->save(Model_Storage::STORAGE_FOLDER.$filename.'.xml');
+        $test_template->save(Model_Storage::STORAGE_FOLDER.$filename.Model_Storage::FILE_EXT);
         $session = Session::instance();
         $session->set('filename', $filename);
         $session->set('test_name', $data->name);
@@ -58,7 +58,7 @@ class Controller_Test extends Controller {
     if(null === $filename || null === $test_name){
         $this->redirect(URL::site(Route::get('create_test')->uri(), true));
     }
-    MessageHandler::getInstance()->registerMessage("New test created - $test_name", MessageHandler::ACCESS_ADMIN|MessageHandler::MH_MESSAGE);
+    MessageHandler::getInstance()->registerMessage(__('New test created - :test', array(':test' => $test_name)), MessageHandler::ACCESS_ADMIN|MessageHandler::MH_MESSAGE);
     $messages = MessageHandler::getInstance()->getMessages();
     $view = new View('layout');
     $view->header = new View('header');
@@ -68,13 +68,40 @@ class Controller_Test extends Controller {
     $view->footer = new View('footer');
     $this->response->body($view->render());
   }
-  
+
   public function action_register()
   {
+    $test_id = $this->request->param('test_id');
+    $filepath = Model_Storage::STORAGE_FOLDER.$test_id.Model_Storage::FILE_EXT;
+    if(!empty($test_id) && !empty($test_id) && Model_Storage::getInstance()->checkFileAccessibility($filepath)) {
+      $session = Session::instance();
+      $session->set('test_id', $test_id);
+      $test = Model_Test::getFullTest($test_id, true);
+      $session->set('test_data', $test);
+    }
+    else {
+      MessageHandler::getInstance()->registerMessage(__('Test file was not found! Please ask administrator for assistance.'), MessageHandler::MH_FAILURE|MessageHandler::ACCESS_USER);
+    }
+
+    if($this->request->method() === Request::POST) {
+      if(isset($_POST["op"]) && $_POST["op"] === "pass_st1_form") {
+        $data = (object)$this->request->post();
+        $val_output = Model_Test::validateRegisterData($data);
+        if(true === $val_output) {
+          $session = Session::instance();
+          $session->set('surname', $data->surname);
+          $session->set('name', $data->name);
+          $session->set('patronymic', $data->midname);
+          $this->redirect(URL::site(Route::get('pass_test_st2')->uri(), true));
+        }
+      }
+    }
+    $messages = MessageHandler::getInstance()->getMessages();
     $groups = Model_Group::getAll();
     $view = new View('layout');
     $view->header = new View('header');
     $view->content = new View('test_pass_st1');
+    $view->content->messages = $messages;
     $view->content->groups = $groups;
     $view->footer = new View('footer');
     $this->response->body($view->render());
@@ -82,7 +109,7 @@ class Controller_Test extends Controller {
 
   public function action_questions()
   {
-    
+
   }
 
   /**
