@@ -232,7 +232,7 @@ tr:hover {
 }
 .table td a {
   color: #fff;
-  display: inline-block;
+  display: block;
   padding: 7%;
   background: #f7c327;
   border-radius: 5px;
