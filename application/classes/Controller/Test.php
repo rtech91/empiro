@@ -91,7 +91,7 @@ class Controller_Test extends Controller {
           $session = Session::instance();
           $session->set('surname', $data->surname);
           $session->set('name', $data->name);
-          $session->set('patronymic', $data->midname);
+          $session->set('patronymic', $data->patronymic);
           $this->redirect(URL::site(Route::get('pass_test_st2')->uri(), true));
         }
       }
@@ -109,7 +109,11 @@ class Controller_Test extends Controller {
 
   public function action_questions()
   {
-
+    $view = new View('layout');
+    $view->header = new View('header');
+    $view->content = new View('test_pass_st2');
+    $view->footer = new View('footer');
+    $this->response->body($view->render());
   }
 
   /**
