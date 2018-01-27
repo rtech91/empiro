@@ -124,4 +124,7 @@ class Model_Test extends Model {
             $document->save($test_uri);
         }
     }
+    public static function validateRegisterData() {
+        return true;
+    }
 }

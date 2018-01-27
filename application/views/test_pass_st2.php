@@ -1,3 +1,30 @@
+<script>
+var mins = 1;
+var countDownTime = new Date();
+countDownTime.setMinutes(countDownTime.getMinutes() + mins);
+var time = setInterval(function() {
+	var now = new Date().getTime();
+	var distance = countDownTime - now;
+	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	if (hours < 10) {
+		var hours = "0" + hours;
+	}
+	if (minutes < 10) {
+		var minutes = "0" + minutes;
+	}
+	if (seconds < 10) {
+		var seconds = "0" + seconds;
+	}
+	document.getElementById("test-time").innerHTML = hours + ":" + minutes + ":" + seconds;
+	mins-=1
+	if (distance < 0) {
+    //clearInterval(x);
+    document.getElementById("test-time").innerHTML = '<font color="red">00:00:00</font>';
+  }
+}, 1000);
+</script>
 <main>
 <div class="home">
 	<div class="alert-wrap">
@@ -7,7 +34,7 @@
 	<div class="test-wrap">
 		<div class="test-info">
 			<div class="question-number"><?php echo I18n::get('Question'); ?>: 1/20</div>
-			<div class="test-time"><?php echo I18n::get('Time left'); ?>: 00:14:27/00:30:00</div>
+			<div class="test-time"><?php echo I18n::get('Time left'); ?>: <p id="test-time"></p></div>
 		</div>
 		<div class="question">
 			<h3>You have to make a numbered list, which of the tags should you use?</h3>
