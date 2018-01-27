@@ -8,8 +8,8 @@ class Model_Mail extends Model {
   const EMAIL_TO = 'in0mad91@gmail.com';
   
   const EMAIL_CATEGORY = array(
-    'OPT_QUESTIONS' => __('Questions to the team'),
-    'OPT_PROPOSALS' => __('Propositions')
+    'OPT_QUESTIONS' => I18n::get('Questions to the team'),
+    'OPT_PROPOSALS' => I18n::get('Propositions')
   );
   
   /**
@@ -27,9 +27,9 @@ class Model_Mail extends Model {
     {
       if(!mail(self::EMAIL_TO, self::EMAIL_CATEGORY[$data->contact_category], $message, $headers))
       {
-        throw new Exception_MailSendingError(__('Cannot send email. Please, contact administrator.'), 500);
+        throw new Exception_MailSendingError(I18n::get('Cannot send email. Please, contact administrator.'), 500);
       }
-      MessageHandler::getInstance()->registerMessage(__('Email was successfully sent.'), MessageHandler::MH_MESSAGE | MessageHandler::ACCESS_USER);
+      MessageHandler::getInstance()->registerMessage(I18n::get('Email was successfully sent.'), MessageHandler::MH_MESSAGE | MessageHandler::ACCESS_USER);
     }catch(Exception_MailSendingError $e) {
       MessageHandler::getInstance()->registerMessage($e->getMessage(), MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER);
     }
