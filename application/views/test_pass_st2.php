@@ -28,7 +28,6 @@ var time = setInterval(function() {
 }, 300);
 function stopTimer(){
 	clearInterval(time);
-	console.log(document.getElementById("test-time").innerHTML);
 	localStorage.timeResult = document.getElementById("test-time").innerHTML;
 }
 </script>
