@@ -2,6 +2,7 @@
 var mins = 1;
 var countDownTime = new Date();
 countDownTime.setMinutes(countDownTime.getMinutes() + mins);
+var distance = 0;
 var time = setInterval(function() {
 	var now = new Date().getTime();
 	var distance = countDownTime - now;
@@ -18,12 +19,18 @@ var time = setInterval(function() {
 		var seconds = "0" + seconds;
 	}
 	document.getElementById("test-time").innerHTML = hours + ":" + minutes + ":" + seconds;
-	mins-=1
-	if (distance < 0) {
-    //clearInterval(x);
-    document.getElementById("test-time").innerHTML = '<font color="red">00:00:00</font>';
+	mins-=1;
+	if (distance <= 0) {
+	document.getElementById("test-time").innerHTML = '00:00:00';
+	stopTimer();
+	document.getElementById("test-time").style = 'color:red;';
   }
-}, 1000);
+}, 300);
+function stopTimer(){
+	clearInterval(time);
+	console.log(document.getElementById("test-time").innerHTML);
+	localStorage.timeResult = document.getElementById("test-time").innerHTML;
+}
 </script>
 <main>
 <div class="home">
