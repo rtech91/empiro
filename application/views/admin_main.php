@@ -22,8 +22,7 @@
       </div>
         <h1><?php echo I18n::get('Admin section'); ?></h1>
         <p>
-        <?php echo I18n::get('You have access to such operations as creating and editing existing tests,
-        you can also '); ?><a href="<?php echo URL::site(Route::get('admin_logout')->uri()); ?>"><?php echo I18n::get('end administration session.'); ?></a>
+        <?php echo I18n::get('You have access to such operations as creating and editing existing tests, you can also '); ?><a href="<?php echo URL::site(Route::get('admin_logout')->uri()); ?>"><?php echo I18n::get('end administration session.'); ?></a>
         </p>
         <div class="table">
           <?php if(!empty($tests) && is_array($tests) && count($tests) > 0): ?>
