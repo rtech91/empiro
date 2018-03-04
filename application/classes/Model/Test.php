@@ -17,7 +17,7 @@ class Model_Test extends Model {
             $mh->registerMessage(I18n::get('Max name length is 32 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
-        if(!empty($data->name) && preg_match("[(a-zA-Z0-9-&\s.+)]", $data->name)){
+        if(!empty($data->name) && !preg_match("/^[a-zA-Z\p{Cyrillic}0-9-&\s.+]+$/u", $data->name)){
             $mh->registerMessage(I18n::get('Invalid symbols in name!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
@@ -29,7 +29,7 @@ class Model_Test extends Model {
             $mh->registerMessage(I18n::get('Max category length is 16 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }
-        if(!empty($data->category) && preg_match("[(a-zA-Z0-9-&\s.+)]", $data->category)){
+        if(!empty($data->category) && !preg_match("/^[a-zA-Z\p{Cyrillic}0-9-&\s.+]+$/u", $data->category)){
             $mh->registerMessage(I18n::get('Invalid symbols in category!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_ADMIN));
             $is_correct = false;
         }

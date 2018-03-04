@@ -9,7 +9,7 @@ class Controller_Test extends Controller {
   {
     $data = null;
     if($this->request->method() === Request::POST) {
-      $data = (object)filter_var_array($_POST, FILTER_SANITIZE_STRING);
+      $data = (object)$_POST;
       $val_output = Model_Test::validateInitialData($data);
       if(true === $val_output) {
         $filename = uniqid();
