@@ -88,4 +88,10 @@ return array
     'Question' => 'Питання',
     'Time left' => 'Часу залишилось',
     'Next' => 'Наступне',
+    'Surame is empty or forbidden symbols detected!' => 'Прізвище порожнє або присутні заборонені символи!',
+    'Max surname length is 32 symbols!' => 'Максимальна довжина прізвища - 32 символи!',
+    'Invalid symbols in surname!' => 'Недопустимі символи в прізвищі!',
+    'Patronymic is empty or forbidden symbols detected!' => 'По-батькові порожнє або присутні заборонені символи!',
+    'Max patronymic length is 32 symbols!' => 'Максимальна довжина по-батькові - 32 символи!',
+    'Invalid symbols in patronymic!' => 'Недопустимі символи в по-батькові!',
 );
