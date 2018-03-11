@@ -17,15 +17,14 @@
     <?php endif; ?>
     <?php endforeach; ?>
     </div>
-    <?php if(count($messages) == 0): ?>
       <h1><?php echo I18n::get('Test passage. Stage I'); ?></h1>
       <p><?php echo I18n::get('Before beginning the test passing, fill in the data.'); ?></p>
       <div class="form-wrap stage1-wrap">
         <div class="form-style">
           <form action="" method="post" id="pass_st1_form">
-            <input type="text" name="surname" placeholder="<?php echo I18n::get('Surname'); ?>">
-            <input type="text" name="name" placeholder="<?php echo I18n::get('Name'); ?>">
-            <input type="text" name="patronymic" placeholder="<?php echo I18n::get('Patronymic'); ?>">
+            <input type="text" name="surname" value="<?php echo isset($fields->surname) ? $fields->surname : ''; ?>" placeholder="<?php echo I18n::get('Surname'); ?>">
+            <input type="text" name="name" value="<?php echo isset($fields->name) ? $fields->name : ''; ?>" placeholder="<?php echo I18n::get('Name'); ?>">
+            <input type="text" name="patronymic" value="<?php echo isset($fields->patronymic) ? $fields->patronymic : ''; ?>" placeholder="<?php echo I18n::get('Patronymic'); ?>">
             <input type="hidden" name="op" value="pass_st1_form">
             <select id="group" name="group">
                 <?php foreach($groups as $group): ?>
@@ -40,7 +39,6 @@
           </form>
         </div>
       </div>
-    <?php endif; ?>
     </div>
   </div>
 </main>

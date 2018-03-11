@@ -124,7 +124,45 @@ class Model_Test extends Model {
             $document->save($test_uri);
         }
     }
-    public static function validateRegisterData() {
-        return true;
+    public static function validateRegisterData($data){
+        $mh = MessageHandler::getInstance();
+        $is_correct = true;
+        if(!Valid::not_empty($data->surname)){
+            $mh->registerMessage(I18n::get('Surame is empty or forbidden symbols detected!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!Valid::max_length($data->surname, 32)){
+            $mh->registerMessage(I18n::get('Max surname length is 32 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!empty($data->surname) && !preg_match("/^[a-zA-Z\p{Cyrillic}0-9-&\s.+]+$/u", $data->name)){
+            $mh->registerMessage(I18n::get('Invalid symbols in surname!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!Valid::not_empty($data->name)){
+            $mh->registerMessage(I18n::get('Name is empty or forbidden symbols detected!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!Valid::max_length($data->name, 32)){
+            $mh->registerMessage(I18n::get('Max name length is 32 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!empty($data->name) && !preg_match("/^[a-zA-Z\p{Cyrillic}0-9-&\s.+]+$/u", $data->name)){
+            $mh->registerMessage(I18n::get('Invalid symbols in name!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!Valid::not_empty($data->patronymic)){
+            $mh->registerMessage(I18n::get('Patronymic is empty or forbidden symbols detected!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!Valid::max_length($data->patronymic, 32)){
+            $mh->registerMessage(I18n::get('Max patronymic length is 32 symbols!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        if(!empty($data->patronymic) && !preg_match("/^[a-zA-Z\p{Cyrillic}0-9-&\s.+]+$/u", $data->name)){
+            $mh->registerMessage(I18n::get('Invalid symbols in patronymic!'), (MessageHandler::MH_ERROR | MessageHandler::ACCESS_USER));
+            $is_correct = false;
+        }
+        return $is_correct;
     }
 }

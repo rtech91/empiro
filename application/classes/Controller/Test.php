@@ -96,12 +96,16 @@ class Controller_Test extends Controller {
         }
       }
     }
-    $messages = MessageHandler::getInstance()->getMessages();
     $groups = Model_Group::getAll();
     $view = new View('layout');
     $view->header = new View('header');
     $view->content = new View('test_pass_st1');
-    $view->content->messages = $messages;
+    $fields = array();
+    if($this->request->method() == Request::POST && isset($_POST['op']) && $_POST['op'] == 'pass_st1_form') {
+      $fields = (object)$this->request->post();
+    }
+    $view->content->fields = $fields;
+    $view->content->messages = MessageHandler::getInstance()->getMessages();
     $view->content->groups = $groups;
     $view->footer = new View('footer');
     $this->response->body($view->render());
