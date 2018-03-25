@@ -3,7 +3,7 @@
 return array
 (
     'Wrong password!' => 'Неправильний пароль!',
-    'New test created - :test' => 'Створено новий тест - :test',
+    'New test created' => 'Створено новий тест',
     'Test file was not found! Please ask administrator for assistance.' => 'Файл тесту не знайдено! Будь ласка, зверніться до адміністратора за допомогою.',
     'Questions to the team' => 'Запитання до команди',
     'Propositions' => 'Пропозиції',

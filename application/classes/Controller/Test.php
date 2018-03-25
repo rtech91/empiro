@@ -58,7 +58,7 @@ class Controller_Test extends Controller {
     if(null === $filename || null === $test_name){
         $this->redirect(URL::site(Route::get('create_test')->uri(), true));
     }
-    MessageHandler::getInstance()->registerMessage(I18n::get('New test created - :test', array(':test' => $test_name)), MessageHandler::ACCESS_ADMIN|MessageHandler::MH_MESSAGE);
+    MessageHandler::getInstance()->registerMessage(I18n::get('New test created') . ' - ' . $test_name, MessageHandler::ACCESS_ADMIN|MessageHandler::MH_MESSAGE);
     $messages = MessageHandler::getInstance()->getMessages();
     $view = new View('layout');
     $view->header = new View('header');
