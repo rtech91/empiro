@@ -278,7 +278,7 @@ class Model_Storage extends Model {
           $new_question->answers = array();
           foreach($question->getElementsByTagName('answer') as $answer) {
               $new_answer = new stdClass;
-              $new_answer->is_right = (bool)$answer->getAttribute('is_right');
+              $new_answer->is_right = $answer->getAttribute('is_right') == 'true' ? true : false;
               $new_answer->text = $answer->nodeValue;
               array_push($new_question->answers, $new_answer);
           }
