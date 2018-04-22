@@ -109,7 +109,8 @@ class Model_Test extends Model {
                 $questionNode->appendChild($titleNode);
                 $exampleNode = $document->createElement('example', $question->example);
                 $questionNode->appendChild($exampleNode);
-                $answersNode = $document->createElement('answers', $question->example);
+                $answersNode = $document->createElement('answers');
+                $questionNode->appendChild($answersNode);
                 $answerTypeAttr = $questionNode->appendChild($answersNode);
                 $answerTypeAttr->setAttribute('type', $question->answer_type);
                 foreach($question->answers as $answer) {
