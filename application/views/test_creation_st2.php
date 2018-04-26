@@ -14,21 +14,21 @@
 <main>
 <div class="home">
     <div class="alert-wrap">
-        <?php foreach($messages as $message): ?>
-            <?php if($message->bits & MessageHandler::ACCESS_ADMIN): ?>
-                <?php if($message->bits & MessageHandler::MH_FAILURE): ?>
+        <?php foreach ($messages as $message) : ?>
+            <?php if ($message->bits & MessageHandler::ACCESS_ADMIN) : ?>
+                <?php if ($message->bits & MessageHandler::MH_FAILURE) : ?>
                 <div class="alert-failure">
-                <?php elseif($message->bits & MessageHandler::MH_ERROR): ?>
+                <?php elseif ($message->bits & MessageHandler::MH_ERROR) : ?>
                 <div class="alert-error">
-                <?php elseif($message->bits & MessageHandler::MH_MESSAGE): ?>
+                <?php elseif ($message->bits & MessageHandler::MH_MESSAGE) : ?>
                 <div class="alert-message">
                 <?php endif; ?>
                     <span>
-                	<?php echo $message->message; ?>
+                    <?php echo $message->message; ?>
                     </span>
                 </div>
-             <?php endif; ?>
-      <?php endforeach; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
       <h1><?php echo I18n::get('Test creation. Stage 2. Question '); ?><span id="current_question">1</h1>
       <p><?php echo I18n::get('Fill in the information, according to reference data in the fields.'); ?></p>
