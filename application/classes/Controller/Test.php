@@ -10,7 +10,7 @@ class Controller_Test extends Controller
     {
         $data = null;
         if ($this->request->method() === Request::POST) {
-            $data = (object)$_POST;
+            $data = (object)filter_input(INPUT_POST, FILTER_SANITIZE_STRING);
             $val_output = Model_Test::validateInitialData($data);
             if (true === $val_output) {
                 $filename = uniqid();
@@ -84,7 +84,7 @@ class Controller_Test extends Controller
         }
 
         if ($this->request->method() === Request::POST) {
-            if (isset($_POST["op"]) && $_POST["op"] === "pass_st1_form") {
+            if (filter_input(INPUT_POST, 'op') == 'pass_st1_form') {
                 $data = (object)$this->request->post();
                 $val_output = Model_Test::validateRegisterData($data);
                 if (true === $val_output) {
@@ -101,7 +101,7 @@ class Controller_Test extends Controller
         $view->header = new View('header');
         $view->content = new View('test_pass_st1');
         $fields = array();
-        if ($this->request->method() == Request::POST && isset($_POST['op']) && $_POST['op'] == 'pass_st1_form') {
+        if ($this->request->method() == Request::POST && filter_input(INPUT_POST, 'op') == 'pass_st1_form') {
             $fields = (object)$this->request->post();
         }
         $view->content->fields = $fields;
