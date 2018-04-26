@@ -6,7 +6,7 @@
 class Model_Discipline extends ORM
 {
     /**
-     * @var $_model_name Name of model.
+     * @var $model_name Name of model.
      */
     private static $model_name = 'discipline';
 
