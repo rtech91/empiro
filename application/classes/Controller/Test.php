@@ -113,9 +113,12 @@ class Controller_Test extends Controller
 
     public function action_questions()
     {
+        $session = Session::instance();
+        $test = $session->get('test_data');
         $view = new View('layout');
         $view->header = new View('header');
         $view->content = new View('test_pass_st2');
+        $view->content->test = $test;
         $view->footer = new View('footer');
         $this->response->body($view->render());
     }
