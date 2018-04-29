@@ -30,6 +30,14 @@ function stopTimer(){
     clearInterval(time);
     localStorage.timeResult = document.getElementById("test-time").innerHTML;
 }
+document.addEventListener('DOMContentLoaded', function(){
+    var parsedTest = <?php echo $test; ?>;
+    if(parsedTest) {
+        localStorage.parsedTest = parsedTest;
+    }else {
+        console.error('Cannot parse test data!');
+    }
+});
 </script>
 <main>
 <div class="home">
