@@ -293,6 +293,7 @@ class Model_Storage extends Model
             return array();
         }
         foreach ($this->file_uris as $uri) {
+            $count_questions = 1;
             $document = new DOMDocument();
             $document->load($uri);
             $all_tests = array();
@@ -309,7 +310,9 @@ class Model_Storage extends Model
                 $new_question = new stdClass;
                 $new_question->title = $question->getElementsByTagName('title')->item(0)->nodeValue;
                 $new_question->type = $question->getElementsByTagName('answers')->item(0)->getAttribute('type');
+                $new_question->number = $count_questions;
                 $new_question->answers = array();
+                $count_questions += 1;
                 foreach ($question->getElementsByTagName('answer') as $answer) {
                     $new_answer = new stdClass;
                     $new_answer->is_right = (bool)$answer->getAttribute('is_right');
