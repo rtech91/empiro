@@ -19,12 +19,12 @@
   </header>
   <nav>
     <ul class="nav">
-      <?php if(Request::current()->action() !== 'index'): ?>
+        <?php if (Request::current()->action() !== 'index') : ?>
         <li><a href="<?php echo URL::base(); ?>"><?php echo I18n::get('Main'); ?></a></li>
-      <?php endif; ?>
-      <?php if(!(('admin_main' == $current_route) || ('admin_entrance' == $current_route))): ?>
+        <?php endif; ?>
+        <?php if (!(('admin_main' == $current_route) || ('admin_entrance' == $current_route))) : ?>
       <li><a href="<?php echo URL::site(Route::get('admin_entrance')->uri()); ?>"><?php echo I18n::get('For admin'); ?></a></li>
-      <?php endif; ?>
+        <?php endif; ?>
       <li><a href="<?php echo URL::site(Route::get('contact_page')->uri()); ?>"><?php echo I18n::get('About us'); ?></a></li>
     </ul>
   </nav>

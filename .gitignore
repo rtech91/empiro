@@ -6,9 +6,9 @@ code_coverage
 *.swp
 coverage
 kohana_release
-nbproject
 build
-composer.lock
+application/test_storage/
 composer.phar
 vendor/*
+.buildpath
 .vscode/settings.json

@@ -1,20 +1,20 @@
   <main>
     <div class="home">
     <div class="alert-wrap">
-        <?php foreach($messages as $message): ?>
-          <?php if($message->bits & MessageHandler::ACCESS_USER): ?>
-            <?php if($message->bits & MessageHandler::MH_FAILURE): ?>
+        <?php foreach ($messages as $message) : ?>
+            <?php if ($message->bits & MessageHandler::ACCESS_USER) : ?>
+            <?php if ($message->bits & MessageHandler::MH_FAILURE) : ?>
               <div class="alert-failure">
-            <?php elseif($message->bits & MessageHandler::MH_ERROR): ?>
+            <?php elseif ($message->bits & MessageHandler::MH_ERROR) : ?>
               <div class="alert-error">
-            <?php elseif($message->bits & MessageHandler::MH_MESSAGE): ?>
+            <?php elseif ($message->bits & MessageHandler::MH_MESSAGE) : ?>
               <div class="alert-message">
             <?php endif; ?>
               <span>
                 <?php echo $message->message; ?>
               </span>
             </div>
-          <?php endif; ?>
+            <?php endif; ?>
         <?php endforeach; ?>
       </div>
       <h1><?php echo I18n::get('Contact information'); ?></h1>
