@@ -1,4 +1,7 @@
 // Front API scripts
+var questionCount = null;
+var finalQuestion = null;
+
 function createAnswerRows(type) {
     var template = $('#field_template li');
     var count = 0;
@@ -130,6 +133,12 @@ function initQuestionStorage() {
     }
     storage.currentQuestion = 1;
     storage.lastQuestion = 1;
+}
+function initQuestionCount() {
+    questionCount = 1;
+    var question = localStorage.parsedTest.questions;
+    console.log(localStorage.parsedTest);
+    //finalQuestion = 
 }
 function nextQuestion() {
     if(localStorage.currentQuestion < localStorage.lastQuestion) {
