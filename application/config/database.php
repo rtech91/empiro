@@ -21,7 +21,7 @@ return array
 			'hostname'   => 'localhost',
 			'database'   => 'empiro_db',
 			'username'   => 'root',
-			'password'   => '',
+			'password'   => 'root',
 			'persistent' => FALSE,
 		),
 		'table_prefix' => 'tbl_',
@@ -41,7 +41,7 @@ return array
 			 */
 			'dsn'        => 'mysql:host=localhost;dbname=kohana',
 			'username'   => 'root',
-			'password'   => 'r00tdb',
+			'password'   => 'root',
 			'persistent' => FALSE,
 		),
 		/**
