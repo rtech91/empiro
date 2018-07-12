@@ -34,12 +34,15 @@ document.addEventListener('DOMContentLoaded', function(){
     if(null !== parsedTest && undefined !== parsedTest && 'object' === typeof(parsedTest)) {
         localStorage.setItem('parsedTest', JSON.stringify(parsedTest));
         var test = JSON.parse(localStorage.getItem('parsedTest'));
+        var questions = test.questions;
+        localStorage.setItem('testQuestions', JSON.stringify(questions));
+        initTestProcess();
     }else {
-				clearInterval(time);
+        clearInterval(time);
         console.error('Cannot parse test data! Contents: ' + parsedTest);
-				$('h1').html('');
-				$('.question, .test-block, .result-block, .test-info').remove();
-				$('.alert-wrap').html('<div class="alert-failure"><span>Неможливо продовжити тестування! Зверніться до адміністратора.</span></div>');
+        $('h1').html('');
+        $('.question, .test-block, .result-block, .test-info').remove();
+        $('.alert-wrap').html('<div class="alert-failure"><span>Неможливо продовжити тестування! Зверніться до адміністратора.</span></div>');
     }
 });
 </script>
@@ -57,33 +60,18 @@ document.addEventListener('DOMContentLoaded', function(){
             <h3>You have to make a numbered list, which of the tags should you use?</h3>
         </div>
         <div class="test-block">
-            <form>
-            <label>
-                <input class="radio" type="radio" name="question" value="var1">
-                <span class="radio-custom"></span>
-                <div class="label">&lt;ol&gt;</div>
-            </label>
-            <label>
-                <input class="radio" type="radio" name="question" value="var2">
-                <span class="radio-custom"></span>
-                <div class="label">&lt;tr&gt;</div>
-            </label>
-            <label>        
-                <input class="radio" type="radio" name="question" value="var3">
-                <span class="radio-custom"></span>
-                <div class="label">&lt;ul&gt;</div>
-            </label>
-            <label>        
-                <input class="radio" type="radio" name="question" value="var4">
-                <span class="radio-custom"></span>
-                <div class="label">&lt;list&gt;</div>
-                
-            </label>    
-            </form>
+            
         </div>
         <div class="result-block">
             <button class="btn-test" id="prev-page" type="button"  disabled><?php echo I18n::get('Previous'); ?></button>
             <button class="btn-test btn-disabled" id="next-page" type="submit" disabled><?php echo I18n::get('Next'); ?></button>
+        </div>
+        <div style="display:none;" id="template_answer_one">
+            <label>
+                <input class="radio" type="radio" name="answer" value="var1">
+                <span class="radio-custom"></span>
+                <div class="label">&lt;ol&gt;</div>
+            </label>
         </div>
     </div>
 </div>

@@ -193,6 +193,27 @@ function saveTestData() {
         addNewQuestion();
     }
 }
+
+function initTestProcess() {
+    // add index pointer to current question
+    localStorage.setItem('currentQuestion', 1);
+    // add list storage to save chosen answers in question
+    // which has format as [Object, Object, Object, ...]
+    localStorage.setItem('chosenAnswers', []);
+    var testQuestions = JSON.parse(localStorage.testQuestions);
+    var firstQuestion = testQuestions[0];
+    console.log(firstQuestion);
+    $('h3').html(firstQuestion.title);
+    if(firstQuestion.type === 'one') {
+        firstQuestion.answers.forEach(function(item, index, list){
+            var template = $('#template_answer_one label').clone();
+            $(template).find('input').val(item.is_right.toString());
+            $(template).find('.label').html(item.text);
+            $('.test-block').append(template);
+        });
+    }
+}
+
 function saveTempAnswers() {
     
 }
